@@ -1,0 +1,15 @@
+[submodule "source/hVHDL_math_library"]
+	path = source/hVHDL_math_library
+	url = https://github.com/hVHDL/hVHDL_math_library.git
+[submodule "source/hVHDL_fpga_interconnect"]
+	path = source/hVHDL_fpga_interconnect
+	url = https://github.com/hVHDL/hVHDL_fpga_interconnect.git
+[submodule "source/hVHDL_floating_point"]
+	path = source/hVHDL_floating_point
+	url = https://github.com/hVHDL/hVHDL_floating_point.git
+[submodule "source/hVHDL_memory_library"]
+	path = source/hVHDL_memory_library
+	url = https://github.com/hVHDL/hVHDL_memory_library.git
+[submodule "source/hVHDL_uart"]
+	path = source/hVHDL_uart
+	url = https://github.com/hVHDL/hVHDL_uart.git
