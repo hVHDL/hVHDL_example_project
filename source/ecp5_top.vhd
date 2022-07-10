@@ -27,7 +27,7 @@ architecture rtl of top is
     signal multiplier : multiplier_record := init_multiplier;
     signal sincos : sincos_record := init_sincos;
     signal angle : integer  range 0 to 2**16-1;
-    signal i : integer range 0 to 2**16-1 := 0;
+    signal i : integer range 0 to 2**16-1 := 1199;
 
     signal uart_clocks   : uart_clock_group;
     signal uart_FPGA_in  : uart_FPGA_input_group;
@@ -47,7 +47,11 @@ begin
             create_multiplier(multiplier);
             create_sincos(multiplier, sincos);
             init_uart(uart_data_in);
-            i <= (i + 1) mod 2**16;
+			if i > 0 then
+				i <= (i - 1);
+			else
+				i <= 1199;
+			end if;
 
             if i = 0 then
                 request_sincos(sincos, angle);
