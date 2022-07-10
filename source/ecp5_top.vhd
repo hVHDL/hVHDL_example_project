@@ -59,7 +59,7 @@ begin
             
             if sincos_is_ready(sincos) then
                 angle <= angle + 55;
-                transmit_16_bit_word_with_uart(uart_data_in, get_sine(sincos));
+                transmit_16_bit_word_with_uart(uart_data_in, get_sine(sincos)/2 +32768);
             end if;
         end if; --rising_edge
     end process testi;	
