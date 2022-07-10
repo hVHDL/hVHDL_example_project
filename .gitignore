@@ -1,0 +1,10 @@
+*.swo
+*.*~
+*.swp
+vunit_out/
+.lock
+outflow/
+*/work_pnr/
+*/work_pt/
+*/work_syn/
+*.cf
