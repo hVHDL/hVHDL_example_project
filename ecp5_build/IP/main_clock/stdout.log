@@ -1,0 +1,85 @@
+Running in Lattice mode
+
+                               Synplify Pro (R) 
+
+                Version R-2021.03L-SP1 for win64 - Aug 10, 2021 
+
+                    Copyright (c) 1988 - 2021 Synopsys, Inc.
+   This software and the associated documentation are proprietary to Synopsys,
+ Inc. This software may only be used in accordance with the terms and conditions
+ of a written license agreement with Synopsys, Inc. All other use, reproduction,
+            or distribution of this software is strictly prohibited.
+
+Starting:    C:\Programs\Lattice\Diamond\3.12\synpbase\bin64\mbin\synbatch.exe
+Install:     C:\Programs\Lattice\Diamond\3.12\synpbase
+Hostname:    TEHO-PC
+Date:        Sun Jul 10 10:17:53 2022
+Version:     R-2021.03L-SP1
+
+Arguments:   -product synplify_pro -batch C:/Users/Jari/mycodeprojects/hVHDL_example_project/ecp5_build/IP/main_clock/syn_results/main_clock.prj
+ProductType: synplify_pro
+
+
+
+
+log file: "C:\Users\Jari\mycodeprojects\hVHDL_example_project\ecp5_build\IP\main_clock\syn_results\main_clock.srr"
+Running: syn_results in foreground
+
+Running main_clock|syn_results
+
+Running Flow: compile (Compile) on main_clock|syn_results
+# Sun Jul 10 10:17:53 2022
+
+Running Flow: compile_flow (Compile Process) on main_clock|syn_results
+# Sun Jul 10 10:17:53 2022
+
+Running: compiler (Compile Input) on main_clock|syn_results
+# Sun Jul 10 10:17:53 2022
+Copied C:\Users\Jari\mycodeprojects\hVHDL_example_project\ecp5_build\IP\main_clock\syn_results\synwork\main_clock_comp.srs to C:\Users\Jari\mycodeprojects\hVHDL_example_project\ecp5_build\IP\main_clock\syn_results\main_clock.srs
+
+compiler completed
+# Sun Jul 10 10:17:56 2022
+
+Return Code: 0
+Run Time:00h:00m:03s
+
+Running: multi_srs_gen (Multi-srs Generator) on main_clock|syn_results
+# Sun Jul 10 10:17:56 2022
+
+multi_srs_gen completed
+# Sun Jul 10 10:17:56 2022
+
+Return Code: 0
+Run Time:00h:00m:00s
+Copied C:\Users\Jari\mycodeprojects\hVHDL_example_project\ecp5_build\IP\main_clock\syn_results\synwork\main_clock_mult.srs to C:\Users\Jari\mycodeprojects\hVHDL_example_project\ecp5_build\IP\main_clock\syn_results\main_clock.srs
+Copied C:\Users\Jari\mycodeprojects\hVHDL_example_project\ecp5_build\IP\main_clock\syn_results\main_clock.srr to C:\Users\Jari\mycodeprojects\hVHDL_example_project\ecp5_build\IP\main_clock\syn_results\main_clock.srf
+Complete: Compile Process on main_clock|syn_results
+
+Running: premap (Premap) on main_clock|syn_results
+# Sun Jul 10 10:17:56 2022
+
+premap completed
+# Sun Jul 10 10:17:58 2022
+
+Return Code: 0
+Run Time:00h:00m:02s
+Complete: Compile on main_clock|syn_results
+
+Running Flow: map (Map) on main_clock|syn_results
+# Sun Jul 10 10:17:58 2022
+License granted for 4 parallel jobs
+
+Running: fpga_mapper (Map & Optimize) on main_clock|syn_results
+# Sun Jul 10 10:17:58 2022
+Copied C:\Users\Jari\mycodeprojects\hVHDL_example_project\ecp5_build\IP\main_clock\syn_results\synwork\main_clock_m.srm to C:\Users\Jari\mycodeprojects\hVHDL_example_project\ecp5_build\IP\main_clock\syn_results\main_clock.srm
+
+fpga_mapper completed with warnings
+# Sun Jul 10 10:18:02 2022
+
+Return Code: 1
+Run Time:00h:00m:04s
+Complete: Map on main_clock|syn_results
+Copied C:\Users\Jari\mycodeprojects\hVHDL_example_project\ecp5_build\IP\main_clock\syn_results\main_clock.srr to C:\Users\Jari\mycodeprojects\hVHDL_example_project\ecp5_build\IP\main_clock\syn_results\main_clock.srf
+Complete: Logic Synthesis on main_clock|syn_results
+exit status=0
+exit status=0

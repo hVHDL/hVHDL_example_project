@@ -1,0 +1,110 @@
+--
+-- Written by Synopsys
+-- Product Version "R-2021.03L-SP1"
+-- Program "Synplify Pro", Mapper "map202103lat, Build 070R"
+-- Sun Jul 10 10:18:01 2022
+--
+
+--
+-- Written by Synplify Pro version Build 070R
+-- Sun Jul 10 10:18:01 2022
+--
+
+--
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+library synplify;
+use synplify.components.all;
+library pmi;
+use pmi.pmi_components.all;
+library ecp5u;
+use ecp5u.components.all;
+
+entity main_clock is
+port(
+  CLKI :  in std_logic;
+  CLKOP :  out std_logic);
+end main_clock;
+
+architecture beh of main_clock is
+  signal CLKOP_0 : std_logic ;
+  signal CLKOS : std_logic ;
+  signal CLKOS2 : std_logic ;
+  signal CLKOS3 : std_logic ;
+  signal INTLOCK : std_logic ;
+  signal CLKINTFB : std_logic ;
+  signal LOCK : std_logic ;
+  signal REFCLK : std_logic ;
+  signal GND : std_logic ;
+  signal VCC : std_logic ;
+begin
+GND_0: VLO port map (
+    Z => GND);
+VCC_0: VHI port map (
+    Z => VCC);
+PUR_INST: PUR port map (
+    PUR => VCC);
+GSR_INST: GSR port map (
+    GSR => VCC);
+PLLINST_0: EHXPLLL 
+  generic map( 
+    CLKI_DIV => 5, 
+    CLKFB_DIV => 12, 
+    CLKOP_DIV => 5, 
+    CLKOS_DIV => 1, 
+    CLKOS2_DIV => 1, 
+    CLKOS3_DIV => 1, 
+    CLKOP_ENABLE => "ENABLED", 
+    CLKOS_ENABLE => "DISABLED", 
+    CLKOS2_ENABLE => "DISABLED", 
+    CLKOS3_ENABLE => "DISABLED", 
+    CLKOP_CPHASE => 4, 
+    CLKOS_CPHASE => 0, 
+    CLKOS2_CPHASE => 0, 
+    CLKOS3_CPHASE => 0, 
+    CLKOP_FPHASE => 0, 
+    CLKOS_FPHASE => 0, 
+    CLKOS2_FPHASE => 0, 
+    CLKOS3_FPHASE => 0, 
+    FEEDBK_PATH => "CLKOP", 
+    CLKOP_TRIM_POL => "FALLING", 
+    CLKOP_TRIM_DELAY => 0, 
+    CLKOS_TRIM_POL => "FALLING", 
+    CLKOS_TRIM_DELAY => 0, 
+    OUTDIVIDER_MUXA => "DIVA", 
+    OUTDIVIDER_MUXB => "DIVB", 
+    OUTDIVIDER_MUXC => "DIVC", 
+    OUTDIVIDER_MUXD => "DIVD", 
+    PLL_LOCK_MODE => 0, 
+    STDBY_ENABLE => "DISABLED", 
+    DPHASE_SOURCE => "DISABLED", 
+    PLLRST_ENA => "DISABLED", 
+    INTFB_WAKE => "DISABLED"
+  ) 
+  port map (
+    CLKI => CLKI,
+    CLKFB => CLKOP_0,
+    PHASESEL1 => GND,
+    PHASESEL0 => GND,
+    PHASEDIR => GND,
+    PHASESTEP => GND,
+    PHASELOADREG => GND,
+    STDBY => GND,
+    PLLWAKESYNC => GND,
+    RST => GND,
+    ENCLKOP => GND,
+    ENCLKOS => GND,
+    ENCLKOS2 => GND,
+    ENCLKOS3 => GND,
+    CLKOP => CLKOP_0,
+    CLKOS => CLKOS,
+    CLKOS2 => CLKOS2,
+    CLKOS3 => CLKOS3,
+    LOCK => LOCK,
+    INTLOCK => INTLOCK,
+    REFCLK => REFCLK,
+    CLKINTFB => CLKINTFB);
+CLKOP <= CLKOP_0;
+end beh;
+

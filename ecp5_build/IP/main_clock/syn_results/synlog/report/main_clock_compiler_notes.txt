@@ -1,0 +1,10 @@
+@N|Running in 64-bit mode
+@N|Running in 64-bit mode
+@N:"C:\Users\Jari\mycodeprojects\hVHDL_example_project\ecp5_build\IP\main_clock\main_clock.vhd":12:7:12:16|Top entity is set to main_clock.
+@N: CD140 :	| Using the VHDL 1993 Standard for file 'C:\Users\Jari\mycodeprojects\hVHDL_example_project\ecp5_build\IP\main_clock\main_clock.vhd'.
+@N: CD630 :"C:\Users\Jari\mycodeprojects\hVHDL_example_project\ecp5_build\IP\main_clock\main_clock.vhd":12:7:12:16|Synthesizing work.main_clock.structure.
+@N: CD630 :"C:\Programs\Lattice\Diamond\3.12\synpbase\lib\lucent\ecp5u.vhd":2083:10:2083:16|Synthesizing ecp5u.ehxplll.syn_black_box.
+@N: CD630 :"C:\Programs\Lattice\Diamond\3.12\synpbase\lib\lucent\ecp5u.vhd":832:10:832:12|Synthesizing ecp5u.vlo.syn_black_box.
+@N: CD630 :"C:\Programs\Lattice\Diamond\3.12\synpbase\lib\lucent\ecp5u.vhd":825:10:825:12|Synthesizing ecp5u.vhi.syn_black_box.
+@N|Running in 64-bit mode
+

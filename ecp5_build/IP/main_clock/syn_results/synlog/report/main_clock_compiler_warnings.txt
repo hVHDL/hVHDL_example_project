@@ -1,0 +1,2 @@
+@W: CL168 :"C:\Users\Jari\mycodeprojects\hVHDL_example_project\ecp5_build\IP\main_clock\main_clock.vhd":41:4:41:17|Removing instance scuba_vhi_inst because it does not drive other instances. To preserve this instance, use the syn_noprune synthesis directive.
+

@@ -1,0 +1,111 @@
+//
+// Written by Synplify Pro 
+// Product Version "R-2021.03L-SP1"
+// Program "Synplify Pro", Mapper "map202103lat, Build 070R"
+// Sun Jul 10 10:18:01 2022
+//
+// Source file index table:
+// Object locations will have the form <file>:<line>
+// file 0 "\c:\programs\lattice\diamond\3.12\synpbase\lib\vhd\std.vhd "
+// file 1 "\c:\programs\lattice\diamond\3.12\synpbase\lib\vhd\snps_haps_pkg.vhd "
+// file 2 "\c:\programs\lattice\diamond\3.12\synpbase\lib\vhd\std1164.vhd "
+// file 3 "\c:\programs\lattice\diamond\3.12\synpbase\lib\vhd\numeric.vhd "
+// file 4 "\c:\programs\lattice\diamond\3.12\synpbase\lib\vhd\umr_capim.vhd "
+// file 5 "\c:\programs\lattice\diamond\3.12\synpbase\lib\vhd\arith.vhd "
+// file 6 "\c:\programs\lattice\diamond\3.12\synpbase\lib\vhd\unsigned.vhd "
+// file 7 "\c:\programs\lattice\diamond\3.12\synpbase\lib\vhd\hyperents.vhd "
+// file 8 "\c:\users\jari\mycodeprojects\hvhdl_example_project\ecp5_build\ip\main_clock\main_clock.vhd "
+// file 9 "\c:\programs\lattice\diamond\3.12\synpbase\lib\lucent\ecp5u.vhd "
+// file 10 "\c:\programs\lattice\diamond\3.12\synpbase\lib\nlconst.dat "
+// file 11 "\c:\users\jari\mycodeprojects\hvhdl_example_project\ecp5_build\ip\main_clock\main_clock.fdc "
+
+`timescale 100 ps/100 ps
+(* NGD_DRC_MASK=1 *)module main_clock (
+  CLKI,
+  CLKOP
+)
+;
+input CLKI ;
+output CLKOP ;
+wire CLKI ;
+wire CLKOP ;
+wire CLKOS ;
+wire CLKOS2 ;
+wire CLKOS3 ;
+wire INTLOCK ;
+wire CLKINTFB ;
+wire LOCK ;
+wire REFCLK ;
+wire GND ;
+wire VCC ;
+  VLO GND_0 (
+	.Z(GND)
+);
+  VHI VCC_0 (
+	.Z(VCC)
+);
+  PUR PUR_INST (
+	.PUR(VCC)
+);
+  GSR GSR_INST (
+	.GSR(VCC)
+);
+// @8:47
+(* LPF_RESISTOR="16" , ICP_CURRENT="5" , FREQUENCY_PIN_CLKI="50.000000" , FREQUENCY_PIN_CLKOP="120.000000" *)  EHXPLLL PLLInst_0 (
+	.CLKI(CLKI),
+	.CLKFB(CLKOP),
+	.PHASESEL1(GND),
+	.PHASESEL0(GND),
+	.PHASEDIR(GND),
+	.PHASESTEP(GND),
+	.PHASELOADREG(GND),
+	.STDBY(GND),
+	.PLLWAKESYNC(GND),
+	.RST(GND),
+	.ENCLKOP(GND),
+	.ENCLKOS(GND),
+	.ENCLKOS2(GND),
+	.ENCLKOS3(GND),
+	.CLKOP(CLKOP),
+	.CLKOS(CLKOS),
+	.CLKOS2(CLKOS2),
+	.CLKOS3(CLKOS3),
+	.LOCK(LOCK),
+	.INTLOCK(INTLOCK),
+	.REFCLK(REFCLK),
+	.CLKINTFB(CLKINTFB)
+);
+defparam PLLInst_0.CLKI_DIV = 5;
+defparam PLLInst_0.CLKFB_DIV = 12;
+defparam PLLInst_0.CLKOP_DIV = 5;
+defparam PLLInst_0.CLKOS_DIV = 1;
+defparam PLLInst_0.CLKOS2_DIV = 1;
+defparam PLLInst_0.CLKOS3_DIV = 1;
+defparam PLLInst_0.CLKOP_ENABLE = "ENABLED";
+defparam PLLInst_0.CLKOS_ENABLE = "DISABLED";
+defparam PLLInst_0.CLKOS2_ENABLE = "DISABLED";
+defparam PLLInst_0.CLKOS3_ENABLE = "DISABLED";
+defparam PLLInst_0.CLKOP_CPHASE = 4;
+defparam PLLInst_0.CLKOS_CPHASE = 0;
+defparam PLLInst_0.CLKOS2_CPHASE = 0;
+defparam PLLInst_0.CLKOS3_CPHASE = 0;
+defparam PLLInst_0.CLKOP_FPHASE = 0;
+defparam PLLInst_0.CLKOS_FPHASE = 0;
+defparam PLLInst_0.CLKOS2_FPHASE = 0;
+defparam PLLInst_0.CLKOS3_FPHASE = 0;
+defparam PLLInst_0.FEEDBK_PATH = "CLKOP";
+defparam PLLInst_0.CLKOP_TRIM_POL = "FALLING";
+defparam PLLInst_0.CLKOP_TRIM_DELAY = 0;
+defparam PLLInst_0.CLKOS_TRIM_POL = "FALLING";
+defparam PLLInst_0.CLKOS_TRIM_DELAY = 0;
+defparam PLLInst_0.OUTDIVIDER_MUXA = "DIVA";
+defparam PLLInst_0.OUTDIVIDER_MUXB = "DIVB";
+defparam PLLInst_0.OUTDIVIDER_MUXC = "DIVC";
+defparam PLLInst_0.OUTDIVIDER_MUXD = "DIVD";
+defparam PLLInst_0.PLL_LOCK_MODE = 0;
+defparam PLLInst_0.STDBY_ENABLE = "DISABLED";
+defparam PLLInst_0.DPHASE_SOURCE = "DISABLED";
+defparam PLLInst_0.PLLRST_ENA = "DISABLED";
+defparam PLLInst_0.INTFB_WAKE = "DISABLED";
+endmodule /* main_clock */
+

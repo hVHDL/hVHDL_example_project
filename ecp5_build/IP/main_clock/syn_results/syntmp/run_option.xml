@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<!-- 
+  Synopsys, Inc.
+  Version R-2021.03L-SP1
+  Project file C:\Users\Jari\mycodeprojects\hVHDL_example_project\ecp5_build\IP\main_clock\syn_results\syntmp\run_option.xml
+  Written on Sun Jul 10 10:17:53 2022
+
+
+--> 
+<project_attribute_list name="Project Settings"> 
+     <option name="project_name" display_name="Project Name">main_clock</option>
+     <option name="device_name" display_name="Device Name">syn_results: Lattice ECP5U : LFE5U_12F</option>
+     <option name="impl_name" display_name="Implementation Name">syn_results</option>
+     <option name="top_module" display_name="Top Module">main_clock</option>
+     <option name="pipe" display_name="Pipelining">0</option>
+     <option name="retiming" display_name="Retiming">0</option>
+     <option name="resource_sharing" display_name="Resource Sharing">1</option>
+     <option name="maxfan" display_name="Fanout Guide">50</option>
+     <option name="disable_io_insertion" display_name="Disable I/O Insertion">1</option>
+     <option name="no_sequential_opt" display_name="Disable Sequential Optimizations">0</option>
+     <option name="fix_gated_and_generated_clocks" display_name="Clock Conversion">1</option>
+     <option name="symbolic_fsm_compiler" display_name="FSM Compiler">1</option>
+</project_attribute_list>
+

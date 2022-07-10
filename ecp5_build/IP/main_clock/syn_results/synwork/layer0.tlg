@@ -1,0 +1,18 @@
+@N: CD630 :"C:\Users\Jari\mycodeprojects\hVHDL_example_project\ecp5_build\IP\main_clock\main_clock.vhd":12:7:12:16|Synthesizing work.main_clock.structure.
+@N: CD630 :"C:\Programs\Lattice\Diamond\3.12\synpbase\lib\lucent\ecp5u.vhd":2083:10:2083:16|Synthesizing ecp5u.ehxplll.syn_black_box.
+Post processing for ecp5u.ehxplll.syn_black_box
+@N: CD630 :"C:\Programs\Lattice\Diamond\3.12\synpbase\lib\lucent\ecp5u.vhd":832:10:832:12|Synthesizing ecp5u.vlo.syn_black_box.
+Post processing for ecp5u.vlo.syn_black_box
+@N: CD630 :"C:\Programs\Lattice\Diamond\3.12\synpbase\lib\lucent\ecp5u.vhd":825:10:825:12|Synthesizing ecp5u.vhi.syn_black_box.
+Post processing for ecp5u.vhi.syn_black_box
+Post processing for work.main_clock.structure
+Running optimization stage 1 on main_clock .......
+@W: CL168 :"C:\Users\Jari\mycodeprojects\hVHDL_example_project\ecp5_build\IP\main_clock\main_clock.vhd":41:4:41:17|Removing instance scuba_vhi_inst because it does not drive other instances. To preserve this instance, use the syn_noprune synthesis directive.
+Finished optimization stage 1 on main_clock (CPU Time 0h:00m:00s, Memory Used current: 91MB peak: 92MB)
+Running optimization stage 2 on main_clock .......
+Finished optimization stage 2 on main_clock (CPU Time 0h:00m:00s, Memory Used current: 91MB peak: 92MB)
+
+For a summary of runtime and memory usage per design unit, please see file:
+==========================================================
+@L: C:\Users\Jari\mycodeprojects\hVHDL_example_project\ecp5_build\IP\main_clock\syn_results\synwork\layer0.rt.csv
+

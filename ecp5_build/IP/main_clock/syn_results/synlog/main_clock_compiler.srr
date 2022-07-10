@@ -1,0 +1,107 @@
+
+Copyright (C) 1994-2021 Synopsys, Inc.
+This Synopsys software and all associated documentation are proprietary to Synopsys, Inc.
+and may only be used pursuant to the terms and conditions of a written license agreement
+with Synopsys, Inc. All other use, reproduction, modification, or distribution of the
+Synopsys software or the associated documentation is strictly prohibited.
+Tool: Synplify Pro (R)
+Build: R-2021.03L-SP1
+Install: C:\Programs\Lattice\Diamond\3.12\synpbase
+OS: Windows 6.2
+
+Hostname: TEHO-PC
+
+Implementation : syn_results
+Synopsys HDL Compiler, Version comp202103synp2, Build 093R, Built Aug 10 2021 09:15:36, @
+
+@N|Running in 64-bit mode
+###########################################################[
+
+Copyright (C) 1994-2021 Synopsys, Inc.
+This Synopsys software and all associated documentation are proprietary to Synopsys, Inc.
+and may only be used pursuant to the terms and conditions of a written license agreement
+with Synopsys, Inc. All other use, reproduction, modification, or distribution of the
+Synopsys software or the associated documentation is strictly prohibited.
+Tool: Synplify Pro (R)
+Build: R-2021.03L-SP1
+Install: C:\Programs\Lattice\Diamond\3.12\synpbase
+OS: Windows 6.2
+
+Hostname: TEHO-PC
+
+Implementation : syn_results
+Synopsys VHDL Compiler, Version comp202103synp2, Build 093R, Built Aug 10 2021 09:15:36, @
+
+@N|Running in 64-bit mode
+@N:"C:\Users\Jari\mycodeprojects\hVHDL_example_project\ecp5_build\IP\main_clock\main_clock.vhd":12:7:12:16|Top entity is set to main_clock.
+@N: CD140 :	| Using the VHDL 1993 Standard for file 'C:\Users\Jari\mycodeprojects\hVHDL_example_project\ecp5_build\IP\main_clock\main_clock.vhd'.
+VHDL syntax check successful!
+@N: CD630 :"C:\Users\Jari\mycodeprojects\hVHDL_example_project\ecp5_build\IP\main_clock\main_clock.vhd":12:7:12:16|Synthesizing work.main_clock.structure.
+@N: CD630 :"C:\Programs\Lattice\Diamond\3.12\synpbase\lib\lucent\ecp5u.vhd":2083:10:2083:16|Synthesizing ecp5u.ehxplll.syn_black_box.
+Post processing for ecp5u.ehxplll.syn_black_box
+@N: CD630 :"C:\Programs\Lattice\Diamond\3.12\synpbase\lib\lucent\ecp5u.vhd":832:10:832:12|Synthesizing ecp5u.vlo.syn_black_box.
+Post processing for ecp5u.vlo.syn_black_box
+@N: CD630 :"C:\Programs\Lattice\Diamond\3.12\synpbase\lib\lucent\ecp5u.vhd":825:10:825:12|Synthesizing ecp5u.vhi.syn_black_box.
+Post processing for ecp5u.vhi.syn_black_box
+Post processing for work.main_clock.structure
+Running optimization stage 1 on main_clock .......
+@W: CL168 :"C:\Users\Jari\mycodeprojects\hVHDL_example_project\ecp5_build\IP\main_clock\main_clock.vhd":41:4:41:17|Removing instance scuba_vhi_inst because it does not drive other instances. To preserve this instance, use the syn_noprune synthesis directive.
+Finished optimization stage 1 on main_clock (CPU Time 0h:00m:00s, Memory Used current: 91MB peak: 92MB)
+Running optimization stage 2 on main_clock .......
+Finished optimization stage 2 on main_clock (CPU Time 0h:00m:00s, Memory Used current: 91MB peak: 92MB)
+
+For a summary of runtime and memory usage per design unit, please see file:
+==========================================================
+@L: C:\Users\Jari\mycodeprojects\hVHDL_example_project\ecp5_build\IP\main_clock\syn_results\synwork\layer0.rt.csv
+
+
+At c_vhdl Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 90MB peak: 92MB)
+
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+
+Process completed successfully.
+# Sun Jul 10 10:17:54 2022
+
+###########################################################]
+###########################################################[
+
+Copyright (C) 1994-2021 Synopsys, Inc.
+This Synopsys software and all associated documentation are proprietary to Synopsys, Inc.
+and may only be used pursuant to the terms and conditions of a written license agreement
+with Synopsys, Inc. All other use, reproduction, modification, or distribution of the
+Synopsys software or the associated documentation is strictly prohibited.
+Tool: Synplify Pro (R)
+Build: R-2021.03L-SP1
+Install: C:\Programs\Lattice\Diamond\3.12\synpbase
+OS: Windows 6.2
+
+Hostname: TEHO-PC
+
+Implementation : syn_results
+Synopsys Synopsys Netlist Linker, Version comp202103synp2, Build 093R, Built Aug 10 2021 09:15:36, @
+
+@N|Running in 64-bit mode
+
+At syn_nfilter Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 90MB peak: 90MB)
+
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+
+Process completed successfully.
+# Sun Jul 10 10:17:55 2022
+
+###########################################################]
+
+For a summary of runtime and memory usage for all design units, please see file:
+==========================================================
+@L: C:\Users\Jari\mycodeprojects\hVHDL_example_project\ecp5_build\IP\main_clock\syn_results\synwork\main_clock_comp.rt.csv
+
+@END
+
+At c_hdl Exit (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 23MB peak: 23MB)
+
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+
+Process completed successfully.
+# Sun Jul 10 10:17:55 2022
+
+###########################################################]

@@ -1,0 +1,7 @@
+C:\Programs\Lattice\Diamond\3.12\synpbase\bin64\syn_nfilter.exe  -link  -top  main_clock  -multisrs  C:\Users\Jari\mycodeprojects\hVHDL_example_project\ecp5_build\IP\main_clock\syn_results\synwork\main_clock_comp.srs  -osyn  C:\Users\Jari\mycodeprojects\hVHDL_example_project\ecp5_build\IP\main_clock\syn_results\synwork\main_clock_mult.srs  -log  C:\Users\Jari\mycodeprojects\hVHDL_example_project\ecp5_build\IP\main_clock\syn_results\synlog\main_clock_multi_srs_gen.srr 
+relcom:..\..\..\..\..\..\..\..\..\Programs\Lattice\Diamond\3.12\synpbase\bin64\syn_nfilter.exe -link -top main_clock -multisrs ..\synwork\main_clock_comp.srs -osyn ..\synwork\main_clock_mult.srs -log ..\synlog\main_clock_multi_srs_gen.srr
+rc:0 success:1 runtime:0
+file:..\synwork\main_clock_comp.srs|io:i|time:1657437475|size:5141|exec:0|csum:8BAEE31196ED47BE232F5CA4CFE36082
+file:..\synwork\main_clock_mult.srs|io:o|time:1657437476|size:4748|exec:0|csum:
+file:..\synlog\main_clock_multi_srs_gen.srr|io:o|time:1657437476|size:1051|exec:0|csum:
+file:..\..\..\..\..\..\..\..\..\Programs\Lattice\Diamond\3.12\synpbase\bin64\syn_nfilter.exe|io:i|time:1628580158|size:8899584|exec:1|csum:163057E8B8449A642661642A20A2247D

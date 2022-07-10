@@ -1,0 +1,24 @@
+#defaultlanguage:vhdl
+#OPTIONS:"|-layerid|0|-orig_srs|C:\\Users\\Jari\\mycodeprojects\\hVHDL_example_project\\ecp5_build\\IP\\main_clock\\syn_results\\synwork\\main_clock_comp.srs|-top|main_clock|-prodtype|synplify_pro|-dspmac|-fixsmult|-infer_seqShift|-nram|-sdff_counter|-divnmod|-nostructver|-encrypt|-pro|-lite|-ui|-fid2|-ram|-sharing|on|-ll|2000|-autosm|-ignore_undefined_lib|-lib|work"
+#CUR:"C:\\Programs\\Lattice\\Diamond\\3.12\\synpbase\\bin64\\c_vhdl.exe":1628580042
+#CUR:"C:\\Programs\\Lattice\\Diamond\\3.12\\synpbase\\lib\\vhd\\location.map":1628579222
+#CUR:"C:\\Programs\\Lattice\\Diamond\\3.12\\synpbase\\lib\\vhd\\std.vhd":1628579222
+#CUR:"C:\\Programs\\Lattice\\Diamond\\3.12\\synpbase\\lib\\vhd\\snps_haps_pkg.vhd":1628579222
+#CUR:"C:\\Programs\\Lattice\\Diamond\\3.12\\synpbase\\lib\\vhd\\std1164.vhd":1628579222
+#CUR:"C:\\Programs\\Lattice\\Diamond\\3.12\\synpbase\\lib\\vhd\\numeric.vhd":1628579222
+#CUR:"C:\\Programs\\Lattice\\Diamond\\3.12\\synpbase\\lib\\vhd\\umr_capim.vhd":1628579222
+#CUR:"C:\\Programs\\Lattice\\Diamond\\3.12\\synpbase\\lib\\vhd\\arith.vhd":1628579222
+#CUR:"C:\\Programs\\Lattice\\Diamond\\3.12\\synpbase\\lib\\vhd\\unsigned.vhd":1628579222
+#CUR:"C:\\Programs\\Lattice\\Diamond\\3.12\\synpbase\\lib\\vhd\\hyperents.vhd":1628579222
+#CUR:"C:\\Users\\Jari\\mycodeprojects\\hVHDL_example_project\\ecp5_build\\IP\\main_clock\\main_clock.vhd":1657437472
+0 "C:\Users\Jari\mycodeprojects\hVHDL_example_project\ecp5_build\IP\main_clock\main_clock.vhd" vhdl
+
+# Dependency Lists (Uses list)
+0 -1
+
+# Dependency Lists (Users Of)
+0 -1
+
+# Design Unit to File Association
+arch work main_clock structure 0
+module work main_clock 0

@@ -1,0 +1,43 @@
+
+Copyright (C) 1994-2021 Synopsys, Inc.
+This Synopsys software and all associated documentation are proprietary to Synopsys, Inc.
+and may only be used pursuant to the terms and conditions of a written license agreement
+with Synopsys, Inc. All other use, reproduction, modification, or distribution of the
+Synopsys software or the associated documentation is strictly prohibited.
+Tool: Synplify Pro (R)
+Build: R-2021.03L-SP1
+Install: C:\Programs\Lattice\Diamond\3.12\synpbase
+OS: Windows 6.2
+
+Hostname: TEHO-PC
+
+Implementation : syn_results
+Synopsys HDL compiler and linker, Version comp202103synp2, Build 093R, Built Aug 10 2021 09:15:36, @
+
+Modified Files: 11
+FID:  path (prevtimestamp, timestamp)
+0        C:\Programs\Lattice\Diamond\3.12\synpbase\lib\lucent\ecp5u.vhd (N/A, 2021-08-10 10:11:08)
+1        C:\Programs\Lattice\Diamond\3.12\synpbase\lib\vhd\arith.vhd (N/A, 2021-08-10 10:07:02)
+2        C:\Programs\Lattice\Diamond\3.12\synpbase\lib\vhd\hyperents.vhd (N/A, 2021-08-10 10:07:02)
+3        C:\Programs\Lattice\Diamond\3.12\synpbase\lib\vhd\location.map (N/A, 2021-08-10 10:07:02)
+4        C:\Programs\Lattice\Diamond\3.12\synpbase\lib\vhd\numeric.vhd (N/A, 2021-08-10 10:07:02)
+5        C:\Programs\Lattice\Diamond\3.12\synpbase\lib\vhd\snps_haps_pkg.vhd (N/A, 2021-08-10 10:07:02)
+6        C:\Programs\Lattice\Diamond\3.12\synpbase\lib\vhd\std.vhd (N/A, 2021-08-10 10:07:02)
+7        C:\Programs\Lattice\Diamond\3.12\synpbase\lib\vhd\std1164.vhd (N/A, 2021-08-10 10:07:02)
+8        C:\Programs\Lattice\Diamond\3.12\synpbase\lib\vhd\umr_capim.vhd (N/A, 2021-08-10 10:07:02)
+9        C:\Programs\Lattice\Diamond\3.12\synpbase\lib\vhd\unsigned.vhd (N/A, 2021-08-10 10:07:02)
+10       C:\Users\Jari\mycodeprojects\hVHDL_example_project\ecp5_build\IP\main_clock\main_clock.vhd (N/A, 2022-07-10 10:17:52)
+
+*******************************************************************
+Modules that may have changed as a result of file changes: 1
+MID:  lib.cell.view
+0        work.main_clock.structure may have changed because the following files changed:
+                        C:\Users\Jari\mycodeprojects\hVHDL_example_project\ecp5_build\IP\main_clock\main_clock.vhd (N/A, 2022-07-10 10:17:52) <-- (architecture and entity definition)
+
+*******************************************************************
+Unmodified files: 0
+FID:  path (timestamp)
+
+*******************************************************************
+Unchanged modules: 0
+MID:  lib.cell.view

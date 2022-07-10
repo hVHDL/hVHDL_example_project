@@ -1,0 +1,1 @@
+@W: MT246 :"c:\users\jari\mycodeprojects\hvhdl_example_project\ecp5_build\ip\main_clock\main_clock.vhd":47:4:47:12|Blackbox EHXPLLL is missing a user supplied timing model. This may have a negative effect on timing analysis and optimizations (Quality of Results)
