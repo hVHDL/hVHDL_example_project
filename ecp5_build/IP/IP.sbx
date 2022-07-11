@@ -9,10 +9,18 @@
             <spirit:fileset>
                 <spirit:name>Diamond_Synthesis</spirit:name>
                 <spirit:group>synthesis</spirit:group>
+                <spirit:file>
+                    <spirit:name>./IP.vhd</spirit:name>
+                    <spirit:fileType>vhdlSource</spirit:fileType>
+                </spirit:file>
             </spirit:fileset>
             <spirit:fileset>
                 <spirit:name>Diamond_Simulation</spirit:name>
                 <spirit:group>simulation</spirit:group>
+                <spirit:file>
+                    <spirit:name>./IP.vhd</spirit:name>
+                    <spirit:fileType>vhdlSource</spirit:fileType>
+                </spirit:file>
             </spirit:fileset>
         </spirit:fileSets>
         <spirit:componentGenerators/>
@@ -49,14 +57,14 @@
             <lattice:device>LFE5U-12F-8BG381C</lattice:device>
             <lattice:synthesis>synplify</lattice:synthesis>
             <lattice:date>2022-07-10.10:17:20</lattice:date>
-            <lattice:modified>2022-07-10.10:18:12</lattice:modified>
+            <lattice:modified>2022-07-11.07:30:48</lattice:modified>
             <lattice:diamond>3.12.1.454</lattice:diamond>
             <lattice:language>VHDL</lattice:language>
             <lattice:attributes>
-                <lattice:attribute lattice:name="AddComponent">true</lattice:attribute>
+                <lattice:attribute lattice:name="AddComponent">false</lattice:attribute>
                 <lattice:attribute lattice:name="Change4to5">false</lattice:attribute>
                 <lattice:attribute lattice:name="ChangeConfig">false</lattice:attribute>
-                <lattice:attribute lattice:name="ChangeConnect">true</lattice:attribute>
+                <lattice:attribute lattice:name="ChangeConnect">false</lattice:attribute>
                 <lattice:attribute lattice:name="ChangeDevice">false</lattice:attribute>
                 <lattice:attribute lattice:name="ChangeLocate">false</lattice:attribute>
                 <lattice:attribute lattice:name="ChangePack">false</lattice:attribute>
@@ -142,7 +150,7 @@
                     </spirit:model>
                     <spirit:vendorExtensions>
                         <lattice:synthesis>synplify</lattice:synthesis>
-                        <lattice:modified>2022-07-10.10:18:12</lattice:modified>
+                        <lattice:modified>2022-07-11.07:30:48</lattice:modified>
                         <lattice:attributes>
                             <lattice:attribute lattice:name="AddComponent">false</lattice:attribute>
                             <lattice:attribute lattice:name="BBox">false</lattice:attribute>

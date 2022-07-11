@@ -25,9 +25,11 @@ prj_strgy set_value -strategy Strategy1 par_pathbased_place=On
 prj_strgy set_value -strategy Strategy1 par_stop_zero=True
 
 prj_src add $source_folder/ecp5_top.vhd
+
 prj_src add $source_folder/hVHDL_math_library/multiplier/multiplier_base_types_18bit_pkg.vhd
 prj_src add $source_folder/hVHDL_math_library/multiplier/multiplier_pkg.vhd
 prj_src add $source_folder/hVHDL_math_library/sincos/sincos_pkg.vhd
+
 prj_src add $source_folder/hVHDL_uart/uart_pkg.vhd
 prj_src add $source_folder/hVHDL_uart/uart.vhd
 prj_src add $source_folder/hVHDL_uart/uart_transreceiver/uart_transreceiver_pkg.vhd
@@ -36,6 +38,18 @@ prj_src add $source_folder/hVHDL_uart/uart_transreceiver/uart_rx/uart_rx_pkg.vhd
 prj_src add $source_folder/hVHDL_uart/uart_transreceiver/uart_rx/uart_rx.vhd
 prj_src add $source_folder/hVHDL_uart/uart_transreceiver/uart_tx/uart_tx_pkg.vhd
 prj_src add $source_folder/hVHDL_uart/uart_transreceiver/uart_tx/uart_tx.vhd
+
+prj_src add $source_folder/hVHDL_floating_point/float_type_definitions/float_word_length_24_bit_pkg.vhd               -work float
+prj_src add $source_folder/hVHDL_floating_point/float_type_definitions/float_type_definitions_pkg.vhd                 -work float
+prj_src add $source_folder/hVHDL_floating_point/normalizer/normalizer_pkg.vhd                                         -work float
+prj_src add $source_folder/hVHDL_floating_point/denormalizer/denormalizer_pkg.vhd                                     -work float
+prj_src add $source_folder/hVHDL_floating_point/float_to_real_conversions/float_to_real_functions_pkg.vhd             -work float
+prj_src add $source_folder/hVHDL_floating_point/float_to_real_conversions/float_to_real_conversions_pkg.vhd           -work float
+prj_src add $source_folder/hVHDL_floating_point/float_arithmetic_operations/float_arithmetic_operations_pkg.vhd       -work float
+prj_src add $source_folder/hVHDL_floating_point/float_adder/float_adder_pkg.vhd                                       -work float
+prj_src add $source_folder/hVHDL_floating_point/float_multiplier/float_multiplier_pkg.vhd                             -work float
+prj_src add $source_folder/hVHDL_floating_point/float_alu/float_alu_pkg.vhd                                           -work float
+prj_src add $source_folder/hVHDL_floating_point/float_first_order_filter/float_first_order_filter_pkg.vhd             -work float
 
 prj_src add -exclude $tcl_path/example.lpf
 prj_src enable $tcl_path/example.lpf
