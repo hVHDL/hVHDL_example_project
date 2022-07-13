@@ -39,8 +39,11 @@ prj_src add $source_folder/hVHDL_uart/uart_transreceiver/uart_rx/uart_rx.vhd
 prj_src add $source_folder/hVHDL_uart/uart_transreceiver/uart_tx/uart_tx_pkg.vhd
 prj_src add $source_folder/hVHDL_uart/uart_transreceiver/uart_tx/uart_tx.vhd
 
-prj_src add $source_folder/hvhdl_example_interconnect/hvhdl_example_interconnect_pkg.vhd
+prj_src add $source_folder/hVHDL_fpga_interconnect/interconnect_configuration/data_15_address_15_bit_pkg.vhd
+prj_src add $source_folder/hVHDL_fpga_interconnect/fpga_interconnect_pkg.vhd
 
+prj_src add $source_folder/hvhdl_example_interconnect/communication/communications.vhd
+prj_src add $source_folder/hvhdl_example_interconnect/hvhdl_example_interconnect_pkg.vhd
 # prj_src add $source_folder/hVHDL_floating_point/float_type_definitions/float_word_length_24_bit_pkg.vhd               -work float
 # prj_src add $source_folder/hVHDL_floating_point/float_type_definitions/float_type_definitions_pkg.vhd                 -work float
 # prj_src add $source_folder/hVHDL_floating_point/normalizer/normalizer_pkg.vhd                                         -work float
