@@ -39,17 +39,19 @@ prj_src add $source_folder/hVHDL_uart/uart_transreceiver/uart_rx/uart_rx.vhd
 prj_src add $source_folder/hVHDL_uart/uart_transreceiver/uart_tx/uart_tx_pkg.vhd
 prj_src add $source_folder/hVHDL_uart/uart_transreceiver/uart_tx/uart_tx.vhd
 
-prj_src add $source_folder/hVHDL_floating_point/float_type_definitions/float_word_length_24_bit_pkg.vhd               -work float
-prj_src add $source_folder/hVHDL_floating_point/float_type_definitions/float_type_definitions_pkg.vhd                 -work float
-prj_src add $source_folder/hVHDL_floating_point/normalizer/normalizer_pkg.vhd                                         -work float
-prj_src add $source_folder/hVHDL_floating_point/denormalizer/denormalizer_pkg.vhd                                     -work float
-prj_src add $source_folder/hVHDL_floating_point/float_to_real_conversions/float_to_real_functions_pkg.vhd             -work float
-prj_src add $source_folder/hVHDL_floating_point/float_to_real_conversions/float_to_real_conversions_pkg.vhd           -work float
-prj_src add $source_folder/hVHDL_floating_point/float_arithmetic_operations/float_arithmetic_operations_pkg.vhd       -work float
-prj_src add $source_folder/hVHDL_floating_point/float_adder/float_adder_pkg.vhd                                       -work float
-prj_src add $source_folder/hVHDL_floating_point/float_multiplier/float_multiplier_pkg.vhd                             -work float
-prj_src add $source_folder/hVHDL_floating_point/float_alu/float_alu_pkg.vhd                                           -work float
-prj_src add $source_folder/hVHDL_floating_point/float_first_order_filter/float_first_order_filter_pkg.vhd             -work float
+prj_src add $source_folder/hvhdl_example_interconnect/hvhdl_example_interconnect_pkg.vhd
+
+# prj_src add $source_folder/hVHDL_floating_point/float_type_definitions/float_word_length_24_bit_pkg.vhd               -work float
+# prj_src add $source_folder/hVHDL_floating_point/float_type_definitions/float_type_definitions_pkg.vhd                 -work float
+# prj_src add $source_folder/hVHDL_floating_point/normalizer/normalizer_pkg.vhd                                         -work float
+# prj_src add $source_folder/hVHDL_floating_point/denormalizer/denormalizer_pkg.vhd                                     -work float
+# prj_src add $source_folder/hVHDL_floating_point/float_to_real_conversions/float_to_real_functions_pkg.vhd             -work float
+# prj_src add $source_folder/hVHDL_floating_point/float_to_real_conversions/float_to_real_conversions_pkg.vhd           -work float
+# prj_src add $source_folder/hVHDL_floating_point/float_arithmetic_operations/float_arithmetic_operations_pkg.vhd       -work float
+# prj_src add $source_folder/hVHDL_floating_point/float_adder/float_adder_pkg.vhd                                       -work float
+# prj_src add $source_folder/hVHDL_floating_point/float_multiplier/float_multiplier_pkg.vhd                             -work float
+# prj_src add $source_folder/hVHDL_floating_point/float_alu/float_alu_pkg.vhd                                           -work float
+# prj_src add $source_folder/hVHDL_floating_point/float_first_order_filter/float_first_order_filter_pkg.vhd             -work float
 
 prj_src add -exclude $tcl_path/example.lpf
 prj_src enable $tcl_path/example.lpf

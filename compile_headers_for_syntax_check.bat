@@ -8,3 +8,5 @@ ghdl -a --ieee=synopsys --std=08 source/hVHDL_uart/uart_transreceiver/uart_tx/ua
 ghdl -a --ieee=synopsys --std=08 source/hVHDL_uart/uart_transreceiver/uart_rx/uart_rx_pkg.vhd
 ghdl -a --ieee=synopsys --std=08 source/hVHDL_uart/uart_transreceiver/uart_transreceiver_pkg.vhd
 ghdl -a --ieee=synopsys --std=08 source/hVHDL_uart/uart_pkg.vhd
+
+ghdl -a --ieee=synopsys --std=08 source/hvhdl_example_interconnect/hvhdl_example_interconnect_pkg.vhd
