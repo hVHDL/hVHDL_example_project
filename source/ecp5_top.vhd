@@ -30,8 +30,8 @@ begin
 
     u_hvhdl_example : entity work.hvhdl_example_interconnect
     port map(
-        system_clock                                => clock_120mhz,
-        hvhdl_example_interconnect_FPGA_in.uart_rx  => uart_rx,
-        hvhdl_example_interconnect_FPGA_out.uart_tx => uart_tx);
+        system_clock => clock_120mhz,
+        hvhdl_example_interconnect_FPGA_in.uart_FPGA_in.uart_transreceiver_FPGA_in.uart_rx_fpga_in.uart_rx     => uart_rx,
+        hvhdl_example_interconnect_FPGA_out.uart_FPGA_out.uart_transreceiver_FPGA_out.uart_tx_fpga_out.uart_tx => uart_tx);
 
 end rtl;
