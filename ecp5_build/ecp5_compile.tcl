@@ -58,7 +58,6 @@ prj_src add $source_folder/hvhdl_example_interconnect/hvhdl_example_interconnect
 
 prj_src add -exclude $tcl_path/example.lpf
 prj_src enable $tcl_path/example.lpf
-# prj_src enable $tube_psu_v5_dir/lfe5u/constraints/timing.ldc
 prj_src remove hvhdl_example.lpf
 file delete -force hvhdl_example.lpf
 
