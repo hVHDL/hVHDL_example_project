@@ -2,9 +2,9 @@ library ieee;
     use ieee.std_logic_1164.all;
     use ieee.numeric_std.all;
 
-    use work.communications_pkg.all;
-
 package hvhdl_example_interconnect_pkg is
+
+    use work.communications_pkg.all;
 
     type hvhdl_example_interconnect_FPGA_input_group is record
         communications_FPGA_in : communications_FPGA_input_group;
@@ -15,6 +15,8 @@ package hvhdl_example_interconnect_pkg is
     end record;
     
 end package hvhdl_example_interconnect_pkg;
+
+------------------------------------------------------------------------
 ------------------------------------------------------------------------
 library ieee;
     use ieee.std_logic_1164.all;
@@ -34,7 +36,6 @@ entity hvhdl_example_interconnect is
 end hvhdl_example_interconnect;
 
 architecture rtl of hvhdl_example_interconnect is
-
     
     signal communications_clocks   : communications_clock_group;
     signal communications_data_in  : communications_data_input_group;
@@ -49,7 +50,6 @@ architecture rtl of hvhdl_example_interconnect is
 begin
 
     testi : process(system_clock)
-        
     begin
         if rising_edge(system_clock) then
 
@@ -61,7 +61,6 @@ begin
             connect_read_only_data_to_address(bus_in, bus_out, 102, get_noise_signal(filter_example));
             connect_read_only_data_to_address(bus_in, bus_out, 103, get_noisy_sine(filter_example));
             connect_read_only_data_to_address(bus_in, bus_out, 104, get_filtered_sine(filter_example));
-
 
         end if; --rising_edge
     end process testi;	
