@@ -3,7 +3,6 @@ library ieee;
     use ieee.numeric_std.all;
 
     use work.communications_pkg.all;
-    use work.first_order_filter_pkg.all;
 
 package hvhdl_example_interconnect_pkg is
 
@@ -45,8 +44,6 @@ architecture rtl of hvhdl_example_interconnect is
     alias bus_out is communications_data_in.bus_in;
 
 ------------------------------------------------------------------------
-
-
     signal filter_example : filter_example_record := init_filter_example;
 
 begin
