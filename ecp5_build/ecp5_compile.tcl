@@ -29,6 +29,7 @@ prj_src add $source_folder/ecp5_top.vhd
 prj_src add $source_folder/hVHDL_math_library/multiplier/multiplier_base_types_18bit_pkg.vhd
 prj_src add $source_folder/hVHDL_math_library/multiplier/multiplier_pkg.vhd
 prj_src add $source_folder/hVHDL_math_library/sincos/sincos_pkg.vhd
+prj_src add $source_folder/hVHDL_math_library/first_order_filter/first_order_filter_pkg.vhd
 
 prj_src add $source_folder/hVHDL_uart/uart_pkg.vhd
 prj_src add $source_folder/hVHDL_uart/uart.vhd
