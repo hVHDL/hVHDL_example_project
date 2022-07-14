@@ -21,6 +21,27 @@ set_property target_language VHDL [current_project]
 
 add_files -norecurse $tcl_path/s7_top.vhd
 
+add_files -norecurse $source_folder/hVHDL_math_library/multiplier/multiplier_base_types_18bit_pkg.vhd
+add_files -norecurse $source_folder/hVHDL_math_library/multiplier/multiplier_pkg.vhd
+add_files -norecurse $source_folder/hVHDL_math_library/sincos/sincos_pkg.vhd
+add_files -norecurse $source_folder/hVHDL_math_library/first_order_filter/first_order_filter_pkg.vhd
+
+add_files -norecurse $source_folder/hVHDL_uart/uart_pkg.vhd
+add_files -norecurse $source_folder/hVHDL_uart/uart.vhd
+add_files -norecurse $source_folder/hVHDL_uart/uart_transreceiver/uart_transreceiver_pkg.vhd
+add_files -norecurse $source_folder/hVHDL_uart/uart_transreceiver/uart_transreceiver.vhd
+add_files -norecurse $source_folder/hVHDL_uart/uart_transreceiver/uart_rx/uart_rx_pkg.vhd
+add_files -norecurse $source_folder/hVHDL_uart/uart_transreceiver/uart_rx/uart_rx.vhd
+add_files -norecurse $source_folder/hVHDL_uart/uart_transreceiver/uart_tx/uart_tx_pkg.vhd
+add_files -norecurse $source_folder/hVHDL_uart/uart_transreceiver/uart_tx/uart_tx.vhd
+
+add_files -norecurse $source_folder/hVHDL_fpga_interconnect/interconnect_configuration/data_15_address_15_bit_pkg.vhd
+add_files -norecurse $source_folder/hVHDL_fpga_interconnect/fpga_interconnect_pkg.vhd
+
+add_files -norecurse $source_folder/hvhdl_example_interconnect/communication/communications.vhd
+add_files -norecurse $source_folder/hvhdl_example_interconnect//filter_example_pkg.vhd
+add_files -norecurse $source_folder/hvhdl_example_interconnect/hvhdl_example_interconnect_pkg.vhd
+
 source $tcl_path/create_main_clocks.tcl
 
 wait_on_run main_clock_synth_1
@@ -30,11 +51,12 @@ synth_design -rtl -rtl_skip_mlo -name rtl_1
 set_property IOSTANDARD LVCMOS33 [get_ports [list clk]]
 place_ports clk H11
 
-set_property IOSTANDARD LVCMOS33 [get_ports [list led]]
-place_ports led L14
+set_property IOSTANDARD LVCMOS33 [get_ports [list uart_rx]]
+place_ports uart_rx P4
 
+set_property IOSTANDARD LVCMOS33 [get_ports [list uart_tx]]
+place_ports uart_tx P3
 
-create_clock -name clk -period 31.25
 
 file mkdir ./hvhdl_example_project.srcs/constrs_1/new
 close [ open ./hvhdl_example_project.srcs/constrs_1/new/io_placement.xdc w ]

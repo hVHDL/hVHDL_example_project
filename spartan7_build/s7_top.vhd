@@ -2,19 +2,19 @@ library ieee;
     use ieee.std_logic_1164.all;
     use ieee.numeric_std.all;
 
+    use work.hvhdl_example_interconnect_pkg.all;
+
 entity top is
     port (
         clk : in std_logic	;
-        led : out std_logic
+        uart_rx : in std_logic ;
+        uart_tx : out std_logic
     );
 end entity top;
 
 
 architecture rtl of top is
 
-    signal counter : integer range 0 to 2**20-1 := 0;
-    signal led_state : std_logic := '0';
-    signal clock_120mhz : std_logic;
 
     component main_clock is
       Port ( 
@@ -23,26 +23,19 @@ architecture rtl of top is
       );
     end component;
 
+    signal clock_120mhz : std_logic;
+
 begin
 
     u_main_clocks : main_clock
     port map(clock_120mhz, clk);
 
-
-    led <= led_state;
-
-    blink_led : process(clock_120mhz)
-        
-    begin
-        if rising_edge(clock_120mhz) then
-            if counter > 0 then
-                counter <= counter - 1;
-                led_state <= not led_state;
-            else
-                counter <= 1e6;
-            end if;
-        end if; --rising_edge
-    end process blink_led;	
+--------------------------------------------------
+    u_hvhdl_example : entity work.hvhdl_example_interconnect
+    port map(
+        system_clock => clock_120mhz,
+        hvhdl_example_interconnect_FPGA_in.communications_FPGA_in.uart_FPGA_in.uart_transreceiver_FPGA_in.uart_rx_fpga_in.uart_rx     => uart_rx,
+        hvhdl_example_interconnect_FPGA_out.communications_FPGA_out.uart_FPGA_out.uart_transreceiver_FPGA_out.uart_tx_fpga_out.uart_tx => uart_tx);
 
 
 end rtl;
