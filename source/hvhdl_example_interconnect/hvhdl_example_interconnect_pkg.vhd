@@ -57,6 +57,7 @@ architecture rtl of hvhdl_example_interconnect is
     signal prbs7 : std_logic_vector(6 downto 0) := (0 => '1', others => '0');
     signal harmonic_counter : integer range 0 to 15 := 15;
     signal sine_with_noise : int := 0;
+    signal filtered_sine : int := 0;
 
 begin
 
@@ -84,7 +85,6 @@ begin
 
             if i = 0 then
                 request_sincos(sincos, angle);
-                harmonic_counter <= 0;
             end if;
             
             if sincos_is_ready(sincos) then
@@ -94,6 +94,20 @@ begin
                 filter_data(filter, sine_with_noise);
                 sine_with_noise <= get_sine(sincos) + to_integer(signed(prbs7)*64);
             end if;
+
+            if filter_is_ready(filter) then
+                multiply(multiplier2, get_filter_output(filter), integer(32768.0*1.5));
+                harmonic_counter <= 0;
+            end if;
+
+            if harmonic_counter = 0 then
+                if multiplier_is_ready(multiplier2) then
+                    filtered_sine <= get_multiplier_result(multiplier2, 15);
+                    harmonic_counter <= 1;
+                end if;
+            end if;
+
+
 
         end if; --rising_edge
     end process testi;	
