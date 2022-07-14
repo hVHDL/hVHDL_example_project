@@ -44,6 +44,7 @@ prj_src add $source_folder/hVHDL_fpga_interconnect/interconnect_configuration/da
 prj_src add $source_folder/hVHDL_fpga_interconnect/fpga_interconnect_pkg.vhd
 
 prj_src add $source_folder/hvhdl_example_interconnect/communication/communications.vhd
+prj_src add $source_folder/hvhdl_example_interconnect//filter_example_pkg.vhd
 prj_src add $source_folder/hvhdl_example_interconnect/hvhdl_example_interconnect_pkg.vhd
 # prj_src add $source_folder/hVHDL_floating_point/float_type_definitions/float_word_length_24_bit_pkg.vhd               -work float
 # prj_src add $source_folder/hVHDL_floating_point/float_type_definitions/float_type_definitions_pkg.vhd                 -work float
