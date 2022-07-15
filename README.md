@@ -13,3 +13,5 @@ Quartus build can be launched using
 
 In order to build with efinix, go to the efinix build folder <path_to_example_project>/efinix_build, then run
 > efx_run.py hvhdl_example_build.xml --output_dir ./output
+
+Note, efinix build tools require the use of cmd if using windows and running <efinix_efinity_folder>\bin\setup.bat. Alternatively, you can open the hvhdl_exmpla_build.xml with the efinity ide and just press build
