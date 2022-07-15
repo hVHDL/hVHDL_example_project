@@ -2,7 +2,7 @@ This is a test project that uses the main features of hVHDL libraries. The examp
 
 Note, tested to NOT work with 3.11 version of Lattice Diamond on a Windoew 11. Either Version of 3.12 works.
 
-To build the lattice project run
+Lattice Diamond build can be launched using
 > pnmainc <path_to_example_project>/ecp5_build/build_ecp5.tcl
 
 Vivado build can be launched using
