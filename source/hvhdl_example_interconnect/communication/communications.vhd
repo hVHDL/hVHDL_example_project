@@ -109,12 +109,6 @@ architecture rtl of communications is
 ------------------------------------------------------------------------
 begin
 
-    communications_FPGA_out <= (
-                                   uart_FPGA_out => uart_FPGA_out
-                               );
-
-    uart_FPGA_in <= communications_FPGA_in.uart_FPGA_in;
-
 ------------------------------------------------------------------------
     test_uart : process(clock)
     begin

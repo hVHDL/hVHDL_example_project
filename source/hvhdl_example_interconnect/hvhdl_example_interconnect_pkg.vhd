@@ -2,9 +2,10 @@ library ieee;
     use ieee.std_logic_1164.all;
     use ieee.numeric_std.all;
 
+    use work.communications_pkg.all;
+
 package hvhdl_example_interconnect_pkg is
 
-    use work.communications_pkg.all;
 
     type hvhdl_example_interconnect_FPGA_input_group is record
         communications_FPGA_in : communications_FPGA_input_group;
