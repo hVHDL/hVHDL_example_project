@@ -20,7 +20,6 @@ else \
 	set_global_assignment -name QIP_FILE $tcl_path/cyclone_IP/main_clocks.qip
 
     source $tcl_path/make_assignments.tcl
-    # source $tcl_path/vhdl_source_files.tcl
 
     set_global_assignment -name VHDL_FILE $tcl_path/cyclone_10_top.vhd
 
