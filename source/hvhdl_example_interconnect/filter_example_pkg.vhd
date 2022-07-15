@@ -8,13 +8,14 @@ library ieee;
 
 package filter_example_pkg is
 
+------------------------------------------------------------------------
     type filter_example_record is record
-        multiplier  : multiplier_record                 ;
-        multiplier2 : multiplier_record                 ;
-        sincos      : sincos_record                     ;
-        filter      : first_order_filter_record         ;
-        angle       : integer  range 0 to 2**16-1       ;
-        i           : integer range 0 to 2**16-1        ;
+        multiplier       : multiplier_record            ;
+        multiplier2      : multiplier_record            ;
+        sincos           : sincos_record                ;
+        filter           : first_order_filter_record    ;
+        angle            : integer  range 0 to 2**16-1  ;
+        i                : integer range 0 to 2**16-1   ;
         prbs7            : std_logic_vector(6 downto 0) ;
         harmonic_counter : integer range 0 to 15        ;
         sine_with_noise  : int                          ;
@@ -33,7 +34,7 @@ package filter_example_pkg is
         harmonic_counter => 15                        ,
         sine_with_noise  => 0                         ,
         filtered_sine    => 0                         ,
-        program_counter  => 0                         );
+        program_counter  => 0);
 ------------------------------------------------------------------------
 
     procedure create_filter_example (
