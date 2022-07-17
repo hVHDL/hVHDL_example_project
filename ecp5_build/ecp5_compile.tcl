@@ -22,6 +22,11 @@ prj_src add $tcl_path/IP/IP.sbx
 
 prj_strgy set_value -strategy Strategy1 syn_arrange_vhdl_files=True
 prj_strgy set_value -strategy Strategy1 par_pathbased_place=On
+prj_strgy set_value -strategy Strategy1 map_reg_retiming=True
+
+#do not change this setting. If retiming is not on, Synplify will crash for some reason
+prj_strgy set_value -strategy Strategy1 {syn_pipelining_retiming=Pipelining and Retiming}
+
 prj_strgy set_value -strategy Strategy1 par_stop_zero=True
 
 proc add_vhdl_file_to_project {vhdl_file} {

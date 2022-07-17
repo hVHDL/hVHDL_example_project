@@ -20,4 +20,19 @@ ghdl -a --ieee=synopsys --std=08 source/hvhdl_example_interconnect/communication
 ghdl -a --ieee=synopsys --std=08 source/hvhdl_example_interconnect/filter_example_pkg.vhd
 ghdl -a --ieee=synopsys --std=08 source/hvhdl_example_interconnect/hvhdl_example_interconnect_pkg.vhd
 
+ghdl -a --ieee=synopsys --std=08 source/hVHDL_floating_point/float_type_definitions/float_word_length_16_bit_pkg.vhd
+ghdl -a --ieee=synopsys --std=08 source/hVHDL_floating_point/float_type_definitions/float_type_definitions_pkg.vhd
+ghdl -a --ieee=synopsys --std=08 source/hVHDL_floating_point/normalizer/normalizer_pkg.vhd
+ghdl -a --ieee=synopsys --std=08 source/hVHDL_floating_point/denormalizer/denormalizer_pkg.vhd
+
+ghdl -a --ieee=synopsys --std=08 source/hVHDL_floating_point/float_to_real_conversions/float_to_real_functions_pkg.vhd
+ghdl -a --ieee=synopsys --std=08 source/hVHDL_floating_point/float_to_real_conversions/float_to_real_conversions_pkg.vhd
+ghdl -a --ieee=synopsys --std=08 source/hVHDL_floating_point/float_arithmetic_operations/float_arithmetic_operations_pkg.vhd
+ghdl -a --ieee=synopsys --std=08 source/hVHDL_floating_point/float_adder/float_adder_pkg.vhd
+ghdl -a --ieee=synopsys --std=08 source/hVHDL_floating_point/float_multiplier/float_multiplier_pkg.vhd
+
+ghdl -a --ieee=synopsys --std=08 source/hVHDL_floating_point/float_alu/float_alu_pkg.vhd
+
+ghdl -a --ieee=synopsys --std=08 source/hVHDL_floating_point/float_first_order_filter/float_first_order_filter_pkg.vhd
+
 ghdl -a --ieee=synopsys --std=08 source/efinix_top.vhd

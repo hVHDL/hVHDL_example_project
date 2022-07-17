@@ -28,6 +28,11 @@ library ieee;
     use work.fpga_interconnect_pkg.all;
     use work.first_order_filter_pkg.all;
 
+    use work.float_type_definitions_pkg.all;
+    use work.float_to_real_conversions_pkg.all;
+    use work.float_alu_pkg.all;
+    use work.float_multiplier_pkg.all;
+
 entity hvhdl_example_interconnect is
     port (
         system_clock : in std_logic;
@@ -53,9 +58,13 @@ architecture rtl of hvhdl_example_interconnect is
 
     signal filter : first_order_filter_record := init_first_order_filter;
     signal prbs7 : std_logic_vector(6 downto 0) := (0 => '1', others => '0');
-    signal harmonic_counter : integer range 0 to 15 := 15;
     signal sine_with_noise : int := 0;
     signal filtered_sine : int := 0;
+
+    signal float_alu : float_alu_record := init_float_alu;
+
+    signal test_float : float_record := zero;
+    signal process_counter : integer range 0 to 15 := 15;
 
 begin
 
@@ -68,6 +77,8 @@ begin
             create_sincos(multiplier , sincos);
             create_first_order_filter(filter => filter , multiplier => multiplier2 , time_constant => 0.001);
 
+            create_float_alu(float_alu);
+
             init_bus(bus_out);
             connect_read_only_data_to_address(bus_in, bus_out, 100, get_sine(sincos)/2 + 32768);
             connect_read_only_data_to_address(bus_in, bus_out, 101, angle);
@@ -75,33 +86,42 @@ begin
             connect_read_only_data_to_address(bus_in, bus_out, 103, sine_with_noise/2 + 32768);
             connect_read_only_data_to_address(bus_in, bus_out, 104, get_filter_output(filter)/2 + 32678);
             connect_read_only_data_to_address(bus_in, bus_out, 105, filtered_sine/2 + 32678);
+            connect_read_only_data_to_address(bus_in, bus_out, 106, get_mantissa(get_add_result(float_alu)));
+            connect_read_only_data_to_address(bus_in, bus_out, 107, get_mantissa(get_multiplier_result(float_alu)));
 
 			if i > 0 then
 				i <= (i - 1);
 			else
 				i <= 1199;
                 request_sincos(sincos, angle);
+                process_counter <= 0;
 			end if;
 
-            if sincos_is_ready(sincos) then
-                angle    <= (angle + 10) mod 2**16;
-                prbs7    <= prbs7(5 downto 0) & prbs7(6);
-                prbs7(6) <= prbs7(5) xor prbs7(0);
-                filter_data(filter, sine_with_noise);
-                sine_with_noise <= get_sine(sincos) + to_integer(signed(prbs7)*64);
-            end if;
+            CASE process_counter is
+                WHEN 0 => 
+                    if sincos_is_ready(sincos) then
+                        angle    <= (angle + 10) mod 2**16;
+                        prbs7    <= prbs7(5 downto 0) & prbs7(6);
+                        prbs7(6) <= prbs7(5) xor prbs7(0);
+                        filter_data(filter, sine_with_noise);
+                        sine_with_noise <= get_sine(sincos) + to_integer(signed(prbs7)*64);
+                        process_counter <= process_counter + 1;
+                    end if;
+                WHEN 1 => 
 
-            if filter_is_ready(filter) then
-                multiply(multiplier2, get_filter_output(filter), integer(32768.0*3.3942));
-                harmonic_counter <= 0;
-            end if;
-
-            if harmonic_counter = 0 then
-                if multiplier_is_ready(multiplier2) then
-                    filtered_sine <= get_multiplier_result(multiplier2, 15);
-                    harmonic_counter <= 1;
-                end if;
-            end if;
+                    if filter_is_ready(filter) then
+                        multiply(multiplier2, get_filter_output(filter), integer(32768.0*3.3942));
+                        add(float_alu, get_add_result(float_alu), to_float(0.001));
+                        multiply(float_alu, to_float(0.001), to_float(0.001));
+                        process_counter <= process_counter + 1;
+                    end if;
+                WHEN 2 => 
+                    if multiplier_is_ready(multiplier2) then
+                        filtered_sine <= get_multiplier_result(multiplier2, 15);
+                        process_counter <= process_counter + 1;
+                    end if;
+                WHEN others => -- wait for start
+            end CASE;
 
         end if; --rising_edge
     end process testi;	
