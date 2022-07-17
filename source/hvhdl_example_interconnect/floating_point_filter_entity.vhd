@@ -79,17 +79,22 @@ end entity floating_point_filter_entity;
 
 architecture rtl of floating_point_filter_entity is
 
+    constant filter_gain : float_record := to_float(0.001);
+
     signal denormalizer : denormalizer_record := init_denormalizer;
     signal normalizer : normalizer_record := init_normalizer;
 
     signal float_alu : float_alu_record := init_float_alu;
     signal float_filter : first_order_filter_record := init_first_order_filter;
 
+    alias filter_counter  is  float_filter.filter_counter  ;
+    alias y               is  float_filter.y               ;
+    alias u               is  float_filter.u               ;
+    alias filter_is_ready is  float_filter.filter_is_ready;
+
 begin
 
     floating_point_filter : process(clock)
-        alias m is floating_point_filter_input;
-        
     begin
         if rising_edge(clock) then
             init_bus(bus_out);
@@ -98,13 +103,38 @@ begin
             connect_read_only_data_to_address(bus_in, bus_out, 108, get_integer(denormalizer) + 32768);
 
             create_float_alu(float_alu);
-            create_first_order_filter(float_filter, float_alu, to_float(0.001));
+
+            filter_is_ready <= false;
+            CASE filter_counter is
+                WHEN 0 => 
+                    subtract(float_alu, u, y);
+                    filter_counter <= filter_counter + 1;
+                WHEN 1 =>
+                    if add_is_ready(float_alu) then
+                        multiply(float_alu  , get_add_result(float_alu) , filter_gain);
+                        filter_counter <= filter_counter + 1;
+                    end if;
+
+                WHEN 2 =>
+                    if multiplier_is_ready(float_alu) then
+                        add(float_alu, get_multiplier_result(float_alu), y);
+                        filter_counter <= filter_counter + 1;
+                    end if;
+                WHEN 3 => 
+                    if add_is_ready(float_alu) then
+                        filter_is_ready <= true;
+                        y <= get_add_result(float_alu);
+                        filter_counter <= filter_counter + 1;
+                    end if;
+                WHEN others =>  -- filter is ready
+            end CASE;
+
             create_denormalizer(denormalizer);
             create_normalizer(normalizer);
 
 
-            if m.filter_is_requested then
-                to_float(normalizer, m.filter_input, 15);
+            if floating_point_filter_input.filter_is_requested then
+                to_float(normalizer, floating_point_filter_input.filter_input, 15);
             end if;
 
             if normalizer_is_ready(normalizer) then
