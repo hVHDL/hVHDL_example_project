@@ -20,6 +20,7 @@ add_vhdl_file_to_project $source_folder/hVHDL_fpga_interconnect/fpga_interconnec
 add_vhdl_file_to_project $source_folder/hvhdl_example_interconnect/communication/communications.vhd
 add_vhdl_file_to_project $source_folder/hvhdl_example_interconnect//filter_example_pkg.vhd
 add_vhdl_file_to_project $source_folder/hvhdl_example_interconnect/hvhdl_example_interconnect_pkg.vhd
+add_vhdl_file_to_project $source_folder/hvhdl_example_interconnect/floating_point_filter_entity.vhd
 
 add_vhdl_file_to_project $source_folder/hVHDL_floating_point/float_type_definitions/float_word_length_24_bit_pkg.vhd 
 add_vhdl_file_to_project $source_folder/hVHDL_floating_point/float_type_definitions/float_type_definitions_pkg.vhd                 

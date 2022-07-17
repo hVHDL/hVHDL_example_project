@@ -28,13 +28,7 @@ library ieee;
     use work.fpga_interconnect_pkg.all;
     use work.first_order_filter_pkg.all;
 
-    use work.float_type_definitions_pkg.all;
-    use work.float_to_real_conversions_pkg.all;
-    use work.float_alu_pkg.all;
-    use work.float_multiplier_pkg.all;
-    use work.float_first_order_filter_pkg.all;
-    use work.denormalizer_pkg.all;
-    use work.normalizer_pkg.all;
+    use work.floating_point_filter_entity_pkg.all;
 
 entity hvhdl_example_interconnect is
     port (
@@ -56,24 +50,23 @@ architecture rtl of hvhdl_example_interconnect is
     signal communications_data_in  : communications_data_input_group;
     signal communications_data_out : communications_data_output_group;
 
-    alias bus_in is communications_data_out.bus_out;
-    alias bus_out is communications_data_in.bus_in;
+    alias bus_from_master is communications_data_out.bus_out;
+    alias bus_to_master is communications_data_in.bus_in;
 
     signal filter : work.first_order_filter_pkg.first_order_filter_record := work.first_order_filter_pkg.init_first_order_filter;
     signal prbs7 : std_logic_vector(6 downto 0) := (0 => '1', others => '0');
     signal sine_with_noise : int := 0;
     signal filtered_sine : int := 0;
 
-    signal float_alu : float_alu_record := init_float_alu;
 
-    signal test_float : float_record := zero;
     signal process_counter : integer range 0 to 15 := 15;
-    signal float_filter : work.float_first_order_filter_pkg.first_order_filter_record := work.float_first_order_filter_pkg.init_first_order_filter;
 
     signal test_counter : integer range 0 to 2**15-1 := 0;
 
-    signal denormalizer : denormalizer_record := init_denormalizer;
-    signal normalizer : normalizer_record := init_normalizer;
+    signal floating_point_filter_in : floating_point_filter_input_record := init_floating_point_filter_input;
+
+    signal bus_from_float : fpga_interconnect_record;
+    signal bus_from_interconnect : fpga_interconnect_record;
 
 begin
 
@@ -86,21 +79,15 @@ begin
             create_sincos(multiplier , sincos);
             create_first_order_filter(filter => filter , multiplier => multiplier2 , time_constant => 0.001);
 
-            create_float_alu(float_alu);
-            create_first_order_filter(float_filter, float_alu, to_float(0.001));
-            create_denormalizer(denormalizer);
-            create_normalizer(normalizer);
+            init_floating_point_filter(floating_point_filter_in);
 
-            init_bus(bus_out);
-            connect_read_only_data_to_address(bus_in, bus_out, 100, get_sine(sincos)/2 + 32768);
-            connect_read_only_data_to_address(bus_in, bus_out, 101, angle);
-            connect_read_only_data_to_address(bus_in, bus_out, 102, to_integer(signed(prbs7))+32768);
-            connect_read_only_data_to_address(bus_in, bus_out, 103, sine_with_noise/2 + 32768);
-            connect_read_only_data_to_address(bus_in, bus_out, 104, get_filter_output(filter)/2 + 32678);
-            connect_read_only_data_to_address(bus_in, bus_out, 105, filtered_sine/2 + 32678);
-            connect_read_only_data_to_address(bus_in, bus_out, 106, get_mantissa(get_filter_output(float_filter)));
-            connect_read_only_data_to_address(bus_in, bus_out, 107, get_exponent(get_filter_output(float_filter)));
-            connect_read_only_data_to_address(bus_in, bus_out, 108, get_integer(denormalizer) + 32768);
+            init_bus(bus_from_interconnect);
+            connect_read_only_data_to_address(bus_from_master, bus_from_interconnect, 100, get_sine(sincos)/2 + 32768);
+            connect_read_only_data_to_address(bus_from_master, bus_from_interconnect, 101, angle);
+            connect_read_only_data_to_address(bus_from_master, bus_from_interconnect, 102, to_integer(signed(prbs7))+32768);
+            connect_read_only_data_to_address(bus_from_master, bus_from_interconnect, 103, sine_with_noise/2 + 32768);
+            connect_read_only_data_to_address(bus_from_master, bus_from_interconnect, 104, get_filter_output(filter)/2 + 32678);
+            connect_read_only_data_to_address(bus_from_master, bus_from_interconnect, 105, filtered_sine/2 + 32678);
 
 			if i > 0 then
 				i <= (i - 1);
@@ -119,8 +106,8 @@ begin
                         filter_data(filter, sine_with_noise);
                         sine_with_noise <= get_sine(sincos) + to_integer(signed(prbs7)*64);
                         process_counter <= process_counter + 1;
+                        request_floating_point_filter(floating_point_filter_in, sine_with_noise);
 
-                        to_float(normalizer, sine_with_noise, 15);
                     end if;
                 WHEN 1 => 
 
@@ -137,14 +124,18 @@ begin
                 WHEN others => -- wait for start
             end CASE;
 
-            if normalizer_is_ready(normalizer) then
-                request_float_filter(float_filter, get_normalizer_result(normalizer));
-            end if;
-            request_scaling(denormalizer, get_filter_output(float_filter), 14);
 
 
         end if; --rising_edge
     end process testi;	
+------------------------------------------------------------------------
+    combine_buses : process(system_clock)
+        
+    begin
+        if rising_edge(system_clock) then
+            bus_to_master <= bus_from_interconnect and bus_from_float;
+        end if; --rising_edge
+    end process combine_buses;	
 ------------------------------------------------------------------------
     communications_clocks <= (clock => system_clock);
     u_communications : entity work.communications
@@ -154,5 +145,8 @@ begin
         hvhdl_example_interconnect_FPGA_out.communications_FPGA_out,
         communications_data_in ,
         communications_data_out);
+------------------------------------------------------------------------
+    u_floating_point_filter : entity work.floating_point_filter_entity
+    port map(system_clock, floating_point_filter_in, bus_from_master, bus_from_float);
 ------------------------------------------------------------------------
 end rtl;

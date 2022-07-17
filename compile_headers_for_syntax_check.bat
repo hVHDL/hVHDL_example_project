@@ -1,4 +1,6 @@
 echo off
+ghdl -a --ieee=synopsys --std=08 source/hVHDL_fpga_interconnect/interconnect_configuration/data_15_address_15_bit_pkg.vhd
+ghdl -a --ieee=synopsys --std=08 source/hVHDL_fpga_interconnect/fpga_interconnect_pkg.vhd
 
 ghdl -a --ieee=synopsys --std=08 source/hVHDL_floating_point/float_type_definitions/float_word_length_16_bit_pkg.vhd
 ghdl -a --ieee=synopsys --std=08 source/hVHDL_floating_point/float_type_definitions/float_type_definitions_pkg.vhd
@@ -14,6 +16,7 @@ ghdl -a --ieee=synopsys --std=08 source/hVHDL_floating_point/float_multiplier/fl
 ghdl -a --ieee=synopsys --std=08 source/hVHDL_floating_point/float_alu/float_alu_pkg.vhd
 ghdl -a --ieee=synopsys --std=08 source/hVHDL_floating_point/float_first_order_filter/float_first_order_filter_pkg.vhd
 
+ghdl -a --ieee=synopsys --std=08 source/hvhdl_example_interconnect/floating_point_filter_entity.vhd
 
 ghdl -a --ieee=synopsys --std=08 source/hVHDL_memory_library/fpga_ram/ram_configuration/ram_configuration_16x1024_pkg.vhd
 ghdl -a --ieee=synopsys --std=08 source/hVHDL_memory_library/fpga_ram/ram_read_port_pkg.vhd
@@ -28,8 +31,6 @@ ghdl -a --ieee=synopsys --std=08 source/hVHDL_uart/uart_transreceiver/uart_rx/ua
 ghdl -a --ieee=synopsys --std=08 source/hVHDL_uart/uart_transreceiver/uart_transreceiver_pkg.vhd
 ghdl -a --ieee=synopsys --std=08 source/hVHDL_uart/uart_pkg.vhd
 
-ghdl -a --ieee=synopsys --std=08 source/hVHDL_fpga_interconnect/interconnect_configuration/data_15_address_15_bit_pkg.vhd
-ghdl -a --ieee=synopsys --std=08 source/hVHDL_fpga_interconnect/fpga_interconnect_pkg.vhd
 
 ghdl -a --ieee=synopsys --std=08 source/hvhdl_example_interconnect/communication/communications.vhd
 ghdl -a --ieee=synopsys --std=08 source/hvhdl_example_interconnect/filter_example_pkg.vhd
