@@ -3,7 +3,6 @@ library ieee;
     use ieee.numeric_std.all;
 
     use work.communications_pkg.all;
-    use work.first_order_filter_pkg.all;
 
 package hvhdl_example_interconnect_pkg is
 
@@ -16,6 +15,7 @@ package hvhdl_example_interconnect_pkg is
     end record;
     
 end package hvhdl_example_interconnect_pkg;
+------------------------------------------------------------------------
 ------------------------------------------------------------------------
 library ieee;
     use ieee.std_logic_1164.all;
@@ -37,7 +37,6 @@ entity hvhdl_example_interconnect is
 end hvhdl_example_interconnect;
 
 architecture rtl of hvhdl_example_interconnect is
-
     
     signal multiplier : multiplier_record := init_multiplier;
     signal multiplier2 : multiplier_record := init_multiplier;
@@ -49,7 +48,6 @@ architecture rtl of hvhdl_example_interconnect is
     signal communications_data_in  : communications_data_input_group;
     signal communications_data_out : communications_data_output_group;
 
-    -- connec
     alias bus_in is communications_data_out.bus_out;
     alias bus_out is communications_data_in.bus_in;
 
@@ -82,12 +80,9 @@ begin
 				i <= (i - 1);
 			else
 				i <= 1199;
+                request_sincos(sincos, angle);
 			end if;
 
-            if i = 0 then
-                request_sincos(sincos, angle);
-            end if;
-            
             if sincos_is_ready(sincos) then
                 angle    <= (angle + 10) mod 2**16;
                 prbs7    <= prbs7(5 downto 0) & prbs7(6);
@@ -97,7 +92,7 @@ begin
             end if;
 
             if filter_is_ready(filter) then
-                multiply(multiplier2, get_filter_output(filter), integer(32768.0*1.5));
+                multiply(multiplier2, get_filter_output(filter), integer(32768.0*3.3942));
                 harmonic_counter <= 0;
             end if;
 
@@ -107,8 +102,6 @@ begin
                     harmonic_counter <= 1;
                 end if;
             end if;
-
-
 
         end if; --rising_edge
     end process testi;	

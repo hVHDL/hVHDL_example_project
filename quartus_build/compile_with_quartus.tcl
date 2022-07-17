@@ -21,33 +21,22 @@ else \
 
     source $tcl_path/make_assignments.tcl
 
-    set_global_assignment -name VHDL_FILE $tcl_path/cyclone_10_top.vhd
+    proc add_vhdl_file_to_project {vhdl_file} {
+        set_global_assignment -name VHDL_FILE $vhdl_file
+    }
+
+    proc add_vhdl_file_to_library {vhdl_file library} {
+        set_global_assignment -name VHDL_FILE $vhdl_file -library $library
+    }
+
+    add_vhdl_file_to_project $tcl_path/cyclone_10_top.vhd
     set_global_assignment -name VHDL_FILE $source_folder/efinix_top.vhd
 
-    set_global_assignment -name VHDL_FILE $source_folder/hVHDL_math_library/multiplier/multiplier_base_types_18bit_pkg.vhd
-    set_global_assignment -name VHDL_FILE $source_folder/hVHDL_math_library/multiplier/multiplier_pkg.vhd
-    set_global_assignment -name VHDL_FILE $source_folder/hVHDL_math_library/sincos/sincos_pkg.vhd
-    set_global_assignment -name VHDL_FILE $source_folder/hVHDL_math_library/first_order_filter/first_order_filter_pkg.vhd
-
-    set_global_assignment -name VHDL_FILE $source_folder/hVHDL_uart/uart_pkg.vhd
-    set_global_assignment -name VHDL_FILE $source_folder/hVHDL_uart/uart.vhd
-    set_global_assignment -name VHDL_FILE $source_folder/hVHDL_uart/uart_transreceiver/uart_transreceiver_pkg.vhd
-    set_global_assignment -name VHDL_FILE $source_folder/hVHDL_uart/uart_transreceiver/uart_transreceiver.vhd
-    set_global_assignment -name VHDL_FILE $source_folder/hVHDL_uart/uart_transreceiver/uart_rx/uart_rx_pkg.vhd
-    set_global_assignment -name VHDL_FILE $source_folder/hVHDL_uart/uart_transreceiver/uart_rx/uart_rx.vhd
-    set_global_assignment -name VHDL_FILE $source_folder/hVHDL_uart/uart_transreceiver/uart_tx/uart_tx_pkg.vhd
-    set_global_assignment -name VHDL_FILE $source_folder/hVHDL_uart/uart_transreceiver/uart_tx/uart_tx.vhd
-
-    set_global_assignment -name VHDL_FILE $source_folder/hVHDL_fpga_interconnect/interconnect_configuration/data_15_address_15_bit_pkg.vhd
-    set_global_assignment -name VHDL_FILE $source_folder/hVHDL_fpga_interconnect/fpga_interconnect_pkg.vhd
-
-    set_global_assignment -name VHDL_FILE $source_folder/hvhdl_example_interconnect/communication/communications.vhd
-    set_global_assignment -name VHDL_FILE $source_folder/hvhdl_example_interconnect//filter_example_pkg.vhd
-    set_global_assignment -name VHDL_FILE $source_folder/hvhdl_example_interconnect/hvhdl_example_interconnect_pkg.vhd
+    source $tcl_path/../vhdl_sources.tcl
 
     set_global_assignment -name TOP_LEVEL_ENTITY top
 
-    set_location_assignment PIN_M15 -to xclk
+    set_location_assignment PIN_M15 -to clk
 	set_location_assignment PIN_N16 -to uart_rx
 	set_location_assignment PIN_N15 -to uart_tx
 
