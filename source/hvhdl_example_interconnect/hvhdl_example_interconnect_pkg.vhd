@@ -32,6 +32,7 @@ library ieee;
     use work.float_to_real_conversions_pkg.all;
     use work.float_alu_pkg.all;
     use work.float_multiplier_pkg.all;
+    use work.float_first_order_filter_pkg.all;
 
 entity hvhdl_example_interconnect is
     port (
@@ -56,7 +57,7 @@ architecture rtl of hvhdl_example_interconnect is
     alias bus_in is communications_data_out.bus_out;
     alias bus_out is communications_data_in.bus_in;
 
-    signal filter : first_order_filter_record := init_first_order_filter;
+    signal filter : work.first_order_filter_pkg.first_order_filter_record := work.first_order_filter_pkg.init_first_order_filter;
     signal prbs7 : std_logic_vector(6 downto 0) := (0 => '1', others => '0');
     signal sine_with_noise : int := 0;
     signal filtered_sine : int := 0;
@@ -65,6 +66,9 @@ architecture rtl of hvhdl_example_interconnect is
 
     signal test_float : float_record := zero;
     signal process_counter : integer range 0 to 15 := 15;
+    signal float_filter : work.float_first_order_filter_pkg.first_order_filter_record := work.float_first_order_filter_pkg.init_first_order_filter;
+
+    signal test_counter : integer range 0 to 2**15-1 := 0;
 
 begin
 
@@ -78,6 +82,7 @@ begin
             create_first_order_filter(filter => filter , multiplier => multiplier2 , time_constant => 0.001);
 
             create_float_alu(float_alu);
+            create_first_order_filter(float_filter, float_alu, to_float(0.001));
 
             init_bus(bus_out);
             connect_read_only_data_to_address(bus_in, bus_out, 100, get_sine(sincos)/2 + 32768);
@@ -86,8 +91,8 @@ begin
             connect_read_only_data_to_address(bus_in, bus_out, 103, sine_with_noise/2 + 32768);
             connect_read_only_data_to_address(bus_in, bus_out, 104, get_filter_output(filter)/2 + 32678);
             connect_read_only_data_to_address(bus_in, bus_out, 105, filtered_sine/2 + 32678);
-            connect_read_only_data_to_address(bus_in, bus_out, 106, get_mantissa(get_add_result(float_alu)));
-            connect_read_only_data_to_address(bus_in, bus_out, 107, get_mantissa(get_multiplier_result(float_alu)));
+            connect_read_only_data_to_address(bus_in, bus_out, 106, get_mantissa(get_filter_output(float_filter)));
+            connect_read_only_data_to_address(bus_in, bus_out, 107, get_exponent(get_filter_output(float_filter)));
 
 			if i > 0 then
 				i <= (i - 1);
@@ -111,9 +116,13 @@ begin
 
                     if filter_is_ready(filter) then
                         multiply(multiplier2, get_filter_output(filter), integer(32768.0*3.3942));
-                        add(float_alu, get_add_result(float_alu), to_float(0.001));
-                        multiply(float_alu, to_float(0.001), to_float(0.001));
                         process_counter <= process_counter + 1;
+                        test_counter <= test_counter + 1;
+                        if test_counter > 8191 then
+                            request_float_filter(float_filter, to_float(3.135));
+                        else
+                            request_float_filter(float_filter, to_float(0.0));
+                        end if;
                     end if;
                 WHEN 2 => 
                     if multiplier_is_ready(multiplier2) then

@@ -21,7 +21,7 @@ add_vhdl_file_to_project $source_folder/hvhdl_example_interconnect/communication
 add_vhdl_file_to_project $source_folder/hvhdl_example_interconnect//filter_example_pkg.vhd
 add_vhdl_file_to_project $source_folder/hvhdl_example_interconnect/hvhdl_example_interconnect_pkg.vhd
 
-add_vhdl_file_to_project $source_folder/hVHDL_floating_point/float_type_definitions/float_word_length_18_bit_pkg.vhd 
+add_vhdl_file_to_project $source_folder/hVHDL_floating_point/float_type_definitions/float_word_length_16_bit_pkg.vhd 
 add_vhdl_file_to_project $source_folder/hVHDL_floating_point/float_type_definitions/float_type_definitions_pkg.vhd                 
 add_vhdl_file_to_project $source_folder/hVHDL_floating_point/normalizer/normalizer_pkg.vhd                                         
 add_vhdl_file_to_project $source_folder/hVHDL_floating_point/denormalizer/denormalizer_pkg.vhd                                     
