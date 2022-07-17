@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<efx:project name="ac_in_ac_out_lab_power_supply" description="" last_change_date="Sun July 17 2022 13:56:08" location="C:/Users/U376541/mycodeprojects/hVHDL_example_project/efinix_build" sw_version="2021.2.323.1.8" last_run_state="pass" last_run_tool="efx_pgm" last_run_flow="bitstream" config_result_in_sync="sync" design_ood="sync" place_ood="sync" route_ood="sync" xmlns:efx="http://www.efinixinc.com/enf_proj" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.efinixinc.com/enf_proj enf_proj.xsd">
+<efx:project name="ac_in_ac_out_lab_power_supply" description="" last_change_date="Mon July 18 2022 00:00:10" location="C:/Users/Jari/mycodeprojects/hVHDL_example_project/efinix_build" sw_version="2021.2.323.6.17" last_run_state="pass" last_run_tool="efx_pgm" last_run_flow="bitstream" config_result_in_sync="sync" design_ood="change" place_ood="sync" route_ood="sync" xmlns:efx="http://www.efinixinc.com/enf_proj" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.efinixinc.com/enf_proj enf_proj.xsd">
     <efx:device_info>
         <efx:family name="Trion"/>
         <efx:device name="T120F324"/>
@@ -25,6 +25,17 @@
         <efx:design_file name="../source/hvhdl_example_interconnect/communication/communications.vhd" version="default" library="default"/>
         <efx:design_file name="../source/hvhdl_example_interconnect//filter_example_pkg.vhd" version="default" library="default"/>
         <efx:design_file name="../source/hvhdl_example_interconnect/hvhdl_example_interconnect_pkg.vhd" version="default" library="default"/>
+        <efx:design_file name="../source/hVHDL_floating_point/float_type_definitions/float_word_length_16_bit_pkg.vhd" version="default" library="default"/>
+        <efx:design_file name="../source/hVHDL_floating_point/float_type_definitions/float_type_definitions_pkg.vhd" version="default" library="default"/>
+        <efx:design_file name="../source/hVHDL_floating_point/normalizer/normalizer_pkg.vhd" version="default" library="default"/>
+        <efx:design_file name="../source/hVHDL_floating_point/denormalizer/denormalizer_pkg.vhd" version="default" library="default"/>
+        <efx:design_file name="../source/hVHDL_floating_point/float_to_real_conversions/float_to_real_functions_pkg.vhd" version="default" library="default"/>
+        <efx:design_file name="../source/hVHDL_floating_point/float_to_real_conversions/float_to_real_conversions_pkg.vhd" version="default" library="default"/>
+        <efx:design_file name="../source/hVHDL_floating_point/float_arithmetic_operations/float_arithmetic_operations_pkg.vhd" version="default" library="default"/>
+        <efx:design_file name="../source/hVHDL_floating_point/float_adder/float_adder_pkg.vhd" version="default" library="default"/>
+        <efx:design_file name="../source/hVHDL_floating_point/float_multiplier/float_multiplier_pkg.vhd" version="default" library="default"/>
+        <efx:design_file name="../source/hVHDL_floating_point/float_alu/float_alu_pkg.vhd" version="default" library="default"/>
+        <efx:design_file name="../source/hVHDL_floating_point/float_first_order_filter/float_first_order_filter_pkg.vhd" version="default" library="default"/>
         <efx:top_vhdl_arch name="rtl"/>
     </efx:design_info>
     <efx:constraint_info>
