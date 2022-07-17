@@ -22,6 +22,7 @@ else \
     source $tcl_path/make_assignments.tcl
 
     set_global_assignment -name VHDL_FILE $tcl_path/cyclone_10_top.vhd
+    set_global_assignment -name VHDL_FILE $source_folder/efinix_top.vhd
 
     set_global_assignment -name VHDL_FILE $source_folder/hVHDL_math_library/multiplier/multiplier_base_types_18bit_pkg.vhd
     set_global_assignment -name VHDL_FILE $source_folder/hVHDL_math_library/multiplier/multiplier_pkg.vhd

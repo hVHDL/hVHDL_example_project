@@ -20,6 +20,7 @@ set_property part $target_device [current_project]
 set_property target_language VHDL [current_project]
 
 add_files -norecurse $tcl_path/s7_top.vhd
+add_files -norecurse $source_folder/efinix_top.vhd
 
 add_files -norecurse $source_folder/hVHDL_math_library/multiplier/multiplier_base_types_18bit_pkg.vhd
 add_files -norecurse $source_folder/hVHDL_math_library/multiplier/multiplier_pkg.vhd
@@ -46,7 +47,19 @@ source $tcl_path/create_main_clocks.tcl
 
 wait_on_run main_clock_synth_1
 
-synth_design -rtl -rtl_skip_mlo -name rtl_1
+# synth_design -rtl -rtl_skip_mlo -name rtl_1
+
+
+
+# file mkdir ./hvhdl_example_project.srcs/constrs_1/new
+# close [ open ./hvhdl_example_project.srcs/constrs_1/new/io_placement.xdc w ]
+# add_files -fileset constrs_1 ./hvhdl_example_project.srcs/constrs_1/new/io_placement.xdc
+# set_property target_constrs_file ./hvhdl_example_project.srcs/constrs_1/new/io_placement.xdc [current_fileset -constrset]
+# save_constraints -force
+
+launch_runs synth_1 -jobs 12
+wait_on_run synth_1
+open_run synth_1 -name synth_1
 
 set_property IOSTANDARD LVCMOS33 [get_ports [list clk]]
 place_ports clk H11
@@ -56,17 +69,6 @@ place_ports uart_rx P4
 
 set_property IOSTANDARD LVCMOS33 [get_ports [list uart_tx]]
 place_ports uart_tx P3
-
-
-file mkdir ./hvhdl_example_project.srcs/constrs_1/new
-close [ open ./hvhdl_example_project.srcs/constrs_1/new/io_placement.xdc w ]
-add_files -fileset constrs_1 ./hvhdl_example_project.srcs/constrs_1/new/io_placement.xdc
-set_property target_constrs_file ./hvhdl_example_project.srcs/constrs_1/new/io_placement.xdc [current_fileset -constrset]
-save_constraints -force
-
-launch_runs synth_1 -jobs 12
-wait_on_run synth_1
-open_run synth_1 -name synth_1
 
 launch_runs impl_1 -to_step write_bitstream -jobs 12
 wait_on_run impl_1

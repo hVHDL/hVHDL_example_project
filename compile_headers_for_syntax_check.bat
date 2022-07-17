@@ -19,3 +19,5 @@ ghdl -a --ieee=synopsys --std=08 source/hVHDL_fpga_interconnect/fpga_interconnec
 ghdl -a --ieee=synopsys --std=08 source/hvhdl_example_interconnect/communication/communications.vhd
 ghdl -a --ieee=synopsys --std=08 source/hvhdl_example_interconnect/filter_example_pkg.vhd
 ghdl -a --ieee=synopsys --std=08 source/hvhdl_example_interconnect/hvhdl_example_interconnect_pkg.vhd
+
+ghdl -a --ieee=synopsys --std=08 source/efinix_top.vhd

@@ -67,8 +67,8 @@ begin
         if rising_edge(system_clock) then
             create_multiplier(multiplier);
             create_multiplier(multiplier2);
-            create_sincos(multiplier, sincos);
-            create_first_order_filter(filter =>filter,multiplier => multiplier2, time_constant => 0.001);
+            create_sincos(multiplier , sincos);
+            create_first_order_filter(filter => filter , multiplier => multiplier2 , time_constant => 0.001);
 
             init_bus(bus_out);
             connect_read_only_data_to_address(bus_in, bus_out, 100, get_sine(sincos)/2 + 32768);

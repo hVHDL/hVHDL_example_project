@@ -24,7 +24,8 @@ prj_strgy set_value -strategy Strategy1 syn_arrange_vhdl_files=True
 prj_strgy set_value -strategy Strategy1 par_pathbased_place=On
 prj_strgy set_value -strategy Strategy1 par_stop_zero=True
 
-prj_src add $source_folder/ecp5_top.vhd
+prj_src add $tcl_path/ecp5_top.vhd
+prj_src add $source_folder/efinix_top.vhd
 
 prj_src add $source_folder/hVHDL_math_library/multiplier/multiplier_base_types_18bit_pkg.vhd
 prj_src add $source_folder/hVHDL_math_library/multiplier/multiplier_pkg.vhd

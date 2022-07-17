@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<efx:project name="ac_in_ac_out_lab_power_supply" description="" last_change_date="Fri July 15 2022 10:43:26" location="C:/Users/Jari/mycodeprojects/hVHDL_example_project/efinix_build" sw_version="2021.2.323.6.17" last_run_state="pass" last_run_tool="efx_pnr" last_run_flow="place" config_result_in_sync="sync" design_ood="sync" place_ood="sync" route_ood="sync" xmlns:efx="http://www.efinixinc.com/enf_proj" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.efinixinc.com/enf_proj enf_proj.xsd">
+<efx:project name="ac_in_ac_out_lab_power_supply" description="" last_change_date="Sun July 17 2022 13:56:08" location="C:/Users/U376541/mycodeprojects/hVHDL_example_project/efinix_build" sw_version="2021.2.323.1.8" last_run_state="pass" last_run_tool="efx_pgm" last_run_flow="bitstream" config_result_in_sync="sync" design_ood="sync" place_ood="sync" route_ood="sync" xmlns:efx="http://www.efinixinc.com/enf_proj" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.efinixinc.com/enf_proj enf_proj.xsd">
     <efx:device_info>
         <efx:family name="Trion"/>
         <efx:device name="T120F324"/>
@@ -7,7 +7,7 @@
     </efx:device_info>
     <efx:design_info def_veri_version="verilog_2k" def_vhdl_version="vhdl_2008">
         <efx:top_module name="efinix_top"/>
-        <efx:design_file name="efinix_top.vhd" version="default" library="default"/>
+        <efx:design_file name="../source/efinix_top.vhd" version="default" library="default"/>
         <efx:design_file name="../source/hVHDL_math_library/multiplier/multiplier_base_types_18bit_pkg.vhd" version="default" library="default"/>
         <efx:design_file name="../source/hVHDL_math_library/multiplier/multiplier_pkg.vhd" version="default" library="default"/>
         <efx:design_file name="../source/hVHDL_math_library/sincos/sincos_pkg.vhd" version="default" library="default"/>
