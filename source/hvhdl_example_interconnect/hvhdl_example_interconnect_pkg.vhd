@@ -76,6 +76,7 @@ begin
             connect_read_only_data_to_address(bus_in, bus_out, 102, to_integer(signed(prbs7))+32768);
             connect_read_only_data_to_address(bus_in, bus_out, 103, sine_with_noise/2 + 32768);
             connect_read_only_data_to_address(bus_in, bus_out, 104, get_filter_output(filter)/2 + 32678);
+            connect_read_only_data_to_address(bus_in, bus_out, 105, filtered_sine/2 + 32678);
 
 			if i > 0 then
 				i <= (i - 1);
