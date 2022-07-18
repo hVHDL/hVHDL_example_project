@@ -81,11 +81,11 @@ begin
             connect_read_only_data_to_address(bus_from_master, bus_from_interconnect, 102, to_integer(signed(prbs7))+32768);
             connect_read_only_data_to_address(bus_from_master, bus_from_interconnect, 103, sine_with_noise/2 + 32768);
 
-			if i > 0 then
-				i <= (i - 1);
-			else
-				i <= 1199;
-			end if;
+            if i > 0 then
+                i <= (i - 1);
+            else
+                i <= 1199;
+            end if;
 
             if i = 0 then
                 request_sincos(sincos, angle);
