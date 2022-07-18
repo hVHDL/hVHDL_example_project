@@ -1,62 +1,5 @@
-library ieee;
-    use ieee.std_logic_1164.all;
-    use ieee.numeric_std.all;
 
-    use work.fpga_interconnect_pkg.all;
-
-package floating_point_filter_entity_pkg is
-
-    type floating_point_filter_input_record is record
-        filter_is_requested : boolean;
-        filter_input        : integer;
-    end record;
-
-    constant init_floating_point_filter_input : floating_point_filter_input_record := (false, 0);
-
---------------------------------------------------
-    procedure init_floating_point_filter (
-        signal floating_point_filter_input : out floating_point_filter_input_record);
-
---------------------------------------------------
-    procedure request_floating_point_filter (
-        signal floating_point_filter_input : out floating_point_filter_input_record;
-        data : in integer);
---------------------------------------------------
-end package floating_point_filter_entity_pkg;
-
-package body floating_point_filter_entity_pkg is
-
---------------------------------------------------
-    procedure init_floating_point_filter
-    (
-        signal floating_point_filter_input : out floating_point_filter_input_record
-    ) is
-    begin
-        floating_point_filter_input.filter_is_requested <= false;
-    end init_floating_point_filter;
-
---------------------------------------------------
-    procedure request_floating_point_filter
-    (
-        signal floating_point_filter_input : out floating_point_filter_input_record;
-        data : in integer
-    ) is
-    begin
-        floating_point_filter_input.filter_is_requested <= true;
-        floating_point_filter_input.filter_input <= data;
-        
-    end request_floating_point_filter;
-
---------------------------------------------------
-end package body floating_point_filter_entity_pkg;
-
-------------------------------------------------------------------------
-------------------------------------------------------------------------
-library ieee;
-    use ieee.std_logic_1164.all;
-    use ieee.numeric_std.all;
-
-    use work.fpga_interconnect_pkg.all;
+architecture float of example_filter_entity is
 
     use work.float_type_definitions_pkg.all;
     use work.float_to_real_conversions_pkg.all;
@@ -65,19 +8,6 @@ library ieee;
     use work.denormalizer_pkg.all;
     use work.normalizer_pkg.all;
 
-    use work.floating_point_filter_entity_pkg.all;
-
-entity floating_point_filter_entity is
-    port (
-        clock : in std_logic;
-        floating_point_filter_input : in floating_point_filter_input_record;
-        bus_in              : in fpga_interconnect_record;
-        bus_out             : out fpga_interconnect_record
-    );
-end entity floating_point_filter_entity;
-
-
-architecture rtl of floating_point_filter_entity is
 
     constant filter_gain : float_record := to_float(0.001);
 
@@ -133,8 +63,8 @@ begin
             create_normalizer(normalizer);
 
 
-            if floating_point_filter_input.filter_is_requested then
-                to_float(normalizer, floating_point_filter_input.filter_input, 15);
+            if example_filter_input.filter_is_requested then
+                to_float(normalizer, example_filter_input.filter_input, 15);
             end if;
 
             if normalizer_is_ready(normalizer) then
@@ -146,4 +76,4 @@ begin
         end if; --rising_edge
     end process floating_point_filter;	
 
-end rtl;
+end float;
