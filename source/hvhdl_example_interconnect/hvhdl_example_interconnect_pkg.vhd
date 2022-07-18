@@ -22,6 +22,12 @@ library ieee;
     use ieee.numeric_std.all;
 
     use work.hvhdl_example_interconnect_pkg.all;
+	use work.multiplier_pkg.all;
+	use work.sincos_pkg.all;
+    use work.communications_pkg.all;
+    use work.fpga_interconnect_pkg.all;
+    use work.first_order_filter_pkg.all;
+    use work.example_filter_entity_pkg.all;
 
 entity hvhdl_example_interconnect is
     port (
@@ -33,13 +39,6 @@ end hvhdl_example_interconnect;
 
 architecture rtl of hvhdl_example_interconnect is
 
-	use work.multiplier_pkg.all;
-	use work.sincos_pkg.all;
-    use work.communications_pkg.all;
-    use work.fpga_interconnect_pkg.all;
-    use work.first_order_filter_pkg.all;
-    use work.example_filter_entity_pkg.all;
-    
     signal multiplier : multiplier_record := init_multiplier;
     signal sincos     : sincos_record     := init_sincos;
 
@@ -58,9 +57,9 @@ architecture rtl of hvhdl_example_interconnect is
     alias bus_from_master is communications_data_out.bus_out;
     alias bus_to_master   is communications_data_in.bus_in;
 
-    signal bus_from_floating_point_filter : fpga_interconnect_record;
-    signal bus_from_fixed_point_filter    : fpga_interconnect_record;
-    signal bus_from_interconnect          : fpga_interconnect_record;
+    signal bus_from_floating_point_filter : fpga_interconnect_record := init_fpga_interconnect;
+    signal bus_from_fixed_point_filter    : fpga_interconnect_record := init_fpga_interconnect;
+    signal bus_from_interconnect          : fpga_interconnect_record := init_fpga_interconnect;
 
     constant filter_time_constant : real := 0.001;
 
