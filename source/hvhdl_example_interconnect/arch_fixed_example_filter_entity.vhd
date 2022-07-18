@@ -1,7 +1,14 @@
+-- entity example_filter_entity is
+--     generic(filter_time_constant : real);
+--     port (
+--         clock : in std_logic;
+--         example_filter_input : in example_filter_input_record;
+--         bus_in              : in fpga_interconnect_record;
+--         bus_out             : out fpga_interconnect_record
+--     );
+-- end entity example_filter_entity;
 
 architecture fixed_point of example_filter_entity is
-
-    -- constant filter_gain : float_record := to_float(0.001);
 
     use work.first_order_filter_pkg.all;
     use work.multiplier_pkg.all;
@@ -10,7 +17,6 @@ architecture fixed_point of example_filter_entity is
 
     signal multiplier2 : multiplier_record := init_multiplier;
     signal process_counter : integer range 0 to 3 := 3;
-
 
 begin
 
