@@ -21,7 +21,7 @@ begin
             connect_read_only_data_to_address(bus_in, bus_out, 104, get_filter_output(filter)/2 + 32678);
             connect_read_only_data_to_address(bus_in, bus_out, 105, filtered_sine/2 + 32678);
             create_multiplier(multiplier2);
-            create_first_order_filter(filter => filter , multiplier => multiplier2 , time_constant => 0.001);
+            create_first_order_filter(filter => filter , multiplier => multiplier2 , time_constant => filter_time_constant);
 
             if example_filter_input.filter_is_requested then
                 filter_data(filter, example_filter_input.filter_input);

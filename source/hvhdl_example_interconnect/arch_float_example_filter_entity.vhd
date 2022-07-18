@@ -9,7 +9,7 @@ architecture float of example_filter_entity is
     use work.normalizer_pkg.all;
 
 
-    constant filter_gain : float_record := to_float(0.001);
+    constant filter_gain : float_record := to_float(filter_time_constant);
 
     signal denormalizer : denormalizer_record := init_denormalizer;
     signal normalizer : normalizer_record := init_normalizer;

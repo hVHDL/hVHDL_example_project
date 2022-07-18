@@ -61,6 +61,7 @@ library ieee;
     use work.example_filter_entity_pkg.all;
 
 entity example_filter_entity is
+    generic(filter_time_constant : real);
     port (
         clock : in std_logic;
         example_filter_input : in example_filter_input_record;

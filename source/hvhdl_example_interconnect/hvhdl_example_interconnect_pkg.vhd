@@ -62,6 +62,8 @@ architecture rtl of hvhdl_example_interconnect is
     signal bus_from_fixed_point_filter : fpga_interconnect_record;
     signal bus_from_interconnect : fpga_interconnect_record;
 
+    constant filter_time_constant : real := 0.001;
+
 begin
 
     testi : process(system_clock)
@@ -118,10 +120,12 @@ begin
 
 ------------------------------------------------------------------------
     u_floating_point_filter : entity work.example_filter_entity(float)
+    generic map(filter_time_constant => filter_time_constant)
     port map(system_clock, floating_point_filter_in, bus_from_master, bus_from_floating_point_filter);
 
 ------------------------------------------------------------------------
     u_fixed_point_filter : entity work.example_filter_entity(fixed_point)
+    generic map(filter_time_constant => filter_time_constant)
     port map(system_clock, fixed_point_filter_in, bus_from_master, bus_from_fixed_point_filter);
 
 ------------------------------------------------------------------------
