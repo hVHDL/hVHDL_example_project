@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<efx:project name="ac_in_ac_out_lab_power_supply" description="" last_change_date="Mon July 18 2022 08:47:08" location="C:/Users/Jari/mycodeprojects/hVHDL_example_project/efinix_build" sw_version="2021.2.323.6.17" last_run_state="pass" last_run_tool="efx_pgm" last_run_flow="bitstream" config_result_in_sync="sync" design_ood="change" place_ood="sync" route_ood="sync" xmlns:efx="http://www.efinixinc.com/enf_proj" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.efinixinc.com/enf_proj enf_proj.xsd">
+<efx:project name="ac_in_ac_out_lab_power_supply" description="" last_change_date="Tue August 2 2022 12:56:09" location="C:/Users/Jari/mycodeprojects/hVHDL_example_project/efinix_build" sw_version="2021.2.323.6.17" last_run_state="pass" last_run_tool="efx_map" last_run_flow="syn" config_result_in_sync="sync" design_ood="sync" place_ood="sync" route_ood="sync" xmlns:efx="http://www.efinixinc.com/enf_proj" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.efinixinc.com/enf_proj enf_proj.xsd">
     <efx:device_info>
         <efx:family name="Trion"/>
         <efx:device name="T120F324"/>
@@ -29,7 +29,9 @@
         <efx:design_file name="../source/hvhdl_example_interconnect/arch_float_example_filter_entity.vhd" version="default" library="default"/>
         <efx:design_file name="../source/hVHDL_floating_point/float_type_definitions/float_word_length_24_bit_pkg.vhd" version="default" library="default"/>
         <efx:design_file name="../source/hVHDL_floating_point/float_type_definitions/float_type_definitions_pkg.vhd" version="default" library="default"/>
+        <efx:design_file name="../source/hVHDL_floating_point/normalizer/normalizer_configuration/normalizer_with_4_stage_pipe_pkg.vhd" version="default" library="default"/>
         <efx:design_file name="../source/hVHDL_floating_point/normalizer/normalizer_pkg.vhd" version="default" library="default"/>
+        <efx:design_file name="../source/hVHDL_floating_point/denormalizer/denormalizer_configuration/denormalizer_with_4_stage_pipe_pkg.vhd" version="default" library="default"/>
         <efx:design_file name="../source/hVHDL_floating_point/denormalizer/denormalizer_pkg.vhd" version="default" library="default"/>
         <efx:design_file name="../source/hVHDL_floating_point/float_to_real_conversions/float_to_real_functions_pkg.vhd" version="default" library="default"/>
         <efx:design_file name="../source/hVHDL_floating_point/float_to_real_conversions/float_to_real_conversions_pkg.vhd" version="default" library="default"/>

@@ -25,7 +25,9 @@ add_vhdl_file_to_project $source_folder/hvhdl_example_interconnect/arch_float_ex
 
 add_vhdl_file_to_project $source_folder/hVHDL_floating_point/float_type_definitions/float_word_length_24_bit_pkg.vhd 
 add_vhdl_file_to_project $source_folder/hVHDL_floating_point/float_type_definitions/float_type_definitions_pkg.vhd                 
+add_vhdl_file_to_project $source_folder/hVHDL_floating_point/normalizer/normalizer_configuration/normalizer_with_4_stage_pipe_pkg.vhd
 add_vhdl_file_to_project $source_folder/hVHDL_floating_point/normalizer/normalizer_pkg.vhd                                         
+add_vhdl_file_to_project $source_folder/hVHDL_floating_point/denormalizer/denormalizer_configuration/denormalizer_with_4_stage_pipe_pkg.vhd
 add_vhdl_file_to_project $source_folder/hVHDL_floating_point/denormalizer/denormalizer_pkg.vhd                                     
 add_vhdl_file_to_project $source_folder/hVHDL_floating_point/float_to_real_conversions/float_to_real_functions_pkg.vhd             
 add_vhdl_file_to_project $source_folder/hVHDL_floating_point/float_to_real_conversions/float_to_real_conversions_pkg.vhd           
