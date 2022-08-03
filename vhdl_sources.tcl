@@ -32,6 +32,7 @@ add_vhdl_file_to_project $source_folder/hVHDL_floating_point/denormalizer/denorm
 add_vhdl_file_to_project $source_folder/hVHDL_floating_point/float_to_real_conversions/float_to_real_functions_pkg.vhd             
 add_vhdl_file_to_project $source_folder/hVHDL_floating_point/float_to_real_conversions/float_to_real_conversions_pkg.vhd           
 add_vhdl_file_to_project $source_folder/hVHDL_floating_point/float_arithmetic_operations/float_arithmetic_operations_pkg.vhd       
+add_vhdl_file_to_project $source_folder/hVHDL_floating_point/float_to_integer_converter/float_to_integer_converter_pkg.vhd       
 add_vhdl_file_to_project $source_folder/hVHDL_floating_point/float_adder/float_adder_pkg.vhd                                       
 add_vhdl_file_to_project $source_folder/hVHDL_floating_point/float_multiplier/float_multiplier_pkg.vhd                             
 add_vhdl_file_to_project $source_folder/hVHDL_floating_point/float_alu/float_alu_pkg.vhd                                           

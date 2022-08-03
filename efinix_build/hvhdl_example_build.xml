@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<efx:project name="ac_in_ac_out_lab_power_supply" description="" last_change_date="Tue August 2 2022 12:56:09" location="C:/Users/Jari/mycodeprojects/hVHDL_example_project/efinix_build" sw_version="2021.2.323.6.17" last_run_state="pass" last_run_tool="efx_map" last_run_flow="syn" config_result_in_sync="sync" design_ood="sync" place_ood="sync" route_ood="sync" xmlns:efx="http://www.efinixinc.com/enf_proj" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.efinixinc.com/enf_proj enf_proj.xsd">
+<efx:project name="ac_in_ac_out_lab_power_supply" description="" last_change_date="Wed August 3 2022 14:18:30" location="C:/Users/Jari/mycodeprojects/hVHDL_example_project/efinix_build" sw_version="2021.2.323.6.17" last_run_state="pass" last_run_tool="efx_pgm" last_run_flow="bitstream" config_result_in_sync="sync" design_ood="sync" place_ood="sync" route_ood="sync" xmlns:efx="http://www.efinixinc.com/enf_proj" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.efinixinc.com/enf_proj enf_proj.xsd">
     <efx:device_info>
         <efx:family name="Trion"/>
         <efx:device name="T120F324"/>
         <efx:timing_model name="C4"/>
     </efx:device_info>
-    <efx:design_info def_veri_version="verilog_2k" def_vhdl_version="vhdl_2008">
+    <efx:design_info def_veri_version="sv_09" def_vhdl_version="vhdl_2008">
         <efx:top_module name="efinix_top"/>
         <efx:design_file name="../source/efinix_top.vhd" version="default" library="default"/>
         <efx:design_file name="../source/hVHDL_math_library/multiplier/multiplier_base_types_18bit_pkg.vhd" version="default" library="default"/>
@@ -36,6 +36,7 @@
         <efx:design_file name="../source/hVHDL_floating_point/float_to_real_conversions/float_to_real_functions_pkg.vhd" version="default" library="default"/>
         <efx:design_file name="../source/hVHDL_floating_point/float_to_real_conversions/float_to_real_conversions_pkg.vhd" version="default" library="default"/>
         <efx:design_file name="../source/hVHDL_floating_point/float_arithmetic_operations/float_arithmetic_operations_pkg.vhd" version="default" library="default"/>
+        <efx:design_file name="../source/hVHDL_floating_point/float_to_integer_converter/float_to_integer_converter_pkg.vhd" version="default" library="default"/>
         <efx:design_file name="../source/hVHDL_floating_point/float_adder/float_adder_pkg.vhd" version="default" library="default"/>
         <efx:design_file name="../source/hVHDL_floating_point/float_multiplier/float_multiplier_pkg.vhd" version="default" library="default"/>
         <efx:design_file name="../source/hVHDL_floating_point/float_alu/float_alu_pkg.vhd" version="default" library="default"/>
@@ -92,6 +93,7 @@
         <efx:param name="generate_bitbin" value="on" value_type="e_bool"/>
         <efx:param name="generate_hex" value="on" value_type="e_bool"/>
         <efx:param name="generate_hexbin" value="on" value_type="e_bool"/>
+        <efx:param name="four_byte_addressing" value="off" value_type="e_bool"/>
     </efx:bitstream_generation>
     <efx:debugger>
         <efx:param name="work_dir" value="work_dbg" value_type="e_string"/>
