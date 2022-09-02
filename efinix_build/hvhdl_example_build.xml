@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<efx:project name="ac_in_ac_out_lab_power_supply" description="" last_change_date="Fri September 2 2022 17:18:54" location="C:/Users/U376541/mycodeprojects/hVHDL_example_project/efinix_build" sw_version="2022.1.226" last_run_state="crash" last_run_tool="python.exe" last_run_flow="place" config_result_in_sync="sync" design_ood="sync" place_ood="" route_ood="sync" xmlns:efx="http://www.efinixinc.com/enf_proj" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.efinixinc.com/enf_proj enf_proj.xsd">
+<efx:project name="ac_in_ac_out_lab_power_supply" description="" last_change_date="Fri September 2 2022 17:19:39" location="C:/Users/U376541/mycodeprojects/hVHDL_example_project/efinix_build" sw_version="2022.1.226" last_run_state="crash" last_run_tool="python.exe" last_run_flow="place" config_result_in_sync="sync" design_ood="change" place_ood="" route_ood="sync" xmlns:efx="http://www.efinixinc.com/enf_proj" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.efinixinc.com/enf_proj enf_proj.xsd">
     <efx:device_info>
         <efx:family name="Trion"/>
         <efx:device name="T120F324"/>
