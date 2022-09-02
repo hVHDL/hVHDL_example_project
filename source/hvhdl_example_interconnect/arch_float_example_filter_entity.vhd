@@ -43,30 +43,7 @@ begin
             create_float_alu(float_alu);
             create_float_to_integer_converter(float_to_integer_converter);
         ------------------------------------------------------------------------
-            filter_is_ready <= false;
-            CASE filter_counter is
-                WHEN 0 => 
-                    subtract(float_alu, u, y);
-                    filter_counter <= filter_counter + 1;
-                WHEN 1 =>
-                    if add_is_ready(float_alu) then
-                        multiply(float_alu  , get_add_result(float_alu) , filter_gain);
-                        filter_counter <= filter_counter + 1;
-                    end if;
-
-                WHEN 2 =>
-                    if multiplier_is_ready(float_alu) then
-                        add(float_alu, get_multiplier_result(float_alu), y);
-                        filter_counter <= filter_counter + 1;
-                    end if;
-                WHEN 3 => 
-                    if add_is_ready(float_alu) then
-                        y <= get_add_result(float_alu);
-                        filter_counter <= filter_counter + 1;
-                        filter_is_ready <= true;
-                    end if;
-                WHEN others =>  -- wait for start
-            end CASE;
+            create_first_order_filter(float_filter, float_alu, to_float(filter_time_constant));
         ------------------------------------------------------------------------
 
             if example_filter_input.filter_is_requested then

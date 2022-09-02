@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<efx:project name="ac_in_ac_out_lab_power_supply" description="" last_change_date="Wed August 3 2022 14:18:30" location="C:/Users/Jari/mycodeprojects/hVHDL_example_project/efinix_build" sw_version="2021.2.323.6.17" last_run_state="pass" last_run_tool="efx_pgm" last_run_flow="bitstream" config_result_in_sync="sync" design_ood="sync" place_ood="sync" route_ood="sync" xmlns:efx="http://www.efinixinc.com/enf_proj" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.efinixinc.com/enf_proj enf_proj.xsd">
+<efx:project name="ac_in_ac_out_lab_power_supply" description="" last_change_date="Fri September 2 2022 17:18:54" location="C:/Users/U376541/mycodeprojects/hVHDL_example_project/efinix_build" sw_version="2022.1.226" last_run_state="crash" last_run_tool="python.exe" last_run_flow="place" config_result_in_sync="sync" design_ood="sync" place_ood="" route_ood="sync" xmlns:efx="http://www.efinixinc.com/enf_proj" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.efinixinc.com/enf_proj enf_proj.xsd">
     <efx:device_info>
         <efx:family name="Trion"/>
         <efx:device name="T120F324"/>
@@ -67,6 +67,12 @@
         <efx:param name="optimize-adder-tree" value="1" value_type="e_option"/>
         <efx:param name="mult_input_regs_packing" value="1" value_type="e_option"/>
         <efx:param name="mult_output_regs_packing" value="1" value_type="e_option"/>
+        <efx:param name="min-sr-fanout" value="0" value_type="e_option"/>
+        <efx:param name="seq-opt-sync-only" value="0" value_type="e_option"/>
+        <efx:param name="blackbox-error" value="1" value_type="e_option"/>
+        <efx:param name="allow-const-ram-index" value="0" value_type="e_option"/>
+        <efx:param name="hdl-compile-unit" value="1" value_type="e_option"/>
+        <efx:param name="create-onehot-fsms" value="0" value_type="e_option"/>
     </efx:synthesis>
     <efx:place_and_route tool_name="efx_pnr">
         <efx:param name="work_dir" value="work_pnr" value_type="e_string"/>
@@ -74,6 +80,8 @@
         <efx:param name="load_delaym" value="on" value_type="e_bool"/>
         <efx:param name="optimization_level" value="TIMING_1" value_type="e_option"/>
         <efx:param name="seed" value="1" value_type="e_integer"/>
+        <efx:param name="placer_effort_level" value="2" value_type="e_option"/>
+        <efx:param name="max_threads" value="-1" value_type="e_integer"/>
     </efx:place_and_route>
     <efx:bitstream_generation tool_name="efx_pgm">
         <efx:param name="mode" value="active" value_type="e_option"/>
