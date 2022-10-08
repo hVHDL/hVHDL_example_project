@@ -4,7 +4,7 @@ This is a test project that uses the main features of [hVHDL](https://github.com
   <img width="550px" src="doc/test_app_run.png"/></a>
 </p>
 
-There is an in-depth [explanation](https://hvhdl.readthedocs.io/en/latest/hvhdl_example_project/hvhdl_example_project.html) which goes through the design.
+There is an in-depth [explanation](https://hvhdl.readthedocs.io/en/latest/hvhdl_example_project/hvhdl_example_project.html) which goes through the VHDL source code of the design.
 
 The example project has been built with Lattice Diamond, Xilinx Vivado, Intel Quartus and Efinix Efinity and tested with lattice ECP5 and Spartan 7 FPGAs. The build scripts can be found in the repository.
 
