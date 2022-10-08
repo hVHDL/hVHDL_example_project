@@ -8,7 +8,7 @@ There is an in-depth [explanation](https://hvhdl.readthedocs.io/en/latest/hvhdl_
 
 The example project has been built with Lattice Diamond, Xilinx Vivado, Intel Quartus and Efinix Efinity and tested with lattice ECP5 and Spartan 7 FPGAs. The build scripts can be found in the repository.
 
-Note, tested to NOT work with 3.11 version of Lattice Diamond on a Windoew 11. Either Version of 3.12 works.
+Note, tested to NOT work with 3.11 version of Lattice Diamond on a Windoes 11. Either Version of 3.12 works.
 
 Lattice Diamond build can be launched using
 > pnmainc <path_to_example_project>/ecp5_build/build_ecp5.tcl
