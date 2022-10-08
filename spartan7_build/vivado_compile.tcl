@@ -50,7 +50,7 @@ set_property IOSTANDARD LVCMOS33 [get_ports [list clk]]
 place_ports clk H11
 
 set_property IOSTANDARD LVCMOS33 [get_ports [list uart_rx]]
-place_ports uart_rx P4
+place_ports uart_rx N4
 
 set_property IOSTANDARD LVCMOS33 [get_ports [list uart_tx]]
 place_ports uart_tx P3
@@ -64,5 +64,8 @@ set_property CFGBVS VCCO [current_design]
 set_property CONFIG_VOLTAGE 3.3 [current_design]
 set_property BITSTREAM.Config.SPI_BUSWIDTH 4 [current_design]
 set_property BITSTREAM.CONFIG.CONFIGRATE 33 [current_design]
-write_bitstream -force $outputDir/testibitstream.bit
-# write_cfgmem -format mcs -interface spix4 -size
+
+write_bitstream -force hvhdl_example_project_ram_image.bit
+write_cfgmem -force  -format mcs -size 2 -interface SPIx4        \
+    -loadbit "up 0x0 hvhdl_example_project_ram_image.bit" \
+    -file "hvhdl_example_project_flash_image.mcs"

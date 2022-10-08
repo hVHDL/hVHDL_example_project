@@ -1,3 +1,4 @@
+add_vhdl_file_to_project $source_folder/../example_project_addresses_pkg.vhd
 
 add_vhdl_file_to_project $source_folder/efinix_top.vhd
 add_vhdl_file_to_project $source_folder/hVHDL_math_library/multiplier/multiplier_base_types_18bit_pkg.vhd
@@ -5,14 +6,10 @@ add_vhdl_file_to_project $source_folder/hVHDL_math_library/multiplier/multiplier
 add_vhdl_file_to_project $source_folder/hVHDL_math_library/sincos/sincos_pkg.vhd
 add_vhdl_file_to_project $source_folder/hVHDL_math_library/first_order_filter/first_order_filter_pkg.vhd
 
-add_vhdl_file_to_project $source_folder/hVHDL_uart/uart_pkg.vhd
-add_vhdl_file_to_project $source_folder/hVHDL_uart/uart.vhd
-add_vhdl_file_to_project $source_folder/hVHDL_uart/uart_transreceiver/uart_transreceiver_pkg.vhd
-add_vhdl_file_to_project $source_folder/hVHDL_uart/uart_transreceiver/uart_transreceiver.vhd
 add_vhdl_file_to_project $source_folder/hVHDL_uart/uart_transreceiver/uart_rx/uart_rx_pkg.vhd
-add_vhdl_file_to_project $source_folder/hVHDL_uart/uart_transreceiver/uart_rx/uart_rx.vhd
 add_vhdl_file_to_project $source_folder/hVHDL_uart/uart_transreceiver/uart_tx/uart_tx_pkg.vhd
-add_vhdl_file_to_project $source_folder/hVHDL_uart/uart_transreceiver/uart_tx/uart_tx.vhd
+
+add_vhdl_file_to_project $source_folder/hVHDL_uart/uart_protocol/uart_protocol_pkg.vhd
 
 add_vhdl_file_to_project $source_folder/hVHDL_fpga_interconnect/interconnect_configuration/data_15_address_15_bit_pkg.vhd
 add_vhdl_file_to_project $source_folder/hVHDL_fpga_interconnect/fpga_interconnect_pkg.vhd

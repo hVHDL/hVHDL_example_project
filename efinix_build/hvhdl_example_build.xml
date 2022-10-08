@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<efx:project name="ac_in_ac_out_lab_power_supply" description="" last_change_date="Wed August 3 2022 14:18:30" location="C:/Users/Jari/mycodeprojects/hVHDL_example_project/efinix_build" sw_version="2021.2.323.6.17" last_run_state="pass" last_run_tool="efx_pgm" last_run_flow="bitstream" config_result_in_sync="sync" design_ood="sync" place_ood="sync" route_ood="sync" xmlns:efx="http://www.efinixinc.com/enf_proj" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.efinixinc.com/enf_proj enf_proj.xsd">
+<efx:project name="ac_in_ac_out_lab_power_supply" description="" last_change_date="Sat October 8 2022 07:58:51" location="C:/Users/Jari/mycodeprojects/hVHDL_example_project/efinix_build" sw_version="2022.1.226" last_run_state="pass" last_run_tool="efx_pnr" last_run_flow="place" config_result_in_sync="sync" design_ood="sync" place_ood="sync" route_ood="sync" xmlns:efx="http://www.efinixinc.com/enf_proj" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.efinixinc.com/enf_proj enf_proj.xsd">
     <efx:device_info>
         <efx:family name="Trion"/>
         <efx:device name="T120F324"/>
@@ -12,14 +12,9 @@
         <efx:design_file name="../source/hVHDL_math_library/multiplier/multiplier_pkg.vhd" version="default" library="default"/>
         <efx:design_file name="../source/hVHDL_math_library/sincos/sincos_pkg.vhd" version="default" library="default"/>
         <efx:design_file name="../source/hVHDL_math_library/first_order_filter/first_order_filter_pkg.vhd" version="default" library="default"/>
-        <efx:design_file name="../source/hVHDL_uart/uart_pkg.vhd" version="default" library="default"/>
-        <efx:design_file name="../source/hVHDL_uart/uart.vhd" version="default" library="default"/>
-        <efx:design_file name="../source/hVHDL_uart/uart_transreceiver/uart_transreceiver_pkg.vhd" version="default" library="default"/>
-        <efx:design_file name="../source/hVHDL_uart/uart_transreceiver/uart_transreceiver.vhd" version="default" library="default"/>
         <efx:design_file name="../source/hVHDL_uart/uart_transreceiver/uart_rx/uart_rx_pkg.vhd" version="default" library="default"/>
-        <efx:design_file name="../source/hVHDL_uart/uart_transreceiver/uart_rx/uart_rx.vhd" version="default" library="default"/>
         <efx:design_file name="../source/hVHDL_uart/uart_transreceiver/uart_tx/uart_tx_pkg.vhd" version="default" library="default"/>
-        <efx:design_file name="../source/hVHDL_uart/uart_transreceiver/uart_tx/uart_tx.vhd" version="default" library="default"/>
+        <efx:design_file name="../source/hVHDL_uart/uart_protocol/uart_protocol_pkg.vhd" version="default" library="default"/>
         <efx:design_file name="../source/hVHDL_fpga_interconnect/interconnect_configuration/data_15_address_15_bit_pkg.vhd" version="default" library="default"/>
         <efx:design_file name="../source/hVHDL_fpga_interconnect/fpga_interconnect_pkg.vhd" version="default" library="default"/>
         <efx:design_file name="../source/hvhdl_example_interconnect/communication/communications.vhd" version="default" library="default"/>
@@ -41,6 +36,7 @@
         <efx:design_file name="../source/hVHDL_floating_point/float_multiplier/float_multiplier_pkg.vhd" version="default" library="default"/>
         <efx:design_file name="../source/hVHDL_floating_point/float_alu/float_alu_pkg.vhd" version="default" library="default"/>
         <efx:design_file name="../source/hVHDL_floating_point/float_first_order_filter/float_first_order_filter_pkg.vhd" version="default" library="default"/>
+        <efx:design_file name="../example_project_addresses_pkg.vhd" version="default" library="default"/>
         <efx:top_vhdl_arch name="rtl"/>
     </efx:design_info>
     <efx:constraint_info>
@@ -67,6 +63,12 @@
         <efx:param name="optimize-adder-tree" value="1" value_type="e_option"/>
         <efx:param name="mult_input_regs_packing" value="1" value_type="e_option"/>
         <efx:param name="mult_output_regs_packing" value="1" value_type="e_option"/>
+        <efx:param name="min-sr-fanout" value="0" value_type="e_option"/>
+        <efx:param name="seq-opt-sync-only" value="0" value_type="e_option"/>
+        <efx:param name="blackbox-error" value="1" value_type="e_option"/>
+        <efx:param name="allow-const-ram-index" value="0" value_type="e_option"/>
+        <efx:param name="hdl-compile-unit" value="1" value_type="e_option"/>
+        <efx:param name="create-onehot-fsms" value="0" value_type="e_option"/>
     </efx:synthesis>
     <efx:place_and_route tool_name="efx_pnr">
         <efx:param name="work_dir" value="work_pnr" value_type="e_string"/>
@@ -74,6 +76,8 @@
         <efx:param name="load_delaym" value="on" value_type="e_bool"/>
         <efx:param name="optimization_level" value="TIMING_1" value_type="e_option"/>
         <efx:param name="seed" value="1" value_type="e_integer"/>
+        <efx:param name="placer_effort_level" value="2" value_type="e_option"/>
+        <efx:param name="max_threads" value="-1" value_type="e_integer"/>
     </efx:place_and_route>
     <efx:bitstream_generation tool_name="efx_pgm">
         <efx:param name="mode" value="active" value_type="e_option"/>
@@ -82,7 +86,7 @@
         <efx:param name="spi_low_power_mode" value="on" value_type="e_bool"/>
         <efx:param name="io_weak_pullup" value="on" value_type="e_bool"/>
         <efx:param name="oscillator_clock_divider" value="DIV8" value_type="e_option"/>
-        <efx:param name="bitstream_compression" value="on" value_type="e_bool"/>
+        <efx:param name="bitstream_compression" value="off" value_type="e_bool"/>
         <efx:param name="enable_external_master_clock" value="off" value_type="e_bool"/>
         <efx:param name="active_capture_clk_edge" value="posedge" value_type="e_option"/>
         <efx:param name="jtag_usercode" value="0xFFFFFFFF" value_type="e_string"/>

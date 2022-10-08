@@ -12,6 +12,8 @@ architecture fixed_point of example_filter_entity is
 
     use work.first_order_filter_pkg.all;
     use work.multiplier_pkg.all;
+    use work.example_project_addresses_pkg.all;
+
     signal filter : first_order_filter_record := init_first_order_filter;
     signal scaled_sine : int := 0;
 
@@ -24,8 +26,8 @@ begin
     begin
         if rising_edge(clock) then
             init_bus(bus_out);
-            connect_read_only_data_to_address(bus_in, bus_out, 104, get_filter_output(filter)/2 + 32678);
-            connect_read_only_data_to_address(bus_in, bus_out, 105, scaled_sine/2 + 32678);
+            connect_read_only_data_to_address(bus_in, bus_out, fixed_point_filter_output_address, get_filter_output(filter)/2 + 32678);
+            connect_read_only_data_to_address(bus_in, bus_out, fixed_point_filter_scaled_output_address, scaled_sine/2 + 32678);
             create_multiplier(multiplier2);
             create_first_order_filter(filter => filter , multiplier => multiplier2 , time_constant => filter_time_constant);
 

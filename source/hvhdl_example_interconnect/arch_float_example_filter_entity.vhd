@@ -15,8 +15,8 @@ architecture float of example_filter_entity is
     use work.float_alu_pkg.all;
     use work.float_first_order_filter_pkg.all;
     use work.float_to_integer_converter_pkg.all;
-    use work.denormalizer_pkg.all;
-    use work.normalizer_pkg.all;
+
+    use work.example_project_addresses_pkg.all;
 
     constant filter_gain : float_record := to_float(filter_time_constant);
 
@@ -36,13 +36,14 @@ begin
     begin
         if rising_edge(clock) then
             init_bus(bus_out);
-            connect_read_only_data_to_address(bus_in, bus_out, 106, get_mantissa(get_filter_output(float_filter)));
-            connect_read_only_data_to_address(bus_in, bus_out, 107, get_exponent(get_filter_output(float_filter)));
-            connect_read_only_data_to_address(bus_in, bus_out, 108, get_converted_integer(float_to_integer_converter) + 32768);
+            connect_read_only_data_to_address(bus_in, bus_out, floating_point_filter_output_mantissa_address, get_mantissa(get_filter_output(float_filter)));
+            connect_read_only_data_to_address(bus_in, bus_out, floating_point_filter_output_exponent_address, get_exponent(get_filter_output(float_filter)));
+            connect_read_only_data_to_address(bus_in, bus_out, floating_point_filter_integer_output_address , get_converted_integer(float_to_integer_converter) + 32768);
 
             create_float_alu(float_alu);
             create_float_to_integer_converter(float_to_integer_converter);
         ------------------------------------------------------------------------
+            -- floating point filter implementation
             filter_is_ready <= false;
             CASE filter_counter is
                 WHEN 0 => 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<efxpt:design_db name="ac_in_ac_out_lab_power_supply" device_def="T120F324" location="C:\Users\Jari\mycodeprojects\hVHDL_example_project\efinix_build" version="2021.2.323.6.17" db_version="20221004" last_change_date="Fri Jul 15 10:11:17 2022" xmlns:efxpt="http://www.efinixinc.com/peri_design_db" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.efinixinc.com/peri_design_db peri_design_db.xsd ">
+<efxpt:design_db name="ac_in_ac_out_lab_power_supply" device_def="T120F324" location="C:\Users\Jari\mycodeprojects\hVHDL_example_project\efinix_build" version="2022.1.226" db_version="20221999" last_change_date="Wed Sep  7 08:57:59 2022" xmlns:efxpt="http://www.efinixinc.com/peri_design_db" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.efinixinc.com/peri_design_db peri_design_db.xsd ">
     <efxpt:device_info>
         <efxpt:iobank_info>
             <efxpt:iobank name="1A" iostd="3.3 V LVTTL / LVCMOS"/>
@@ -11,7 +11,6 @@
             <efxpt:iobank name="3A" iostd="1.2 V"/>
             <efxpt:iobank name="3B" iostd="1.2 V"/>
             <efxpt:iobank name="3D_TR_BR" iostd="3.3 V LVTTL / LVCMOS"/>
-            <efxpt:iobank name="3E" iostd="1.5 V"/>
             <efxpt:iobank name="4E" iostd="3.3 V LVTTL / LVCMOS"/>
             <efxpt:iobank name="4F" iostd="3.3 V LVTTL / LVCMOS"/>
             <efxpt:iobank name="BL" iostd="1.2 V"/>
@@ -34,12 +33,22 @@
         <efxpt:global_unused_config state="input with weak pullup"/>
     </efxpt:gpio_info>
     <efxpt:pll_info>
-        <efxpt:pll name="main_pll" pll_def="PLL_BL0" ref_clock_name="" ref_clock_freq="30.00" multiplier="52" pre_divider="1" post_divider="1" reset_name="" locked_name="" is_ipfrz="false" is_bypass_lock="true">
+        <efxpt:pll name="main_pll" pll_def="PLL_BL0" ref_clock_name="" ref_clock_freq="30.0000" multiplier="52" pre_divider="1" post_divider="1" reset_name="" locked_name="" is_ipfrz="false" is_bypass_lock="true">
             <efxpt:output_clock name="clock_120mhz" number="0" out_divider="13" adv_out_phase_shift="0"/>
             <efxpt:adv_prop ref_clock_mode="external" ref_clock1_name="" ext_ref_clock_id="2" clksel_name="" feedback_clock_name="" feedback_mode="internal"/>
         </efxpt:pll>
     </efxpt:pll_info>
-    <efxpt:lvds_info/>
+    <efxpt:lvds_info>
+        <efxpt:lvds name="L1_afe_u_data" lvds_def="GPIOT_RX02" ops_type="rx">
+            <efxpt:lrx_info pll_instance="" fast_clock_name="" slow_clock_name="" in_bname="L1_afe_u_data_DATA" reset_name="" conn_type="normal" termination="true" serialization="1" is_delay_ena="false" delay="0"/>
+        </efxpt:lvds>
+        <efxpt:lvds name="L2_afe_u_data" lvds_def="GPIOT_RX01" ops_type="rx">
+            <efxpt:lrx_info pll_instance="" fast_clock_name="" slow_clock_name="" in_bname="L2_afe_u_data_DATA" reset_name="" conn_type="normal" termination="true" serialization="1" is_delay_ena="false" delay="0"/>
+        </efxpt:lvds>
+        <efxpt:lvds name="ad_clock_out" lvds_def="GPIOB_TX00" ops_type="tx">
+            <efxpt:ltx_info pll_instance="" fast_clock_name="" slow_clock_name="" reset_name="" out_bname="ad_clock_out_DATA" oe_name="" clock_div="1" mode="out" serialization="1" reduced_swing="false" load="7"/>
+        </efxpt:lvds>
+    </efxpt:lvds_info>
     <efxpt:mipi_info/>
     <efxpt:jtag_info/>
     <efxpt:ddr_info/>

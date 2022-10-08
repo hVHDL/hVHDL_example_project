@@ -39,6 +39,8 @@ end hvhdl_example_interconnect;
 
 architecture rtl of hvhdl_example_interconnect is
 
+    use work.example_project_addresses_pkg.all;
+
     signal multiplier : multiplier_record := init_multiplier;
     signal sincos     : sincos_record     := init_sincos;
 
@@ -61,6 +63,8 @@ architecture rtl of hvhdl_example_interconnect is
     signal bus_from_fixed_point_filter    : fpga_interconnect_record := init_fpga_interconnect;
     signal bus_from_interconnect          : fpga_interconnect_record := init_fpga_interconnect;
 
+    signal data_in_example_interconnect : integer range 0 to 2**16-1 := 44252;
+
     constant filter_time_constant : real := 0.001;
 
 begin
@@ -75,10 +79,11 @@ begin
             init_example_filter(fixed_point_filter_in);
 
             init_bus(bus_from_interconnect);
-            connect_read_only_data_to_address(bus_from_master, bus_from_interconnect, 100, get_sine(sincos)/2 + 32768);
-            connect_read_only_data_to_address(bus_from_master, bus_from_interconnect, 101, angle);
-            connect_read_only_data_to_address(bus_from_master, bus_from_interconnect, 102, to_integer(signed(prbs7))+32768);
-            connect_read_only_data_to_address(bus_from_master, bus_from_interconnect, 103, sine_with_noise/2 + 32768);
+            connect_read_only_data_to_address(bus_from_master , bus_from_interconnect , input_sine_address                , get_sine(sincos)/2 + 32768);
+            connect_read_only_data_to_address(bus_from_master , bus_from_interconnect , input_sine_angle_address          , angle);
+            connect_read_only_data_to_address(bus_from_master , bus_from_interconnect , noise_address                     , to_integer(signed(prbs7))+32768);
+            connect_read_only_data_to_address(bus_from_master , bus_from_interconnect , noisy_sine_address                , sine_with_noise/2 + 32768);
+            connect_data_to_address(bus_from_master           , bus_from_interconnect , example_interconnect_data_address , data_in_example_interconnect);
 
             if i > 0 then
                 i <= (i - 1);
