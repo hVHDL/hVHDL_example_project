@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://hvhdl.readthedocs.io/en/latest/hvhdl_example_project/hvhdl_example_project.html"><img width="550px" src="doc/test_app_run.png"/></a>
+  <img width="550px" src="doc/test_app_run.png"/></a>
 </p>
 
 This is a test project that uses the main features of hVHDL libraries. The example project is built with Lattice Diamond, Xilinx Vivado, Intel Quartus and Efinix Efinity and tested with lattice ECP5 fpga. Xilinx ISE will be added soon.
