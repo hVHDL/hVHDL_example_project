@@ -34,14 +34,6 @@ source $tcl_path/create_main_clocks.tcl
 
 wait_on_run main_clock_synth_1
 
-# synth_design -rtl -rtl_skip_mlo -name rtl_1
-
-# file mkdir ./hvhdl_example_project.srcs/constrs_1/new
-# close [ open ./hvhdl_example_project.srcs/constrs_1/new/io_placement.xdc w ]
-# add_files -fileset constrs_1 ./hvhdl_example_project.srcs/constrs_1/new/io_placement.xdc
-# set_property target_constrs_file ./hvhdl_example_project.srcs/constrs_1/new/io_placement.xdc [current_fileset -constrset]
-# save_constraints -force
-
 launch_runs synth_1 -jobs 12
 wait_on_run synth_1
 open_run synth_1 -name synth_1

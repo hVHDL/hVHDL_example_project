@@ -42,6 +42,7 @@ begin
 
             create_float_alu(float_alu);
             create_float_to_integer_converter(float_to_integer_converter);
+            -- create_first_order_filter(float_filter, float_alu, filter_gain);
         ------------------------------------------------------------------------
             -- floating point filter implementation
             filter_is_ready <= false;

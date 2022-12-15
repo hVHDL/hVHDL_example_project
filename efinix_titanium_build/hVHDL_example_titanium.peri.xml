@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<efxpt:design_db name="hVHDL_example_titanium" device_def="Ti60F225" location="C:\Users\Jari\mycodeprojects\hVHDL_example_project\efinix_titanium_build" version="2022.1.226.4.3" db_version="20221999" last_change_date="Thu Dec 15 06:30:25 2022" xmlns:efxpt="http://www.efinixinc.com/peri_design_db" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.efinixinc.com/peri_design_db peri_design_db.xsd ">
+    <efxpt:device_info>
+        <efxpt:iobank_info>
+            <efxpt:iobank name="1A" iostd="1.8 V LVCMOS" is_dyn_voltage="false" mode_sel_name="1A_MODE_SEL"/>
+            <efxpt:iobank name="1B" iostd="1.8 V LVCMOS" is_dyn_voltage="false" mode_sel_name="1B_MODE_SEL"/>
+            <efxpt:iobank name="2A" iostd="1.8 V LVCMOS" is_dyn_voltage="false" mode_sel_name="2A_MODE_SEL"/>
+            <efxpt:iobank name="2B" iostd="1.8 V LVCMOS" is_dyn_voltage="false" mode_sel_name="2B_MODE_SEL"/>
+            <efxpt:iobank name="3A" iostd="1.8 V LVCMOS" is_dyn_voltage="false" mode_sel_name="3A_MODE_SEL"/>
+            <efxpt:iobank name="3B" iostd="1.8 V LVCMOS" is_dyn_voltage="false" mode_sel_name="3B_MODE_SEL"/>
+            <efxpt:iobank name="4A" iostd="1.8 V LVCMOS" is_dyn_voltage="false" mode_sel_name="4A_MODE_SEL"/>
+            <efxpt:iobank name="4B" iostd="1.8 V LVCMOS" is_dyn_voltage="false" mode_sel_name="4B_MODE_SEL"/>
+            <efxpt:iobank name="BL" iostd="1.8 V LVCMOS" is_dyn_voltage="false" mode_sel_name="BL_MODE_SEL"/>
+            <efxpt:iobank name="BR" iostd="1.8 V LVCMOS" is_dyn_voltage="false" mode_sel_name="BR_MODE_SEL"/>
+            <efxpt:iobank name="TL" iostd="1.8 V LVCMOS" is_dyn_voltage="false" mode_sel_name="TL_MODE_SEL"/>
+            <efxpt:iobank name="TR" iostd="1.8 V LVCMOS" is_dyn_voltage="false" mode_sel_name="TR_MODE_SEL"/>
+        </efxpt:iobank_info>
+        <efxpt:ctrl_info>
+            <efxpt:ctrl name="cfg" ctrl_def="CONFIG_CTRL0" clock_name="" is_clk_invert="false" cbsel_bus_name="cfg_CBSEL" config_ctrl_name="cfg_CONFIG" ena_capture_name="cfg_ENA" error_status_name="cfg_ERROR" um_signal_status_name="cfg_USR_STATUS" is_remote_update_enable="false" is_user_mode_enable="false"/>
+        </efxpt:ctrl_info>
+        <efxpt:seu_info>
+            <efxpt:seu name="seu" block_def="CONFIG_SEU0" mode="auto" ena_detect="false" wait_interval="16500000">
+                <efxpt:gen_pin>
+                    <efxpt:pin name="seu_START" type_name="START" is_bus="false"/>
+                    <efxpt:pin name="seu_INJECT_ERROR" type_name="INJECT_ERROR" is_bus="false"/>
+                    <efxpt:pin name="seu_RST" type_name="RST" is_bus="false"/>
+                    <efxpt:pin name="seu_CONFIG" type_name="CONFIG" is_bus="false"/>
+                    <efxpt:pin name="seu_ERROR" type_name="ERROR" is_bus="false"/>
+                    <efxpt:pin name="seu_DONE" type_name="DONE" is_bus="false"/>
+                </efxpt:gen_pin>
+            </efxpt:seu>
+        </efxpt:seu_info>
+        <efxpt:clkmux_info>
+            <efxpt:clkmux name="CLKMUX_B" block_def="CLKMUX_B" is_mux_bot0_dyn="false" is_mux_bot7_dyn="false">
+                <efxpt:gen_pin>
+                    <efxpt:pin name="" type_name="DYN_MUX_SEL_7" is_bus="true"/>
+                    <efxpt:pin name="" type_name="DYN_MUX_OUT_7" is_bus="false"/>
+                    <efxpt:pin name="" type_name="ROUTE0" is_bus="false" is_clk="true" is_clk_invert="false"/>
+                    <efxpt:pin name="" type_name="ROUTE1" is_bus="false" is_clk="true" is_clk_invert="false"/>
+                    <efxpt:pin name="" type_name="ROUTE2" is_bus="false" is_clk="true" is_clk_invert="false"/>
+                    <efxpt:pin name="" type_name="ROUTE3" is_bus="false" is_clk="true" is_clk_invert="false"/>
+                    <efxpt:pin name="" type_name="DYN_MUX_OUT_0" is_bus="false"/>
+                    <efxpt:pin name="" type_name="DYN_MUX_SEL_0" is_bus="true"/>
+                </efxpt:gen_pin>
+            </efxpt:clkmux>
+            <efxpt:clkmux name="CLKMUX_L" block_def="CLKMUX_L" is_mux_bot0_dyn="false" is_mux_bot7_dyn="false">
+                <efxpt:gen_pin>
+                    <efxpt:pin name="" type_name="DYN_MUX_SEL_7" is_bus="true"/>
+                    <efxpt:pin name="" type_name="DYN_MUX_OUT_7" is_bus="false"/>
+                    <efxpt:pin name="" type_name="ROUTE0" is_bus="false" is_clk="true" is_clk_invert="false"/>
+                    <efxpt:pin name="" type_name="ROUTE1" is_bus="false" is_clk="true" is_clk_invert="false"/>
+                    <efxpt:pin name="" type_name="ROUTE2" is_bus="false" is_clk="true" is_clk_invert="false"/>
+                    <efxpt:pin name="" type_name="ROUTE3" is_bus="false" is_clk="true" is_clk_invert="false"/>
+                    <efxpt:pin name="" type_name="DYN_MUX_OUT_0" is_bus="false"/>
+                    <efxpt:pin name="" type_name="DYN_MUX_SEL_0" is_bus="true"/>
+                </efxpt:gen_pin>
+            </efxpt:clkmux>
+            <efxpt:clkmux name="CLKMUX_R" block_def="CLKMUX_R" is_mux_bot0_dyn="false" is_mux_bot7_dyn="false">
+                <efxpt:gen_pin>
+                    <efxpt:pin name="" type_name="DYN_MUX_SEL_7" is_bus="true"/>
+                    <efxpt:pin name="" type_name="DYN_MUX_OUT_7" is_bus="false"/>
+                    <efxpt:pin name="" type_name="ROUTE0" is_bus="false" is_clk="true" is_clk_invert="false"/>
+                    <efxpt:pin name="" type_name="ROUTE1" is_bus="false" is_clk="true" is_clk_invert="false"/>
+                    <efxpt:pin name="" type_name="ROUTE2" is_bus="false" is_clk="true" is_clk_invert="false"/>
+                    <efxpt:pin name="" type_name="ROUTE3" is_bus="false" is_clk="true" is_clk_invert="false"/>
+                    <efxpt:pin name="" type_name="DYN_MUX_OUT_0" is_bus="false"/>
+                    <efxpt:pin name="" type_name="DYN_MUX_SEL_0" is_bus="true"/>
+                </efxpt:gen_pin>
+            </efxpt:clkmux>
+            <efxpt:clkmux name="CLKMUX_T" block_def="CLKMUX_T" is_mux_bot0_dyn="false" is_mux_bot7_dyn="false">
+                <efxpt:gen_pin>
+                    <efxpt:pin name="" type_name="DYN_MUX_SEL_7" is_bus="true"/>
+                    <efxpt:pin name="" type_name="DYN_MUX_OUT_7" is_bus="false"/>
+                    <efxpt:pin name="" type_name="ROUTE0" is_bus="false" is_clk="true" is_clk_invert="false"/>
+                    <efxpt:pin name="" type_name="ROUTE1" is_bus="false" is_clk="true" is_clk_invert="false"/>
+                    <efxpt:pin name="" type_name="ROUTE2" is_bus="false" is_clk="true" is_clk_invert="false"/>
+                    <efxpt:pin name="" type_name="ROUTE3" is_bus="false" is_clk="true" is_clk_invert="false"/>
+                    <efxpt:pin name="" type_name="DYN_MUX_OUT_0" is_bus="false"/>
+                    <efxpt:pin name="" type_name="DYN_MUX_SEL_0" is_bus="true"/>
+                </efxpt:gen_pin>
+            </efxpt:clkmux>
+        </efxpt:clkmux_info>
+    </efxpt:device_info>
+    <efxpt:gpio_info>
+        <efxpt:comp_gpio name="pll_input_clock" gpio_def="GPIOL_P_18" mode="input" bus_name="" io_standard="1.8 V LVCMOS">
+            <efxpt:input_config name="pll_input_clock" name_ddio_lo="" conn_type="pll_clkin" is_register="false" clock_name="" is_clock_inverted="false" pull_option="none" is_schmitt_trigger="false" ddio_type="none" is_bus_hold="false" delay="0" is_serial="false" is_dyn_delay="false" fastclk_name="" pullup_ena_name="pll_input_clock_PULL_UP_ENA" dyn_delay_en_name="pll_input_clock_DLY_ENA" dyn_delay_reset_name="pll_input_clock_DLY_RST" dyn_delay_ctrl_name="pll_input_clock_DLY_CTRL" clkmux_buf_name=""/>
+        </efxpt:comp_gpio>
+        <efxpt:comp_gpio name="uart_rx" gpio_def="GPIOL_01" mode="input" bus_name="" io_standard="1.8 V LVCMOS">
+            <efxpt:input_config name="uart_rx" name_ddio_lo="" conn_type="normal" is_register="false" clock_name="" is_clock_inverted="false" pull_option="none" is_schmitt_trigger="false" ddio_type="none" is_bus_hold="false" delay="0" is_serial="false" is_dyn_delay="false" fastclk_name="" pullup_ena_name="uart_rx_PULL_UP_ENA" dyn_delay_en_name="uart_rx_DLY_ENA" dyn_delay_reset_name="uart_rx_DLY_RST" dyn_delay_ctrl_name="uart_rx_DLY_CTRL" clkmux_buf_name=""/>
+        </efxpt:comp_gpio>
+        <efxpt:comp_gpio name="uart_tx" gpio_def="GPIOL_02" mode="output" bus_name="" io_standard="1.8 V LVCMOS">
+            <efxpt:output_config name="uart_tx" name_ddio_lo="" register_option="none" clock_name="" is_clock_inverted="false" is_slew_rate="false" tied_option="none" ddio_type="none" delay="0" is_serial="false" drive_strength="4" fastclk_name=""/>
+        </efxpt:comp_gpio>
+        <efxpt:global_unused_config state="input with weak pullup"/>
+    </efxpt:gpio_info>
+    <efxpt:pll_info>
+        <efxpt:pll name="main_pll" pll_def="PLL_TL0" ref_clock_name="" ref_clock_freq="25.0000" multiplier="4" pre_divider="1" post_divider="2" reset_name="" locked_name="" is_ipfrz="false" is_bypass_lock="true">
+            <efxpt:adv_prop ref_clock_mode="external" ref_clock1_name="" ext_ref_clock_id="2" clksel_name="" feedback_clock_name="main_pll_CLKOUT1" feedback_mode="local"/>
+            <efxpt:gen_pin>
+                <efxpt:pin name="" type_name="DESKEWED" is_bus="false"/>
+                <efxpt:pin name="" type_name="SHIFT_ENA" is_bus="false"/>
+                <efxpt:pin name="" type_name="SHIFT" is_bus="true"/>
+                <efxpt:pin name="" type_name="SHIFT_SEL" is_bus="true"/>
+            </efxpt:gen_pin>
+            <efxpt:comp_output_clock name="main_pll_CLKOUT1" number="0" out_divider="24" is_dyn_phase="false" phase_setting="0">
+                <efxpt:gen_pin/>
+            </efxpt:comp_output_clock>
+            <efxpt:comp_output_clock name="clock_120mhz" number="1" out_divider="20" is_dyn_phase="false" phase_setting="0">
+                <efxpt:gen_pin/>
+            </efxpt:comp_output_clock>
+            <efxpt:comp_prop is_outclk_inverted="false"/>
+        </efxpt:pll>
+    </efxpt:pll_info>
+    <efxpt:osc_info/>
+    <efxpt:lvds_info/>
+    <efxpt:jtag_info/>
+    <efxpt:mipi_dphy_info/>
+</efxpt:design_db>

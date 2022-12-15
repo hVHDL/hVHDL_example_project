@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<efx:project name="ac_in_ac_out_lab_power_supply" description="" last_change_date="Tue December 13 2022 11:10:53" location="C:/Users/Jari/mycodeprojects/hVHDL_example_project/efinix_build" sw_version="2022.1.226.4.3" last_run_state="pass" last_run_tool="efx_pgm" last_run_flow="bitstream" config_result_in_sync="sync" design_ood="sync" place_ood="sync" route_ood="sync" xmlns:efx="http://www.efinixinc.com/enf_proj" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.efinixinc.com/enf_proj enf_proj.xsd">
+<efx:project name="hVHDL_example_titanium" description="" last_change_date="Thu December 15 2022 06:42:03" location="C:/Users/Jari/mycodeprojects/hVHDL_example_project/efinix_titanium_build" sw_version="2022.1.226.4.3" last_run_state="pass" last_run_tool="efx_map" last_run_flow="syn" config_result_in_sync="sync" design_ood="change" place_ood="" route_ood="sync" xmlns:efx="http://www.efinixinc.com/enf_proj" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.efinixinc.com/enf_proj enf_proj.xsd">
     <efx:device_info>
-        <efx:family name="Trion"/>
-        <efx:device name="T120F324"/>
+        <efx:family name="Titanium"/>
+        <efx:device name="Ti60F225"/>
         <efx:timing_model name="C4"/>
     </efx:device_info>
     <efx:design_info def_veri_version="sv_09" def_vhdl_version="vhdl_2008">
@@ -69,6 +69,10 @@
         <efx:param name="allow-const-ram-index" value="1" value_type="e_option"/>
         <efx:param name="hdl-compile-unit" value="1" value_type="e_option"/>
         <efx:param name="create-onehot-fsms" value="0" value_type="e_option"/>
+        <efx:param name="dsp-mac-packing" value="1" value_type="e_option"/>
+        <efx:param name="dsp-output-regs-packing" value="1" value_type="e_option"/>
+        <efx:param name="dsp-input-regs-packing" value="1" value_type="e_option"/>
+        <efx:param name="pack-luts-to-comb4" value="0" value_type="e_option"/>
     </efx:synthesis>
     <efx:place_and_route tool_name="efx_pnr">
         <efx:param name="work_dir" value="work_pnr" value_type="e_string"/>
@@ -88,7 +92,7 @@
         <efx:param name="oscillator_clock_divider" value="DIV8" value_type="e_option"/>
         <efx:param name="bitstream_compression" value="off" value_type="e_bool"/>
         <efx:param name="enable_external_master_clock" value="off" value_type="e_bool"/>
-        <efx:param name="active_capture_clk_edge" value="posedge" value_type="e_option"/>
+        <efx:param name="active_capture_clk_edge" value="negedge" value_type="e_option"/>
         <efx:param name="jtag_usercode" value="0xFFFFFFFF" value_type="e_string"/>
         <efx:param name="release_tri_then_reset" value="on" value_type="e_bool"/>
         <efx:param name="cold_boot" value="off" value_type="e_bool"/>
@@ -104,4 +108,12 @@
         <efx:param name="auto_instantiation" value="off" value_type="e_bool"/>
         <efx:param name="profile" value="NONE" value_type="e_string"/>
     </efx:debugger>
+    <efx:security>
+        <efx:param name="enable_bitstream_encrypt" value="off" value_type="e_bool"/>
+        <efx:param name="enable_bitstream_auth" value="off" value_type="e_bool"/>
+        <efx:param name="encryption_key_file" value="NONE" value_type="e_string"/>
+        <efx:param name="auth_key_file" value="NONE" value_type="e_string"/>
+        <efx:param name="randomize_iv_value" value="on" value_type="e_bool"/>
+        <efx:param name="iv_value" value="" value_type="e_string"/>
+    </efx:security>
 </efx:project>

@@ -40,14 +40,6 @@ source $tcl_path/create_main_clocks.tcl
 
 wait_on_run main_clock_synth_1
 
-# synth_design -rtl -rtl_skip_mlo -name rtl_1
-
-# file mkdir ./hvhdl_example_project.srcs/constrs_1/new
-# close [ open ./hvhdl_example_project.srcs/constrs_1/new/io_placement.xdc w ]
-# add_files -fileset constrs_1 ./hvhdl_example_project.srcs/constrs_1/new/io_placement.xdc
-# set_property target_constrs_file ./hvhdl_example_project.srcs/constrs_1/new/io_placement.xdc [current_fileset -constrset]
-# save_constraints -force
-
 launch_runs synth_1 -jobs 12
 wait_on_run synth_1
 open_run synth_1 -name synth_1
@@ -69,7 +61,7 @@ launch_runs impl_1 -to_step write_bitstream -jobs 12
 wait_on_run impl_1
 
 open_run impl_1 -name impl_1
-# #VCCO(zero) = IO = 2.5V || 3.3V, GND IO bank0 = 1.8v
+#VCCO(zero) = IO = 2.5V || 3.3V, GND IO bank0 = 1.8v
 set_property CFGBVS VCCO [current_design]
 set_property CONFIG_VOLTAGE 3.3 [current_design]
 set_property BITSTREAM.Config.SPI_BUSWIDTH 4 [current_design]
@@ -89,4 +81,3 @@ proc program_ram {} {
     program_hw_devices [get_hw_devices xc7a100t_0]
     close_hw_manager
 }
-

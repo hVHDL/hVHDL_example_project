@@ -17,4 +17,4 @@ print("this should be again 44252 : ", request_data_from_address(99))
 
 print("now we will get 200 000 data point stream from register 108, which corresponds with floating point filtered output")
 
-plot_data_from_address(104, 200000)
+plot_data_from_address(108, 200000)
