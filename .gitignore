@@ -8,3 +8,9 @@ outflow/
 */work_pt/
 */work_syn/
 *.cf
+*.vdb
+efinix_build/*/*
+*.jou
+*.log
+ecp5_build/IP/testi/*
+*.isf
