@@ -61,7 +61,6 @@ architecture rtl of communications is
     signal uart_tx_data_out   : uart_tx_data_output_group;
     signal uart_protocol : uart_communcation_record := init_uart_communcation;
 
-    signal counter : integer range 0 to 2**12-1 := 1199; 
     signal number_of_registers_to_stream : integer range 0 to 2**23-1 := 0;
     signal stream_address : integer range 0 to 2**16-1 := 0;
 
@@ -73,8 +72,9 @@ begin
     begin
         if rising_edge(clock) then
 
-            init_uart(uart_tx_data_in);
+            init_uart(uart_tx_data_in, 24);
             init_bus(bus_out);
+            set_number_of_clocks_per_bit(uart_rx_data_in, 24);
             create_uart_protocol(uart_protocol, uart_rx_data_out, uart_tx_data_in, uart_tx_data_out);
 
             ------------------------------------------------------------------------
