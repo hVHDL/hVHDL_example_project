@@ -35,6 +35,8 @@ ghdl -a --ieee=synopsys --std=08 source/hVHDL_math_library/multiplier/multiplier
 ghdl -a --ieee=synopsys --std=08 source/hVHDL_math_library/sincos/sincos_pkg.vhd
 ghdl -a --ieee=synopsys --std=08 source/hVHDL_math_library/first_order_filter/first_order_filter_pkg.vhd
 
+ghdl -a --ieee=synopsys --std=08 source/hVHDL_math_library/real_to_fixed/real_to_fixed_pkg.vhd
+
 ghdl -a --ieee=synopsys --std=08 source/hVHDL_uart/uart_transreceiver/uart_tx/uart_tx_pkg.vhd
 ghdl -a --ieee=synopsys --std=08 source/hVHDL_uart/uart_transreceiver/uart_rx/uart_rx_pkg.vhd
 ghdl -a --ieee=synopsys --std=08 source/hVHDL_uart/uart_protocol/uart_protocol_pkg.vhd
