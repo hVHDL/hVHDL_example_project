@@ -1,4 +1,4 @@
-<efx:project xmlns:efx="http://www.efinixinc.com/enf_proj" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="hVHDL_example_titanium" description="" last_change_date="Thu Dec 22 2022 12:57:05" location="C:\Users\Jari\mycodeprojects\hVHDL_example_project\efinix_titanium_build\." sw_version="2022.2.322" last_run_state="pass" last_run_tool="efx_pgm" last_run_flow="bitstream" config_result_in_sync="sync" design_ood="sync" place_ood="sync" route_ood="sync" xsi:schemaLocation="http://www.efinixinc.com/enf_proj enf_proj.xsd">
+<efx:project xmlns:efx="http://www.efinixinc.com/enf_proj" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="hVHDL_example_titanium" description="" last_change_date="Thu Dec 22 2022 13:19:31" location="C:\Users\Jari\mycodeprojects\testijee\hVHDL_example_project\efinix_titanium_build\." sw_version="2022.2.322" last_run_state="pass" last_run_tool="efx_pgm" last_run_flow="bitstream" config_result_in_sync="sync" design_ood="sync" place_ood="sync" route_ood="sync" xsi:schemaLocation="http://www.efinixinc.com/enf_proj enf_proj.xsd">
     <efx:device_info>
         <efx:family name="Titanium" />
         <efx:device name="Ti60F225" />
