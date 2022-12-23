@@ -8,7 +8,7 @@ ROOT = Path(__file__).resolve().parent
 VU = VUnit.from_argv()
 
 float_library = VU.add_library("float_library")
-float_library.add_source_files(ROOT / "testbenches/tb_float_filter.vhd")
+float_library.add_source_files(ROOT / "testbenches/filter_simulation.vhd")
 float_library.add_source_files(ROOT / "source/hVHDL_floating_point/float_type_definitions/float_word_length_24_bit_pkg.vhd")
 float_library.add_source_files(ROOT / "source" / "hVHDL_floating_point" / "float_type_definitions/float_type_definitions_pkg.vhd")
 float_library.add_source_files(ROOT / "source" / "hVHDL_floating_point" / "float_arithmetic_operations/*.vhd")
