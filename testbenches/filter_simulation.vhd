@@ -116,7 +116,7 @@ begin
             s_left  := to_signed(left, 32);
             s_right := to_signed(right, 32);
             mult_result := s_left * s_right;
-            return to_integer(mult_result(31 + fractional_bits downto 31-integer_bits));
+            return to_integer(mult_result(31 + fractional_bits downto fractional_bits));
         end "*";
 
         constant filter_input : real := 1.0;
