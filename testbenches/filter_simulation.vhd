@@ -32,8 +32,8 @@ architecture vunit_simulation of filter_simulation_tb is
     signal fix_memory3 : fix_array(0 to 1) := (others => 0);
 
     constant word_length : integer := 31;
-    constant integer_bits : integer := 15;
-    constant fractional_bits : integer := word_length-15;
+    constant integer_bits : integer := 11;
+    constant fractional_bits : integer := word_length-integer_bits;
 
     function to_fixed
     (
@@ -116,7 +116,7 @@ begin
             s_left  := to_signed(left, 32);
             s_right := to_signed(right, 32);
             mult_result := s_left * s_right;
-            return to_integer(mult_result(31 + fractional_bits downto 32-fractional_bits));
+            return to_integer(mult_result(31 + fractional_bits downto 31-integer_bits));
         end "*";
 
         constant filter_input : real := 1.0;
