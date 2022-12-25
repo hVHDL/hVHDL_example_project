@@ -31,8 +31,10 @@ architecture vunit_simulation of filter_simulation_tb is
     signal fix_memory2 : fix_array(0 to 1) := (others => 0);
     signal fix_memory3 : fix_array(0 to 1) := (others => 0);
 
-    constant word_length : integer := 31;
+    constant word_length  : integer := 30;
     constant integer_bits : integer := 11;
+
+    constant double_length   : integer := word_length*2+1;
     constant fractional_bits : integer := word_length-integer_bits;
 
     function to_fixed
@@ -88,6 +90,12 @@ architecture vunit_simulation of filter_simulation_tb is
 
     signal should_be_12 : real := 0.0;
 
+    signal real_filter_output : real := 0.0;
+    signal fixed_filter_output : real := 0.0;
+
+    signal filter_error : real := 0.0;
+    signal max_calculation_error : real := 0.0;
+
 begin
 
 ------------------------------------------------------------------------
@@ -95,6 +103,7 @@ begin
     begin
         test_runner_setup(runner, runner_cfg);
         wait for simtime_in_clocks*clock_period;
+        check(max_calculation_error < 0.1, "calculation error is " & real'image(max_calculation_error));
         test_runner_cleanup(runner); -- Simulation ends here
         wait;
     end process simtime;	
@@ -103,21 +112,22 @@ begin
 ------------------------------------------------------------------------
 
     stimulus : process(simulator_clock)
-
+    --------------------------
         function "*"
         (
             left, right : integer
         )
         return integer
         is
-            variable s_left, s_right : signed(31 downto 0);
-            variable mult_result : signed(63 downto 0);
+            variable s_left, s_right : signed(word_length downto 0);
+            variable mult_result : signed(double_length downto 0);
         begin
-            s_left  := to_signed(left, 32);
-            s_right := to_signed(right, 32);
+            s_left  := to_signed(left  , word_length+1);
+            s_right := to_signed(right , word_length+1);
             mult_result := s_left * s_right;
-            return to_integer(mult_result(31 + fractional_bits downto fractional_bits));
+            return to_integer(mult_result(word_length + fractional_bits downto fractional_bits));
         end "*";
+    --------------------------
 
         constant filter_input : real := 1.0;
     begin
@@ -166,7 +176,13 @@ begin
                 WHEN 4 => fix_memory3(1) <= (fix_filter_out1) * fix_b3(2) - fix_filter_out2 * fix_a3(2);
                 WHEN others => -- do nothing
             end CASE;
-
+            -- check values
+            real_filter_output  <= filter_out2;
+            fixed_filter_output <= real(fix_filter_out2)/2.0**fractional_bits;
+            filter_error <= real_filter_output - fixed_filter_output;
+            if abs(filter_error) > max_calculation_error then
+                max_calculation_error <= abs(filter_error);
+            end if;
             should_be_12 <= real(to_fixed(3.0) * to_fixed(4.0))/2.0**fractional_bits;
 
         end if; -- rising_edge
