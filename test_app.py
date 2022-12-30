@@ -6,7 +6,7 @@ sys.path.append(abs_path + '/fpga_uart_pc_software/')
 
 from uart_communication_functions import *
 
-uart = uart_link("COM19", 5e6)
+uart = uart_link("COM10", 5e6)
 
 print("test reading data from hvhdl example interconnect")
 print("this should be 44252 : ", uart.request_data_from_address(99)) 
@@ -19,4 +19,8 @@ print("this should be again 44252 : ", uart.request_data_from_address(99))
 
 print("now we will get 200 000 data point stream from register 108, which corresponds with floating point filtered output")
 
-uart.plot_data_from_address(105, 200000)
+uart.plot_data_from_address(100, 200000)
+uart.plot_data_from_address(102, 200000)
+uart.plot_data_from_address(103, 200000)
+uart.plot_data_from_address(108, 200000)
+

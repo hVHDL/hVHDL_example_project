@@ -23,20 +23,13 @@ architecture vunit_simulation of filter_simulation_tb is
     type real_array is array (integer range <>) of real;
     type fix_array is array (integer range <>) of integer;
 
-    signal memory1 : real_array(0 to 1) := (others => 0.0);
-    signal memory2 : real_array(0 to 1) := (others => 0.0);
-    signal memory3 : real_array(0 to 1) := (others => 0.0);
-
-    signal fix_memory1 : fix_array(0 to 1) := (others => 0);
-    signal fix_memory2 : fix_array(0 to 1) := (others => 0);
-    signal fix_memory3 : fix_array(0 to 1) := (others => 0);
-
     constant word_length  : integer := 30;
     constant integer_bits : integer := 11;
 
     constant double_length   : integer := word_length*2+1;
     constant fractional_bits : integer := word_length-integer_bits;
 
+    ------------------------------
     function to_fixed
     (
         number : real
@@ -46,6 +39,7 @@ architecture vunit_simulation of filter_simulation_tb is
     begin
         return integer(number * 2.0**fractional_bits);
     end to_fixed;
+    ------------------------------
 
     function to_fixed
     (
@@ -62,6 +56,17 @@ architecture vunit_simulation of filter_simulation_tb is
         return return_array;
     end to_fixed;
 
+    ------------------------------
+    signal state_counter : integer := 0;
+
+    signal memory1 : real_array(0 to 1) := (others => 0.0);
+    signal memory2 : real_array(0 to 1) := (others => 0.0);
+    signal memory3 : real_array(0 to 1) := (others => 0.0);
+
+    signal fix_memory1 : fix_array(0 to 1) := (others => 0);
+    signal fix_memory2 : fix_array(0 to 1) := (others => 0);
+    signal fix_memory3 : fix_array(0 to 1) := (others => 0);
+
     constant b1 : real_array(0 to 2) := (1.00000000e+00,  2.00000000e+00,  1.00000000e+00);
     constant b2 : real_array(0 to 2) := (1.00000000e+00, -2.00000000e+00,  1.00000000e+00);
     constant b3 : real_array(0 to 2) := (1.00000000e+00, -2.00000000e+00,  1.00000000e+00);
@@ -77,8 +82,6 @@ architecture vunit_simulation of filter_simulation_tb is
     constant fix_a1 : fix_array(0 to 2) := to_fixed(a1);
     constant fix_a2 : fix_array(0 to 2) := to_fixed(a2);
     constant fix_a3 : fix_array(0 to 2) := to_fixed(a3);
-
-    signal state_counter : integer := 0;
 
     signal filter_out : real := 0.0;
     signal filter_out1 : real := 0.0;
@@ -120,7 +123,7 @@ begin
         return integer
         is
             variable s_left, s_right : signed(word_length downto 0);
-            variable mult_result : signed(double_length downto 0);
+            variable mult_result     : signed(double_length downto 0);
         begin
             s_left  := to_signed(left  , word_length+1);
             s_right := to_signed(right , word_length+1);
@@ -128,54 +131,56 @@ begin
             return to_integer(mult_result(word_length + fractional_bits downto fractional_bits));
         end "*";
     --------------------------
+        procedure real_testi
+        (
+            signal memory : inout real_array;
+            input         : in real;
+            signal output : inout real;
+            counter       : in integer;
+            b_gains       : in real_array;
+            a_gains       : in real_array;
+            constant counter_offset : in integer
+        ) is
+        begin
+            if counter = 0 + counter_offset then output    <= input * b_gains(0) + memory(0);                       end if;
+            if counter = 1 + counter_offset then memory(0) <= input * b_gains(1) - output * a_gains(1) + memory(1); end if;
+            if counter = 2 + counter_offset then memory(1) <= input * b_gains(2) - output * a_gains(2);             end if;
+        end real_testi;
 
+    --------------------------
+        procedure testi
+        (
+            signal memory : inout fix_array;
+            input         : in integer;
+            signal output : inout integer;
+            counter       : in integer;
+            b_gains       : in fix_array;
+            a_gains       : in fix_array;
+            constant counter_offset : in integer
+        ) is
+        begin
+            if counter = 0 + counter_offset then output    <= input * b_gains(0) + memory(0);                       end if;
+            if counter = 1 + counter_offset then memory(0) <= input * b_gains(1) - output * a_gains(1) + memory(1); end if;
+            if counter = 2 + counter_offset then memory(1) <= input * b_gains(2) - output * a_gains(2);             end if;
+            
+        end testi;
+
+    --------------------------
         constant filter_input : real := 1.0;
     begin
         if rising_edge(simulator_clock) then
             simulation_counter <= simulation_counter + 1;
 
             state_counter <= simulation_counter mod 5;
-            CASE state_counter is
-                WHEN 0 => filter_out <= filter_input * b1(0) + memory1(0);
-                WHEN 1 => memory1(0) <= filter_input * b1(1) - filter_out * a1(1) + memory1(1);
-                WHEN 2 => memory1(1) <= filter_input * b1(2) - filter_out * a1(2);
-                WHEN others => -- do nothing
-            end CASE;
+            real_testi(memory1 , filter_input , filter_out  , state_counter , b1 , a1 , 0);
+            real_testi(memory2 , filter_out   , filter_out1 , state_counter , b2 , a2 , 1);
+            real_testi(memory3 , filter_out1  , filter_out2 , state_counter , b3 , a3 , 2);
 
-            CASE state_counter is 
-                WHEN 1 => filter_out1 <= filter_out * b2(0) + memory2(0);
-                WHEN 2 => memory2(0)  <= filter_out * b2(1) - filter_out1 * a2(1) + memory2(1);
-                WHEN 3 => memory2(1)  <= filter_out * b2(2) - filter_out1 * a2(2);
-                WHEN others => -- do nothing
-            end CASE;
-
-            CASE state_counter is 
-                WHEN 2 => filter_out2 <= filter_out1 * b3(0) + memory3(0);
-                WHEN 3 => memory3(0)  <= filter_out1 * b3(1) - filter_out2 * a3(1) + memory3(1);
-                WHEN 4 => memory3(1)  <= filter_out1 * b3(2) - filter_out2 * a3(2);
-                WHEN others => -- do nothing
-            end CASE;
         ------------------------------------------------------------------------
-            CASE state_counter is
-                WHEN 0 => fix_filter_out <= to_fixed(filter_input) * fix_b1(0) + fix_memory1(0);
-                WHEN 1 => fix_memory1(0) <= to_fixed(filter_input) * fix_b1(1) - fix_filter_out * fix_a1(1) + fix_memory1(1);
-                WHEN 2 => fix_memory1(1) <= to_fixed(filter_input) * fix_b1(2) - fix_filter_out * fix_a1(2);
-                WHEN others => -- do nothing
-            end CASE;
+            testi(fix_memory1 , to_fixed(filter_input) , fix_filter_out  , state_counter , fix_b1 , fix_a1 , 0);
+            testi(fix_memory2 , fix_filter_out         , fix_filter_out1 , state_counter , fix_b2 , fix_a2 , 1);
+            testi(fix_memory3 , fix_filter_out1        , fix_filter_out2 , state_counter , fix_b3 , fix_a3 , 2);
 
-            CASE state_counter is
-                WHEN 1 => fix_filter_out1 <=(fix_filter_out) * fix_b2(0) + fix_memory2(0);
-                WHEN 2 => fix_memory2(0) <= (fix_filter_out) * fix_b2(1) - fix_filter_out1 * fix_a2(1) + fix_memory2(1);
-                WHEN 3 => fix_memory2(1) <= (fix_filter_out) * fix_b2(2) - fix_filter_out1 * fix_a2(2);
-                WHEN others => -- do nothing
-            end CASE;
-
-            CASE state_counter is
-                WHEN 2 => fix_filter_out2 <=(fix_filter_out1) * fix_b3(0) + fix_memory3(0);
-                WHEN 3 => fix_memory3(0) <= (fix_filter_out1) * fix_b3(1) - fix_filter_out2 * fix_a3(1) + fix_memory3(1);
-                WHEN 4 => fix_memory3(1) <= (fix_filter_out1) * fix_b3(2) - fix_filter_out2 * fix_a3(2);
-                WHEN others => -- do nothing
-            end CASE;
             -- check values
             real_filter_output  <= filter_out2;
             fixed_filter_output <= real(fix_filter_out2)/2.0**fractional_bits;

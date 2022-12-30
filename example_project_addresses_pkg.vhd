@@ -9,7 +9,7 @@ package example_project_addresses_pkg is
     constant input_sine_address                            : integer := 100;
     constant input_sine_angle_address                      : integer := 101;
     constant noise_address                                 : integer := 102;
-    constant noisy_sine_address                            : integer := 102;
+    constant noisy_sine_address                            : integer := 103;
 
     constant fixed_point_filter_output_address             : integer := 104;
     constant fixed_point_filter_scaled_output_address      : integer := 105;
