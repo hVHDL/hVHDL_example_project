@@ -8,10 +8,12 @@ package hvhdl_example_interconnect_pkg is
 
     type hvhdl_example_interconnect_FPGA_input_group is record
         communications_FPGA_in : communications_FPGA_input_group;
+        sdm_data : std_logic;
     end record;
     
     type hvhdl_example_interconnect_FPGA_output_group is record
         communications_FPGA_out : communications_FPGA_output_group;
+        sdm_clock : std_logic;
     end record;
     
 end package hvhdl_example_interconnect_pkg;
@@ -66,8 +68,28 @@ architecture rtl of hvhdl_example_interconnect is
     signal data_in_example_interconnect : integer range 0 to 2**16-1 := 44252;
 
     constant filter_time_constant : real := 0.001;
+    signal sdm_clock_counter : integer range 0 to 15;
 
 begin
+
+    sdm_clock_generator : process(system_clock)
+    begin
+        if rising_edge(system_clock) then
+            if sdm_clock_counter > 0 then
+                sdm_clock_counter <= sdm_clock_counter -1;
+            else
+                sdm_clock_counter <= 5;
+            end if;
+
+            if sdm_clock_counter > 5/2 then
+                hvhdl_example_interconnect_FPGA_out.sdm_clock <= '1';
+            else
+                hvhdl_example_interconnect_FPGA_out.sdm_clock <= '0';
+            end if;
+
+        end if; --rising_edge
+    end process sdm_clock_generator;	
+
 
     create_noisy_sine : process(system_clock)
     begin

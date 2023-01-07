@@ -20,14 +20,61 @@ architecture fixed_point of example_filter_entity is
     signal multiplier2 : multiplier_record := init_multiplier;
     signal process_counter : integer range 0 to 3 := 3;
 
+------------------------------------------------------------------------
+    function fixed_point
+    (
+        number : real; fractional_bits : natural
+    )
+    return integer
+    is
+        variable returned_value : integer;
+    begin
+        returned_value := integer(number*2.0**fractional_bits);
+        return returned_value;
+    end fixed_point;
+------------------------------------------------------------------------
+    function fraction_length
+    (
+        number_of_bits : natural
+    )
+    return natural
+    is
+    begin
+        return number_of_bits;
+    end fraction_length;
+
+------------------------------------------------------------------------
+    function integer_bit_length
+    (
+        number_of_integer_bits : natural
+    )
+    return natural
+    is
+    begin
+
+        return 17 - number_of_integer_bits;
+        
+    end integer_bit_length;
+
 begin
 
     fixed_point_filter : process(clock)
+        variable radix : integer := 15;
+
+        impure function "*" ( left, right : integer)
+        return integer
+        is
+            constant word_length : integer := 18;
+        begin
+            return work.multiplier_pkg.radix_multiply(left,right, word_length, radix);
+        end "*";
+
     begin
         if rising_edge(clock) then
             init_bus(bus_out);
-            connect_read_only_data_to_address(bus_in, bus_out, fixed_point_filter_output_address, get_filter_output(filter)/2 + 32678);
-            connect_read_only_data_to_address(bus_in, bus_out, fixed_point_filter_scaled_output_address, scaled_sine/2 + 32678);
+            radix := 12;
+            connect_read_only_data_to_address(bus_in , bus_out , fixed_point_filter_output_address        , get_filter_output(filter)*fixed_point(1.8, fraction_length(12)) + fixed_point(0.5, integer_bit_length(1)));
+            connect_read_only_data_to_address(bus_in , bus_out , fixed_point_filter_scaled_output_address , scaled_sine/2 + fixed_point(0.5, integer_bit_length(1)));
             create_multiplier(multiplier2);
             create_first_order_filter(filter => filter , multiplier => multiplier2 , time_constant => filter_time_constant);
 
@@ -36,19 +83,8 @@ begin
                 process_counter <= 0;
             end if;
 
-            CASE process_counter is
-                WHEN 0 =>
-                    if filter_is_ready(filter) then
-                        multiply(multiplier2, get_filter_output(filter), integer(32768.0*3.3942));
-                        process_counter <= process_counter + 1;
-                    end if;
-                WHEN 1 => 
-                    if multiplier_is_ready(multiplier2) then
-                        scaled_sine <= get_multiplier_result(multiplier2, 15);
-                        process_counter <= process_counter + 1;
-                    end if;
-                WHEN others => -- wait for start
-            end CASE;
+            radix := 15;
+            scaled_sine <= get_filter_output(filter) * fixed_point(2.10644572391518, integer_bit_length(2));
 
         end if; --rising_edge
     end process;	

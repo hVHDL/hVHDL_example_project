@@ -1,4 +1,6 @@
 echo off
+ghdl -a --ieee=synopsys --std=08 testbenches/sos_pkg.vhd
+
 ghdl -a --ieee=synopsys --std=08 example_project_addresses_pkg.vhd
 
 ghdl -a --ieee=synopsys --std=08 source/hVHDL_fpga_interconnect/interconnect_configuration/data_15_address_15_bit_pkg.vhd
@@ -47,3 +49,4 @@ ghdl -a --ieee=synopsys --std=08 source/hvhdl_example_interconnect/hvhdl_example
 
 
 ghdl -a --ieee=synopsys --std=08 source/efinix_top.vhd
+

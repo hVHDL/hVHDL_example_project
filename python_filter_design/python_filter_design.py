@@ -98,18 +98,18 @@ print('Cut-off frequency=', wc)
 
 # Design digital Chebyshev type-1 filter
 # using signal.cheby1 function
-# z, p, k = signal.cheby1(N, Ap, wc, 'bandpass')
+z, p, k = signal.cheby1(N, Ap, wc, 'bandpass', output='sos')
 #
 # # Print numerator and denomerator coefficients
 # # of the filter
-# print('Numerator Coefficients:', z)
-# print('Denominator Coefficients:', p)
+print('Numerator Coefficients:', z)
+print('Denominator Coefficients:', p)
 #
 #
 # # Call mfreqz to plot the magnitude and phase response
-# mfreqz(z, p, Fs)
+mfreqz(z, p, Fs)
 
 # Call impz function to plot impulse
 # and step response of the filter
-# impz(z,p)
+impz(z,p)
 
