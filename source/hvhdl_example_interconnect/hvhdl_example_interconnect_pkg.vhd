@@ -31,6 +31,8 @@ library ieee;
     use work.first_order_filter_pkg.all;
     use work.example_filter_entity_pkg.all;
 
+    use work.sigma_delta_cic_filter_pkg.all;
+
 entity hvhdl_example_interconnect is
     port (
         system_clock : in std_logic;
@@ -70,6 +72,30 @@ architecture rtl of hvhdl_example_interconnect is
     constant filter_time_constant : real := 0.001;
     signal sdm_clock_counter : integer range 0 to 15;
 
+    signal cic_filter : cic_filter_record := init_cic_filter;
+
+    type intarray is array (integer range 0 to 2) of integer range -2**22 to 2**22-1;
+    signal filter_bank : intarray := (others => 0);
+
+    function filter_with_bank
+    (
+        filterbank : intarray;
+        input_bit : std_logic
+    )
+    return intarray
+    is
+        variable data : unsigned(22 downto 0);
+        variable filtered_data : intarray;
+    begin
+        data := (22=>input_bit, others => '0');
+        filtered_data(0) := filterbank(0) + (to_integer(data) - filterbank(0))/32;
+
+        for i in 1 to intarray'high loop
+            filtered_data(i) := filterbank(i) + (filterbank(i-1) - filterbank(i))/32;
+        end loop;
+        return filtered_data;
+    end filter_with_bank;
+
 begin
 
     sdm_clock_generator : process(system_clock)
@@ -85,6 +111,11 @@ begin
                 hvhdl_example_interconnect_FPGA_out.sdm_clock <= '1';
             else
                 hvhdl_example_interconnect_FPGA_out.sdm_clock <= '0';
+            end if;
+
+            if sdm_clock_counter = 4 then
+                calculate_cic_filter(cic_filter, hvhdl_example_interconnect_FPGA_in.sdm_data);
+                filter_bank <= filter_with_bank(filter_bank, hvhdl_example_interconnect_FPGA_in.sdm_data);
             end if;
 
         end if; --rising_edge
@@ -105,6 +136,9 @@ begin
             connect_read_only_data_to_address(bus_from_master , bus_from_interconnect , input_sine_angle_address          , angle);
             connect_read_only_data_to_address(bus_from_master , bus_from_interconnect , noise_address                     , to_integer(signed(prbs7))+32768);
             connect_read_only_data_to_address(bus_from_master , bus_from_interconnect , noisy_sine_address                , sine_with_noise/2 + 32768);
+
+            connect_read_only_data_to_address(bus_from_master , bus_from_interconnect , 255                , get_cic_filter_output(cic_filter)+32768);
+            connect_read_only_data_to_address(bus_from_master , bus_from_interconnect , 256                , filter_bank(2)/2**(22-16));
             connect_data_to_address(bus_from_master           , bus_from_interconnect , example_interconnect_data_address , data_in_example_interconnect);
 
             if i > 0 then

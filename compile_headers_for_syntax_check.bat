@@ -1,6 +1,9 @@
 echo off
 ghdl -a --ieee=synopsys --std=08 testbenches/sos_pkg.vhd
 
+ghdl -a --ieee=synopsys --std=08 source/hVHDL_analog_to_digital_drivers/sigma_delta/sigma_delta_cic_filter_pkg.vhd
+
+
 ghdl -a --ieee=synopsys --std=08 example_project_addresses_pkg.vhd
 
 ghdl -a --ieee=synopsys --std=08 source/hVHDL_fpga_interconnect/interconnect_configuration/data_15_address_15_bit_pkg.vhd
