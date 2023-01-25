@@ -1,8 +1,8 @@
 echo off
 ghdl -a --ieee=synopsys --std=08 testbenches/sos_pkg.vhd
+ghdl -a --ieee=synopsys --std=08 testbenches/iir_filter_pkg.vhd
 
 ghdl -a --ieee=synopsys --std=08 source/hVHDL_analog_to_digital_drivers/sigma_delta/sigma_delta_cic_filter_pkg.vhd
-
 
 ghdl -a --ieee=synopsys --std=08 example_project_addresses_pkg.vhd
 
@@ -46,6 +46,7 @@ ghdl -a --ieee=synopsys --std=08 source/hVHDL_uart/uart_transreceiver/uart_tx/ua
 ghdl -a --ieee=synopsys --std=08 source/hVHDL_uart/uart_transreceiver/uart_rx/uart_rx_pkg.vhd
 ghdl -a --ieee=synopsys --std=08 source/hVHDL_uart/uart_protocol/uart_protocol_pkg.vhd
 
+ghdl -a --ieee=synopsys --std=08 source/hvhdl_example_interconnect/sigma_delta_module/sigma_delta_filter_pkg.vhd
 
 ghdl -a --ieee=synopsys --std=08 source/hvhdl_example_interconnect/communication/communications.vhd
 ghdl -a --ieee=synopsys --std=08 source/hvhdl_example_interconnect/hvhdl_example_interconnect_pkg.vhd

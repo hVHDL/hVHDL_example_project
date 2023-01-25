@@ -3,6 +3,8 @@ LIBRARY ieee  ;
     USE ieee.std_logic_1164.all  ; 
     use ieee.math_real.all;
 
+    use work.iir_filter_pkg.all;
+
 library vunit_lib;
 context vunit_lib.vunit_context;
 
@@ -19,42 +21,6 @@ architecture vunit_simulation of filter_simulation_tb is
     signal simulation_counter  : natural   := 0;
     -----------------------------------
     -- simulation specific signals ----
-
-    type real_array is array (integer range <>) of real;
-    type fix_array is array (integer range <>) of integer;
-
-    constant word_length  : integer := 30;
-    constant integer_bits : integer := 11;
-
-    constant double_length   : integer := word_length*2+1;
-    constant fractional_bits : integer := word_length-integer_bits;
-
-    ------------------------------
-    function to_fixed
-    (
-        number : real
-    )
-    return integer
-    is
-    begin
-        return integer(number * 2.0**fractional_bits);
-    end to_fixed;
-    ------------------------------
-
-    function to_fixed
-    (
-        numbers : real_array
-    )
-    return fix_array
-    is
-        variable return_array : fix_array(numbers'range);
-    begin
-        for i in numbers'range loop
-            return_array(i) := to_fixed(numbers(i));
-        end loop;
-
-        return return_array;
-    end to_fixed;
 
     ------------------------------
     signal state_counter : integer := 0;
@@ -91,8 +57,6 @@ architecture vunit_simulation of filter_simulation_tb is
     signal fix_filter_out1 : integer := 0;
     signal fix_filter_out2 : integer := 0;
 
-    signal should_be_12 : real := 0.0;
-
     signal real_filter_output : real := 0.0;
     signal fixed_filter_output : real := 0.0;
 
@@ -116,21 +80,6 @@ begin
 
     stimulus : process(simulator_clock)
     --------------------------
-        function "*"
-        (
-            left, right : integer
-        )
-        return integer
-        is
-            variable s_left, s_right : signed(word_length downto 0);
-            variable mult_result     : signed(double_length downto 0);
-        begin
-            s_left  := to_signed(left  , word_length+1);
-            s_right := to_signed(right , word_length+1);
-            mult_result := s_left * s_right;
-            return to_integer(mult_result(word_length + fractional_bits downto fractional_bits));
-        end "*";
-    --------------------------
         procedure real_testi
         (
             signal memory : inout real_array;
@@ -148,23 +97,6 @@ begin
         end real_testi;
 
     --------------------------
-        procedure testi
-        (
-            signal memory : inout fix_array;
-            input         : in integer;
-            signal output : inout integer;
-            counter       : in integer;
-            b_gains       : in fix_array;
-            a_gains       : in fix_array;
-            constant counter_offset : in integer
-        ) is
-        begin
-            if counter = 0 + counter_offset then output    <= input * b_gains(0) + memory(0);                       end if;
-            if counter = 1 + counter_offset then memory(0) <= input * b_gains(1) - output * a_gains(1) + memory(1); end if;
-            if counter = 2 + counter_offset then memory(1) <= input * b_gains(2) - output * a_gains(2);             end if;
-            
-        end testi;
-
     --------------------------
         constant filter_input : real := 1.0;
     begin
@@ -188,7 +120,6 @@ begin
             if abs(filter_error) > max_calculation_error then
                 max_calculation_error <= abs(filter_error);
             end if;
-            should_be_12 <= real(to_fixed(3.0) * to_fixed(4.0))/2.0**fractional_bits;
 
         end if; -- rising_edge
     end process stimulus;	

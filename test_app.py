@@ -6,7 +6,7 @@ sys.path.append(abs_path + '/fpga_uart_pc_software/')
 
 from uart_communication_functions import *
 
-uart = uart_link("COM14", 5e6)
+uart = uart_link("COM10", 5e6)
 
 print("test reading data from hvhdl example interconnect")
 print("this should be 44252 : ", uart.request_data_from_address(99)) 
