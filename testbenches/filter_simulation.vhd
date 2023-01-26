@@ -15,7 +15,7 @@ end;
 architecture vunit_simulation of filter_simulation_tb is
 
     constant clock_period      : time    := 1 ns;
-    constant simtime_in_clocks : integer := 3000;
+    constant simtime_in_clocks : integer := 5000;
     
     signal simulator_clock     : std_logic := '0';
     signal simulation_counter  : natural   := 0;
@@ -33,13 +33,12 @@ architecture vunit_simulation of filter_simulation_tb is
     signal fix_memory2 : fix_array(0 to 1) := (others => 0);
     signal fix_memory3 : fix_array(0 to 1) := (others => 0);
 
-    constant b1 : real_array(0 to 2) := (1.00000000e+00,  2.00000000e+00,  1.00000000e+00);
-    constant b2 : real_array(0 to 2) := (1.00000000e+00, -2.00000000e+00,  1.00000000e+00);
-    constant b3 : real_array(0 to 2) := (1.00000000e+00, -2.00000000e+00,  1.00000000e+00);
-
-    constant a1 : real_array(0 to 2) := (1.0 , -1.5799684  , 0.9714939);
-    constant a2 : real_array(0 to 2) := (1.0 , -1.61181083 , 0.97251271);
-    constant a3 : real_array(0 to 2) := (1.0 , -1.64588207 , 0.98883429);
+    constant b1 : real_array(0 to 2) := (1.10112824474792e-003 , 2.19578135597009e-003  , 1.09466577037144e-003);
+    constant b2 : real_array(0 to 2) := (1.16088276025753e-003 , 2.32172985621810e-003  , 1.16086054728631e-003);
+    constant b3 : real_array(0 to 2) := (42.4644359704529e-003 , 85.1798866651586e-003  , 42.7159465798333e-003) / 58.875768;
+    constant a1 : real_array(0 to 2) := (1.00000000000000e+000 , -1.97840025988718e+000 , 987.883963652581e-003);
+    constant a2 : real_array(0 to 2) := (1.00000000000000e+000 , -1.96191974906017e+000 , 967.208461633959e-003);
+    constant a3 : real_array(0 to 2) := (1.00000000000000e+000 , -1.95425095615658e+000 , 955.427665692536e-003);
 
     constant fix_b1 : fix_array(0 to 2) := to_fixed(b1);
     constant fix_b2 : fix_array(0 to 2) := to_fixed(b2);

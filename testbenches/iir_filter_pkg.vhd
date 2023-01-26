@@ -7,8 +7,8 @@ package iir_filter_pkg is
     type real_array is array (integer range <>) of real;
     type fix_array is array (integer range <>) of integer;
 
-    constant word_length  : integer := 30;
-    constant integer_bits : integer := 11;
+    constant word_length  : integer := 23;
+    constant integer_bits : integer := 8;
     constant fractional_bits : integer := word_length-integer_bits;
 
 ------------------------------------------------------------------------
@@ -27,7 +27,16 @@ package iir_filter_pkg is
         a_gains       : in fix_array;
         constant counter_offset : in integer);
 ------------------------------------------------------------------------
-
+    function "*" (
+        left : real_array;
+        right : real)
+    return real_array;
+------------------------------------------------------------------------
+    function "/" (
+        left : real_array;
+        right : real)
+    return real_array;
+------------------------------------------------------------------------
 
 end package iir_filter_pkg;
 
@@ -93,5 +102,40 @@ package body iir_filter_pkg is
         if counter = 2 + counter_offset then memory(1) <= input * b_gains(2) - output * a_gains(2);             end if;
         
     end testi;
+
+    function "*"
+    (
+        left : real_array;
+        right : real
+    )
+    return real_array
+    is
+        variable returned_value : real_array(left'range);
+    begin
+
+        for i in left'range loop
+            returned_value(i) := left(i) * right;
+        end loop;
+
+        return returned_value;
+        
+    end "*";
+
+    function "/"
+    (
+        left : real_array;
+        right : real
+    )
+    return real_array
+    is
+        variable returned_value : real_array(left'range);
+    begin
+        for i in left'range loop
+            returned_value(i) := left(i) / right;
+        end loop;
+
+        return returned_value;
+    end "/";
+
 
 end package body iir_filter_pkg;

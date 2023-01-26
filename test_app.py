@@ -20,7 +20,7 @@ print("this should be again 44252 : ", uart.request_data_from_address(99))
 print("now we will get 200 000 data point stream from register 108, which corresponds with floating point filtered output")
 
 input_data = uart.stream_data_from_address(255, 15000)
-input1_data = uart.stream_data_from_address(256, 15000)
+input1_data = uart.stream_data_from_address(261, 15000)
 # float_test = uart.stream_data_from_address(108, 50000)
 # fixed_test = uart.stream_data_from_address(105, 50000)
 pyplot.subplot(1, 2, 1)
