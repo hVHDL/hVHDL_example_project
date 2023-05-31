@@ -56,8 +56,8 @@ architecture rtl of hvhdl_example_interconnect is
     signal floating_point_filter_in : example_filter_input_record := init_example_filter_input;
     signal fixed_point_filter_in    : example_filter_input_record := init_example_filter_input;
 
-    alias bus_from_master is communications_data_out.bus_out;
-    alias bus_to_master   is communications_data_in.bus_in;
+    signal bus_from_communications : fpga_interconnect_record := init_fpga_interconnect;
+    signal bus_to_communications   : fpga_interconnect_record := init_fpga_interconnect;
 
     signal bus_from_floating_point_filter : fpga_interconnect_record := init_fpga_interconnect;
     signal bus_from_fixed_point_filter    : fpga_interconnect_record := init_fpga_interconnect;
@@ -79,11 +79,11 @@ begin
             init_example_filter(fixed_point_filter_in);
 
             init_bus(bus_from_interconnect);
-            connect_read_only_data_to_address(bus_from_master , bus_from_interconnect , input_sine_address                , get_sine(sincos)/2 + 32768);
-            connect_read_only_data_to_address(bus_from_master , bus_from_interconnect , input_sine_angle_address          , angle);
-            connect_read_only_data_to_address(bus_from_master , bus_from_interconnect , noise_address                     , to_integer(signed(prbs7))+32768);
-            connect_read_only_data_to_address(bus_from_master , bus_from_interconnect , noisy_sine_address                , sine_with_noise/2 + 32768);
-            connect_data_to_address(bus_from_master           , bus_from_interconnect , example_interconnect_data_address , data_in_example_interconnect);
+            connect_read_only_data_to_address(bus_from_communications , bus_from_interconnect , input_sine_address                , get_sine(sincos)/2 + 32768);
+            connect_read_only_data_to_address(bus_from_communications , bus_from_interconnect , input_sine_angle_address          , angle);
+            connect_read_only_data_to_address(bus_from_communications , bus_from_interconnect , noise_address                     , to_integer(signed(prbs7))+32768);
+            connect_read_only_data_to_address(bus_from_communications , bus_from_interconnect , noisy_sine_address                , sine_with_noise/2 + 32768);
+            connect_data_to_address(bus_from_communications           , bus_from_interconnect , example_interconnect_data_address , data_in_example_interconnect);
 
             if i > 0 then
                 i <= (i - 1);
@@ -109,19 +109,19 @@ begin
 ---------------
     u_floating_point_filter : entity work.example_filter_entity(float)
         generic map(filter_time_constant => filter_time_constant)
-        port map(system_clock, floating_point_filter_in, bus_from_master, bus_from_floating_point_filter);
+        port map(system_clock, floating_point_filter_in, bus_from_communications, bus_from_floating_point_filter);
 
 ---------------
     u_fixed_point_filter : entity work.example_filter_entity(fixed_point)
         generic map(filter_time_constant => filter_time_constant)
-        port map(system_clock, fixed_point_filter_in, bus_from_master, bus_from_fixed_point_filter);
+        port map(system_clock, fixed_point_filter_in, bus_from_communications, bus_from_fixed_point_filter);
 
 ------------------------------------------------------------------------
 ------------------------------------------------------------------------
     combine_buses : process(system_clock)
     begin
         if rising_edge(system_clock) then
-            bus_to_master <= bus_from_interconnect and bus_from_floating_point_filter and bus_from_fixed_point_filter;
+            bus_to_communications <= bus_from_interconnect and bus_from_floating_point_filter and bus_from_fixed_point_filter;
         end if; --rising_edge
     end process combine_buses;	
 
@@ -132,7 +132,7 @@ begin
         communications_clocks,
         hvhdl_example_interconnect_FPGA_in.communications_FPGA_in,
         hvhdl_example_interconnect_FPGA_out.communications_FPGA_out,
-        communications_data_in ,
-        communications_data_out);
+        bus_to_communications ,
+        bus_from_communications);
 ------------------------------------------------------------------------
 end rtl;

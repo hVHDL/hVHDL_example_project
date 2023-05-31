@@ -15,3 +15,4 @@ efinix_build/*/*
 ecp5_build/IP/testi/*
 *.isf
 __pycache__
+*.o
