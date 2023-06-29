@@ -1,13 +1,14 @@
 add_vhdl_file_to_project $source_folder/../example_project_addresses_pkg.vhd
 
 add_vhdl_file_to_project $source_folder/efinix_top.vhd
+add_vhdl_file_to_project $source_folder/hVHDL_math_library/multiplier/configuration/multiply_with_2_input_and_output_registers_pkg.vhd
 add_vhdl_file_to_project $source_folder/hVHDL_math_library/multiplier/multiplier_base_types_18bit_pkg.vhd
 add_vhdl_file_to_project $source_folder/hVHDL_math_library/multiplier/multiplier_pkg.vhd
 add_vhdl_file_to_project $source_folder/hVHDL_math_library/sincos/sincos_pkg.vhd
 add_vhdl_file_to_project $source_folder/hVHDL_math_library/first_order_filter/first_order_filter_pkg.vhd
 
-add_vhdl_file_to_project $source_folder/hVHDL_uart/uart_transreceiver/uart_rx/uart_rx_pkg.vhd
-add_vhdl_file_to_project $source_folder/hVHDL_uart/uart_transreceiver/uart_tx/uart_tx_pkg.vhd
+add_vhdl_file_to_project $source_folder/hVHDL_uart/uart_rx/uart_rx_pkg.vhd
+add_vhdl_file_to_project $source_folder/hVHDL_uart/uart_tx/uart_tx_pkg.vhd
 
 add_vhdl_file_to_project $source_folder/hVHDL_uart/uart_protocol/uart_protocol_pkg.vhd
 
