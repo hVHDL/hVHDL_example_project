@@ -35,3 +35,9 @@ add_vhdl_file_to_project $source_folder/hVHDL_floating_point/float_adder/float_a
 add_vhdl_file_to_project $source_folder/hVHDL_floating_point/float_multiplier/float_multiplier_pkg.vhd                             
 add_vhdl_file_to_project $source_folder/hVHDL_floating_point/float_alu/float_alu_pkg.vhd                                           
 add_vhdl_file_to_project $source_folder/hVHDL_floating_point/float_first_order_filter/float_first_order_filter_pkg.vhd             
+
+add_vhdl_file_to_project $source_folder/hVHDL_math_library/square_root/fixed_isqrt_pkg.vhd                 
+add_vhdl_file_to_project $source_folder/hVHDL_math_library/square_root/fixed_sqrt_pkg.vhd                 
+add_vhdl_file_to_project $source_folder/hVHDL_math_library/fixed_point_scaling/fixed_point_scaling_pkg.vhd
+add_vhdl_file_to_project $source_folder/hVHDL_math_library/real_to_fixed/real_to_fixed_pkg.vhd           
+add_vhdl_file_to_project $source_folder/hvhdl_example_interconnect/test_sqrt.vhd                        
