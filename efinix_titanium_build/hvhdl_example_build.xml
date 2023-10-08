@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<efx:project name="hVHDL_example_titanium" description="" last_change_date="Thu June 29 2023 11:56:24" location="C:/Users/jaarh/mycodeprojects/hVHDL_example_project/efinix_titanium_build" sw_version="2022.2.322.5.7" last_run_state="pass" last_run_tool="efx_map" last_run_flow="syn" config_result_in_sync="sync" design_ood="sync" place_ood="sync" route_ood="sync" xmlns:efx="http://www.efinixinc.com/enf_proj" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.efinixinc.com/enf_proj enf_proj.xsd">
+<efx:project name="hVHDL_example_titanium" description="" last_change_date="Sun October 8 2023 15:01:24" location="C:/codeprojects/hVHDL_example_project/efinix_titanium_build" sw_version="2023.1.150.4.10" last_run_state="pass" last_run_tool="efx_pgm" last_run_flow="bitstream" config_result_in_sync="sync" design_ood="sync" place_ood="sync" route_ood="sync" xmlns:efx="http://www.efinixinc.com/enf_proj" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.efinixinc.com/enf_proj enf_proj.xsd">
     <efx:device_info>
         <efx:family name="Titanium"/>
         <efx:device name="Ti60F225"/>
@@ -38,6 +38,10 @@
         <efx:design_file name="../source/hVHDL_math_library/multiplier/configuration/multiply_with_1_input_and_output_registers_pkg.vhd" version="default" library="default"/>
         <efx:design_file name="../source/hVHDL_uart/uart_rx/uart_rx_pkg.vhd" version="default" library="default"/>
         <efx:design_file name="../source/hVHDL_uart/uart_tx/uart_tx_pkg.vhd" version="default" library="default"/>
+        <efx:design_file name="../source/hVHDL_math_library/square_root/fixed_isqrt_pkg.vhd" version="default" library="default"/>
+        <efx:design_file name="../source/hVHDL_math_library/square_root/fixed_sqrt_pkg.vhd" version="default" library="default"/>
+        <efx:design_file name="../source/hVHDL_math_library/fixed_point_scaling/fixed_point_scaling_pkg.vhd" version="default" library="default"/>
+        <efx:design_file name="../source/hVHDL_math_library/real_to_fixed/real_to_fixed_pkg.vhd" version="default" library="default"/>
         <efx:top_vhdl_arch name="rtl"/>
     </efx:design_info>
     <efx:constraint_info>
@@ -75,6 +79,9 @@
         <efx:param name="dsp-input-regs-packing" value="1" value_type="e_option"/>
         <efx:param name="pack-luts-to-comb4" value="0" value_type="e_option"/>
         <efx:param name="min-ce-fanout" value="0" value_type="e_integer"/>
+        <efx:param name="mult-decomp-retime" value="0" value_type="e_option"/>
+        <efx:param name="optimize-zero-init-rom" value="1" value_type="e_option"/>
+        <efx:param name="insert-carry-skip" value="0" value_type="e_option"/>
     </efx:synthesis>
     <efx:place_and_route tool_name="efx_pnr">
         <efx:param name="work_dir" value="work_pnr" value_type="e_string"/>
@@ -84,6 +91,7 @@
         <efx:param name="seed" value="1" value_type="e_integer"/>
         <efx:param name="placer_effort_level" value="2" value_type="e_option"/>
         <efx:param name="max_threads" value="-1" value_type="e_integer"/>
+        <efx:param name="beneficial_skew" value="off" value_type="e_option"/>
     </efx:place_and_route>
     <efx:bitstream_generation tool_name="efx_pgm">
         <efx:param name="mode" value="active" value_type="e_option"/>

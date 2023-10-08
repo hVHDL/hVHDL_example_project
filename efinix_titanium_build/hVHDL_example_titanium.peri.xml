@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<efxpt:design_db name="hVHDL_example_titanium" device_def="Ti60F225" location="C:\Users\Jari\mycodeprojects\hVHDL_example_project\efinix_titanium_build" version="2022.1.226.4.3" db_version="20221999" last_change_date="Thu Dec 15 06:30:25 2022" xmlns:efxpt="http://www.efinixinc.com/peri_design_db" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.efinixinc.com/peri_design_db peri_design_db.xsd ">
+<efxpt:design_db name="hVHDL_example_titanium" device_def="Ti60F225" location="C:\codeprojects\hVHDL_example_project\efinix_titanium_build" version="2023.1.150.4.10" db_version="20231004" last_change_date="Sun Oct  8 14:58:44 2023" xmlns:efxpt="http://www.efinixinc.com/peri_design_db" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.efinixinc.com/peri_design_db peri_design_db.xsd ">
     <efxpt:device_info>
         <efxpt:iobank_info>
             <efxpt:iobank name="1A" iostd="1.8 V LVCMOS" is_dyn_voltage="false" mode_sel_name="1A_MODE_SEL"/>
@@ -102,13 +102,13 @@
                 <efxpt:pin name="" type_name="SHIFT" is_bus="true"/>
                 <efxpt:pin name="" type_name="SHIFT_SEL" is_bus="true"/>
             </efxpt:gen_pin>
-            <efxpt:comp_output_clock name="main_pll_CLKOUT1" number="0" out_divider="24" is_dyn_phase="false" phase_setting="0">
+            <efxpt:comp_output_clock name="main_pll_CLKOUT1" number="0" out_divider="24" is_dyn_phase="false" phase_setting="0" is_inverted="false">
                 <efxpt:gen_pin/>
             </efxpt:comp_output_clock>
-            <efxpt:comp_output_clock name="clock_120mhz" number="1" out_divider="20" is_dyn_phase="false" phase_setting="0">
+            <efxpt:comp_output_clock name="clock_120mhz" number="1" out_divider="20" is_dyn_phase="false" phase_setting="0" is_inverted="false">
                 <efxpt:gen_pin/>
             </efxpt:comp_output_clock>
-            <efxpt:comp_prop is_outclk_inverted="false"/>
+            <efxpt:comp_prop/>
         </efxpt:pll>
     </efxpt:pll_info>
     <efxpt:osc_info/>
