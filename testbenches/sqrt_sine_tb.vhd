@@ -1,14 +1,16 @@
+------------------------------------------------------------------------
 LIBRARY ieee  ; 
     USE ieee.NUMERIC_STD.all  ; 
     USE ieee.std_logic_1164.all  ; 
     use ieee.math_real.all;
 
-library vunit_lib;
-context vunit_lib.vunit_context;
 
 	use work.multiplier_pkg.all;
 	use work.sincos_pkg.all;
     use work.fixed_sqrt_pkg.all;
+
+library vunit_lib;
+context vunit_lib.vunit_context;
 
 entity sqrt_sine_tb is
   generic (runner_cfg : string);
@@ -63,7 +65,7 @@ begin
             end if;
 
             if sincos_is_ready(sincos) then
-                request_sqrt(sqrt, to_signed(angle/2+200, 18));
+                request_sqrt(sqrt, to_signed(get_sine(sincos)/2+20000, 18));
             end if;
 
             if sqrt_is_ready(sqrt) then

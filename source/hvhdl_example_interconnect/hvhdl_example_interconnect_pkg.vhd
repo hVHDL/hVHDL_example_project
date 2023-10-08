@@ -62,6 +62,7 @@ architecture rtl of hvhdl_example_interconnect is
     signal bus_from_floating_point_filter : fpga_interconnect_record := init_fpga_interconnect;
     signal bus_from_fixed_point_filter    : fpga_interconnect_record := init_fpga_interconnect;
     signal bus_from_interconnect          : fpga_interconnect_record := init_fpga_interconnect;
+    signal bus_from_sqrt_test          : fpga_interconnect_record := init_fpga_interconnect;
 
     signal data_in_example_interconnect : integer range 0 to 2**16-1 := 44252;
 
@@ -115,13 +116,16 @@ begin
     u_fixed_point_filter : entity work.example_filter_entity(fixed_point)
         generic map(filter_time_constant => filter_time_constant)
         port map(system_clock, fixed_point_filter_in, bus_from_communications, bus_from_fixed_point_filter);
+---------------
+    u_test_sqrt : entity work.test_sqrt
+        port map(system_clock, angle/2, sincos_is_ready(sincos), bus_from_communications, bus_from_sqrt_test);
 
 ------------------------------------------------------------------------
 ------------------------------------------------------------------------
     combine_buses : process(system_clock)
     begin
         if rising_edge(system_clock) then
-            bus_to_communications <= bus_from_interconnect and bus_from_floating_point_filter and bus_from_fixed_point_filter;
+            bus_to_communications <= bus_from_interconnect and bus_from_floating_point_filter and bus_from_fixed_point_filter and bus_from_sqrt_test;
         end if; --rising_edge
     end process combine_buses;	
 

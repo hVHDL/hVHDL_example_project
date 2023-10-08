@@ -10,5 +10,6 @@ ghdl -a --ieee=synopsys --std=08 source/hvhdl_example_interconnect/example_filte
 
 ghdl -a --ieee=synopsys --std=08 source/hvhdl_example_interconnect/communication/communications.vhd
 ghdl -a --ieee=synopsys --std=08 source/hvhdl_example_interconnect/hvhdl_example_interconnect_pkg.vhd
+ghdl -a --ieee=synopsys --std=08 source/hvhdl_example_interconnect/test_sqrt.vhd
 
 ghdl -a --ieee=synopsys --std=08 source/efinix_top.vhd

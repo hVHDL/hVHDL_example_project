@@ -25,8 +25,8 @@ print("this should be again 44252 : ", uart.request_data_from_address(99))
 
 print("now we will get 200 000 data point stream from register 108, which corresponds with floating point filtered output")
 
-uart.plot_data_from_address(100, 200000)
-uart.plot_data_from_address(102, 200000)
-uart.plot_data_from_address(103, 200000)
-uart.plot_data_from_address(108, 200000)
+uart.plot_data_from_address(15357, 200000)
+# uart.plot_data_from_address(102, 200000)
+# uart.plot_data_from_address(103, 200000)
+# uart.plot_data_from_address(108, 200000)
 
