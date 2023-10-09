@@ -4,7 +4,6 @@ LIBRARY ieee  ;
     use ieee.math_real.all;
 
 	use work.multiplier_pkg.all;
-	use work.sincos_pkg.all;
     use work.fixed_sqrt_pkg.all;
     use work.fpga_interconnect_pkg.all;
 
@@ -33,7 +32,12 @@ begin
             create_multiplier(multiplier);
             create_sqrt(sqrt,multiplier);
             init_bus(bus_out);
-            connect_read_only_data_to_address(bus_in, bus_out, 15357, to_integer(result));
+
+            connect_read_only_data_to_address(
+                bus_in  => bus_in,
+                bus_out => bus_out,
+                address => 15357,
+                data    => to_integer(result));
 
             if request_sqrt_calculation then
                 request_sqrt(sqrt, to_signed(input_number, 18));
