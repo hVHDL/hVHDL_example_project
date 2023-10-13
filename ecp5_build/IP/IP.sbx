@@ -57,7 +57,7 @@
             <lattice:device>LFE5U-12F-8BG381C</lattice:device>
             <lattice:synthesis>synplify</lattice:synthesis>
             <lattice:date>2022-07-10.10:17:20</lattice:date>
-            <lattice:modified>2022-07-11.07:30:48</lattice:modified>
+            <lattice:modified>2023-10-13.08:54:49</lattice:modified>
             <lattice:diamond>3.12.1.454</lattice:diamond>
             <lattice:language>VHDL</lattice:language>
             <lattice:attributes>
@@ -150,7 +150,7 @@
                     </spirit:model>
                     <spirit:vendorExtensions>
                         <lattice:synthesis>synplify</lattice:synthesis>
-                        <lattice:modified>2022-07-11.07:30:48</lattice:modified>
+                        <lattice:modified>2023-10-13.08:54:49</lattice:modified>
                         <lattice:attributes>
                             <lattice:attribute lattice:name="AddComponent">false</lattice:attribute>
                             <lattice:attribute lattice:name="BBox">false</lattice:attribute>

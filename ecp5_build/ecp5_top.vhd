@@ -16,8 +16,8 @@ architecture rtl of top is
 --------------------------------------------------
     component main_clock is
         port ( 
-            clki_i: in  std_logic; 
-            clkop_o: out  std_logic);
+            clki: in  std_logic; 
+            clkop: out  std_logic);
     end component;
 --------------------------------------------------
 
