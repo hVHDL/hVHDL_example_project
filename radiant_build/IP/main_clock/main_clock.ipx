@@ -1,0 +1,16 @@
+<?xml version="1.0" ?>
+<RadiantModule architecture="LFD2NX" date="2023 10 23 20:33:24" device="LFD2NX-40" gen_platform="Radiant" generator="ipgen" library="module" module="pll" name="main_clock" package="CABGA196" source_format="Verilog" speed="7_High-Performance_1.0V" vendor="latticesemi.com" version="1.8.0">
+ <Package>
+  <File modified="2023 10 23 20:33:24" name="rtl/main_clock_bb.v" type="black_box_verilog"/>
+  <File modified="2023 10 23 20:33:24" name="main_clock.cfg" type="cfg"/>
+  <File modified="2023 10 23 20:33:24" name="misc/main_clock_tmpl.v" type="template_verilog"/>
+  <File modified="2023 10 23 20:33:24" name="misc/main_clock_tmpl.vhd" type="template_vhdl"/>
+  <File modified="2023 10 23 20:33:24" name="rtl/main_clock.v" type="top_level_verilog"/>
+  <File modified="2023 10 23 20:33:24" name="constraints/main_clock.ldc" type="timing_constraints"/>
+  <File modified="2023 10 23 20:33:24" name="testbench/dut_params.v" type="dependency_file"/>
+  <File modified="2023 10 23 20:33:24" name="testbench/dut_inst.v" type="dependency_file"/>
+  <File modified="2023 10 23 20:33:24" name="component.xml" type="IP-XACT_component"/>
+  <File modified="2023 10 23 20:33:24" name="design.xml" type="IP-XACT_design"/>
+  <File modified="2021 05 21 00:57:55" name="testbench/tb_top.v" type="testbench_verilog"/>
+ </Package>
+</RadiantModule>

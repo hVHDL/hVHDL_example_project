@@ -1,0 +1,130 @@
+<?xml version="1.0" ?>
+<ipxact:design xmlns:ipxact="http://www.accellera.org/XMLSchema/IPXACT/1685-2014" xmlns:lattice="http://www.latticesemi.com/lattice" xmlns:lsccip="http://www.latticesemi.com/XMLSchema/Radiant/ip">
+    <ipxact:vendor>latticesemi.com</ipxact:vendor>
+    <ipxact:library>module</ipxact:library>
+    <ipxact:name>main_oscillator</ipxact:name>
+    <ipxact:version>1.4.0</ipxact:version>
+    <ipxact:componentInstances>
+        <ipxact:componentInstance>
+            <ipxact:instanceName>lscc_osc_inst</ipxact:instanceName>
+            <ipxact:componentRef library="module" name="osc" vendor="latticesemi.com" version="1.4.0">
+                <ipxact:configurableElementValues>
+                    <ipxact:configurableElementValue referenceId="HF_OSC_EN">ENABLED</ipxact:configurableElementValue>
+                    <ipxact:configurableElementValue referenceId="HF_CLK_DIV_DEC">15</ipxact:configurableElementValue>
+                    <ipxact:configurableElementValue referenceId="HF_CLK_DIV">14</ipxact:configurableElementValue>
+                    <ipxact:configurableElementValue referenceId="HF_CLK_FREQ">30.0</ipxact:configurableElementValue>
+                    <ipxact:configurableElementValue referenceId="HF_CFG_EN">ENABLED</ipxact:configurableElementValue>
+                    <ipxact:configurableElementValue referenceId="LF_OUTPUT_EN">DISABLED</ipxact:configurableElementValue>
+                    <ipxact:configurableElementValue referenceId="LF_CLK_FREQ">32</ipxact:configurableElementValue>
+                    <ipxact:configurableElementValue referenceId="SEDCLK_EN">0</ipxact:configurableElementValue>
+                    <ipxact:configurableElementValue referenceId="HF_SED_SEC_DIV_DEC">2</ipxact:configurableElementValue>
+                    <ipxact:configurableElementValue referenceId="HF_SED_SEC_DIV">1</ipxact:configurableElementValue>
+                    <ipxact:configurableElementValue referenceId="SEDSEC_CLK_FREQ">225.0</ipxact:configurableElementValue>
+                    <ipxact:configurableElementValue referenceId="LMMI_CLK_EN">DISABLED</ipxact:configurableElementValue>
+                    <ipxact:configurableElementValue referenceId="FAMILY">LFD2NX</ipxact:configurableElementValue>
+                    <ipxact:configurableElementValue referenceId="DEVICE">LFD2NX-40</ipxact:configurableElementValue>
+                </ipxact:configurableElementValues>
+            </ipxact:componentRef>
+        </ipxact:componentInstance>
+    </ipxact:componentInstances>
+    <ipxact:adHocConnections>
+        <ipxact:adHocConnection>
+            <ipxact:name>main_oscillator.hf_out_en_i</ipxact:name>
+            <ipxact:portReferences>
+                <ipxact:internalPortReference componentRef="main_oscillator" portRef="hf_out_en_i"/>
+                <ipxact:externalPortReference portRef="hf_out_en_i"/>
+            </ipxact:portReferences>
+        </ipxact:adHocConnection>
+        <ipxact:adHocConnection>
+            <ipxact:name>main_oscillator.hf_switch_i</ipxact:name>
+            <ipxact:tiedValue>1'b0</ipxact:tiedValue>
+            <ipxact:portReferences>
+                <ipxact:internalPortReference componentRef="main_oscillator" portRef="hf_switch_i"/>
+            </ipxact:portReferences>
+        </ipxact:adHocConnection>
+        <ipxact:adHocConnection>
+            <ipxact:name>main_oscillator.sedc_clk_en_i</ipxact:name>
+            <ipxact:tiedValue>1'b1</ipxact:tiedValue>
+            <ipxact:portReferences>
+                <ipxact:internalPortReference componentRef="main_oscillator" portRef="sedc_clk_en_i"/>
+            </ipxact:portReferences>
+        </ipxact:adHocConnection>
+        <ipxact:adHocConnection>
+            <ipxact:name>main_oscillator.sedc_rst_n_i</ipxact:name>
+            <ipxact:tiedValue>1'b0</ipxact:tiedValue>
+            <ipxact:portReferences>
+                <ipxact:internalPortReference componentRef="main_oscillator" portRef="sedc_rst_n_i"/>
+            </ipxact:portReferences>
+        </ipxact:adHocConnection>
+        <ipxact:adHocConnection>
+            <ipxact:name>main_oscillator.lmmi_clk_i</ipxact:name>
+            <ipxact:tiedValue>1'b0</ipxact:tiedValue>
+            <ipxact:portReferences>
+                <ipxact:internalPortReference componentRef="main_oscillator" portRef="lmmi_clk_i"/>
+            </ipxact:portReferences>
+        </ipxact:adHocConnection>
+        <ipxact:adHocConnection>
+            <ipxact:name>main_oscillator.lmmi_resetn_i</ipxact:name>
+            <ipxact:tiedValue>1'b0</ipxact:tiedValue>
+            <ipxact:portReferences>
+                <ipxact:internalPortReference componentRef="main_oscillator" portRef="lmmi_resetn_i"/>
+            </ipxact:portReferences>
+        </ipxact:adHocConnection>
+        <ipxact:adHocConnection>
+            <ipxact:name>main_oscillator.reboot_i</ipxact:name>
+            <ipxact:tiedValue>1'b0</ipxact:tiedValue>
+            <ipxact:portReferences>
+                <ipxact:internalPortReference componentRef="main_oscillator" portRef="reboot_i"/>
+            </ipxact:portReferences>
+        </ipxact:adHocConnection>
+        <ipxact:adHocConnection>
+            <ipxact:name>main_oscillator.hf_clk_out_o</ipxact:name>
+            <ipxact:portReferences>
+                <ipxact:internalPortReference componentRef="main_oscillator" portRef="hf_clk_out_o"/>
+                <ipxact:externalPortReference portRef="hf_clk_out_o"/>
+            </ipxact:portReferences>
+        </ipxact:adHocConnection>
+        <ipxact:adHocConnection>
+            <ipxact:name>main_oscillator.lf_clk_out_o</ipxact:name>
+            <ipxact:tiedValue>open</ipxact:tiedValue>
+            <ipxact:portReferences>
+                <ipxact:internalPortReference componentRef="main_oscillator" portRef="lf_clk_out_o"/>
+            </ipxact:portReferences>
+        </ipxact:adHocConnection>
+        <ipxact:adHocConnection>
+            <ipxact:name>main_oscillator.sedc_rst_o</ipxact:name>
+            <ipxact:tiedValue>open</ipxact:tiedValue>
+            <ipxact:portReferences>
+                <ipxact:internalPortReference componentRef="main_oscillator" portRef="sedc_rst_o"/>
+            </ipxact:portReferences>
+        </ipxact:adHocConnection>
+        <ipxact:adHocConnection>
+            <ipxact:name>main_oscillator.cfg_clk_o</ipxact:name>
+            <ipxact:tiedValue>open</ipxact:tiedValue>
+            <ipxact:portReferences>
+                <ipxact:internalPortReference componentRef="main_oscillator" portRef="cfg_clk_o"/>
+            </ipxact:portReferences>
+        </ipxact:adHocConnection>
+        <ipxact:adHocConnection>
+            <ipxact:name>main_oscillator.smclk_rst_o</ipxact:name>
+            <ipxact:tiedValue>open</ipxact:tiedValue>
+            <ipxact:portReferences>
+                <ipxact:internalPortReference componentRef="main_oscillator" portRef="smclk_rst_o"/>
+            </ipxact:portReferences>
+        </ipxact:adHocConnection>
+        <ipxact:adHocConnection>
+            <ipxact:name>main_oscillator.lmmi_clk_o</ipxact:name>
+            <ipxact:tiedValue>open</ipxact:tiedValue>
+            <ipxact:portReferences>
+                <ipxact:internalPortReference componentRef="main_oscillator" portRef="lmmi_clk_o"/>
+            </ipxact:portReferences>
+        </ipxact:adHocConnection>
+        <ipxact:adHocConnection>
+            <ipxact:name>main_oscillator.lmmi_resetn_o</ipxact:name>
+            <ipxact:tiedValue>open</ipxact:tiedValue>
+            <ipxact:portReferences>
+                <ipxact:internalPortReference componentRef="main_oscillator" portRef="lmmi_resetn_o"/>
+            </ipxact:portReferences>
+        </ipxact:adHocConnection>
+    </ipxact:adHocConnections>
+</ipxact:design>

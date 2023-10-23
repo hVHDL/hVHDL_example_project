@@ -1,0 +1,2 @@
+ldc_set_location -site {C11} [get_ports uart_rx]
+ldc_set_location -site {F11} [get_ports uart_tx]

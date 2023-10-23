@@ -1,0 +1,93 @@
+<?xml version="1.0" ?>
+<ipxact:component xmlns:ipxact="http://www.accellera.org/XMLSchema/IPXACT/1685-2014" xmlns:lattice="http://www.latticesemi.com/lattice" xmlns:lsccip="http://www.latticesemi.com/XMLSchema/Radiant/ip">
+    <ipxact:vendor>latticesemi.com</ipxact:vendor>
+    <ipxact:library>module</ipxact:library>
+    <ipxact:name>main_clock</ipxact:name>
+    <ipxact:version>1.8.0</ipxact:version>
+    <ipxact:model>
+        <ipxact:instantiations>
+            <ipxact:componentInstantiation>
+                <ipxact:name>main_clock</ipxact:name>
+            </ipxact:componentInstantiation>
+            <ipxact:designInstantiation>
+                <ipxact:name>main_clock_design</ipxact:name>
+                <ipxact:designRef library="module" name="main_clock" vendor="latticesemi.com" version="1.8.0"/>
+            </ipxact:designInstantiation>
+        </ipxact:instantiations>
+        <ipxact:ports>
+            <ipxact:port>
+                <ipxact:name>clki_i</ipxact:name>
+                <ipxact:displayName>clki_i</ipxact:displayName>
+                <ipxact:wire>
+                    <ipxact:direction>in</ipxact:direction>
+                </ipxact:wire>
+            </ipxact:port>
+            <ipxact:port>
+                <ipxact:name>clkop_o</ipxact:name>
+                <ipxact:displayName>clkop_o</ipxact:displayName>
+                <ipxact:wire>
+                    <ipxact:direction>out</ipxact:direction>
+                </ipxact:wire>
+            </ipxact:port>
+        </ipxact:ports>
+    </ipxact:model>
+    <ipxact:fileSets>
+        <ipxact:fileSet>
+            <ipxact:name>ipx_file_list</ipxact:name>
+            <ipxact:file>
+                <ipxact:name>rtl/main_clock_bb.v</ipxact:name>
+                <ipxact:fileType user="black_box_verilog">user</ipxact:fileType>
+            </ipxact:file>
+            <ipxact:file>
+                <ipxact:name>main_clock.cfg</ipxact:name>
+                <ipxact:fileType user="cfg">user</ipxact:fileType>
+            </ipxact:file>
+            <ipxact:file>
+                <ipxact:name>misc/main_clock_tmpl.v</ipxact:name>
+                <ipxact:fileType user="template_verilog">user</ipxact:fileType>
+            </ipxact:file>
+            <ipxact:file>
+                <ipxact:name>misc/main_clock_tmpl.vhd</ipxact:name>
+                <ipxact:fileType user="template_vhdl">user</ipxact:fileType>
+            </ipxact:file>
+            <ipxact:file>
+                <ipxact:name>rtl/main_clock.v</ipxact:name>
+                <ipxact:fileType user="top_level_verilog">user</ipxact:fileType>
+            </ipxact:file>
+            <ipxact:file>
+                <ipxact:name>constraints/main_clock.ldc</ipxact:name>
+                <ipxact:fileType user="timing_constraints">user</ipxact:fileType>
+            </ipxact:file>
+            <ipxact:file>
+                <ipxact:name>testbench/dut_params.v</ipxact:name>
+                <ipxact:fileType user="dependency_file">user</ipxact:fileType>
+            </ipxact:file>
+            <ipxact:file>
+                <ipxact:name>testbench/dut_inst.v</ipxact:name>
+                <ipxact:fileType user="dependency_file">user</ipxact:fileType>
+            </ipxact:file>
+            <ipxact:file>
+                <ipxact:name>design.xml</ipxact:name>
+                <ipxact:fileType user="IP-XACT_design">user</ipxact:fileType>
+            </ipxact:file>
+            <ipxact:file>
+                <ipxact:name>testbench/tb_top.v</ipxact:name>
+                <ipxact:fileType user="testbench_verilog">user</ipxact:fileType>
+            </ipxact:file>
+        </ipxact:fileSet>
+    </ipxact:fileSets>
+    <ipxact:vendorExtensions>
+        <lsccip:moduleRef lsccip:library="module" lsccip:name="pll" lsccip:vendor="latticesemi.com" lsccip:version="1.8.0"/>
+        <lsccip:deviceInfo>
+            <lsccip:architecture>LFD2NX</lsccip:architecture>
+            <lsccip:device>LFD2NX-40</lsccip:device>
+            <lsccip:package>CABGA196</lsccip:package>
+            <lsccip:performanceGrade>7_High-Performance_1.0V</lsccip:performanceGrade>
+        </lsccip:deviceInfo>
+        <lsccip:generationInfo>
+            <lsccip:fileVersion>20180929</lsccip:fileVersion>
+            <lsccip:createdTimestamp>2023 10 23 20:33:24</lsccip:createdTimestamp>
+            <lsccip:radiantBuild>&quot;Lattice Radiant Software&quot; (64-bit) 2023.1.1.200.1</lsccip:radiantBuild>
+        </lsccip:generationInfo>
+    </ipxact:vendorExtensions>
+</ipxact:component>
