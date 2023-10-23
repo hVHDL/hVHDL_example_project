@@ -1,16 +1,16 @@
 <?xml version="1.0" ?>
-<RadiantModule architecture="LFD2NX" date="2023 10 23 20:33:24" device="LFD2NX-40" gen_platform="Radiant" generator="ipgen" library="module" module="osc" name="main_oscillator" package="CABGA196" source_format="Verilog" speed="7_High-Performance_1.0V" vendor="latticesemi.com" version="1.4.0">
+<RadiantModule architecture="LFD2NX" date="2023 10 23 22:30:11" device="LFD2NX-40" gen_platform="Radiant" generator="ipgen" library="module" module="osc" name="main_oscillator" package="CABGA196" source_format="Verilog" speed="7_High-Performance_1.0V" vendor="latticesemi.com" version="1.4.0">
  <Package>
-  <File modified="2023 10 23 20:33:24" name="rtl/main_oscillator_bb.v" type="black_box_verilog"/>
-  <File modified="2023 10 23 20:33:24" name="main_oscillator.cfg" type="cfg"/>
-  <File modified="2023 10 23 20:33:24" name="misc/main_oscillator_tmpl.v" type="template_verilog"/>
-  <File modified="2023 10 23 20:33:24" name="misc/main_oscillator_tmpl.vhd" type="template_vhdl"/>
-  <File modified="2023 10 23 20:33:24" name="rtl/main_oscillator.v" type="top_level_verilog"/>
-  <File modified="2023 10 23 20:33:24" name="constraints/main_oscillator.ldc" type="timing_constraints"/>
-  <File modified="2023 10 23 20:33:24" name="testbench/dut_params.v" type="dependency_file"/>
-  <File modified="2023 10 23 20:33:24" name="testbench/dut_inst.v" type="dependency_file"/>
-  <File modified="2023 10 23 20:33:24" name="component.xml" type="IP-XACT_component"/>
-  <File modified="2023 10 23 20:33:24" name="design.xml" type="IP-XACT_design"/>
+  <File modified="2023 10 23 22:30:11" name="rtl/main_oscillator_bb.v" type="black_box_verilog"/>
+  <File modified="2023 10 23 22:30:11" name="main_oscillator.cfg" type="cfg"/>
+  <File modified="2023 10 23 22:30:11" name="misc/main_oscillator_tmpl.v" type="template_verilog"/>
+  <File modified="2023 10 23 22:30:11" name="misc/main_oscillator_tmpl.vhd" type="template_vhdl"/>
+  <File modified="2023 10 23 22:30:11" name="rtl/main_oscillator.v" type="top_level_verilog"/>
+  <File modified="2023 10 23 22:30:11" name="constraints/main_oscillator.ldc" type="timing_constraints"/>
+  <File modified="2023 10 23 22:30:11" name="testbench/dut_params.v" type="dependency_file"/>
+  <File modified="2023 10 23 22:30:11" name="testbench/dut_inst.v" type="dependency_file"/>
+  <File modified="2023 10 23 22:30:11" name="component.xml" type="IP-XACT_component"/>
+  <File modified="2023 10 23 22:30:11" name="design.xml" type="IP-XACT_design"/>
   <File modified="2022 07 13 02:43:21" name="testbench/tb_top.v" type="testbench_verilog"/>
  </Package>
 </RadiantModule>

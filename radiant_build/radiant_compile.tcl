@@ -15,8 +15,11 @@ if {[llength $files] != 0} {
 prj_create -name hvhdl_example \
     -dev LFD2NX-40-7BG196C \
     -impl "impl1" \
-    -impl_dir ./ \
+    -impl_dir $outputDir \
     -synthesis "synplify" \
+
+prj_set_strategy_value -strategy Strategy1 syn_vhdl2008=True
+prj_set_strategy_value -strategy Strategy1 {syn_pipelining_retiming=Pipelining and Retiming}
 
 prj_add_source $tcl_path/IP/main_oscillator/main_oscillator.ipx
 prj_add_source $tcl_path/IP/main_clock/main_clock.ipx
