@@ -1,2 +1,4 @@
 ldc_set_location -site {C11} [get_ports uart_rx]
 ldc_set_location -site {F11} [get_ports uart_tx]
+ldc_set_location -site {B8} [get_ports {led[1]}]
+ldc_set_location -site {A8} [get_ports {led[0]}]
