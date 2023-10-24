@@ -15,7 +15,8 @@ prj_create -name $project_name \
 puts $tcl_path
 puts $source_folder
 
-prj_set_strategy_value -strategy Strategy1 syn_vhdl2008=True
+# setting this true will break the floating point filter for some reason
+# prj_set_strategy_value -strategy Strategy1 syn_vhdl2008=True
 prj_set_strategy_value -strategy Strategy1 {syn_pipelining_retiming=Pipelining and Retiming}
 
 prj_add_source $tcl_path/IP/main_oscillator/main_oscillator.ipx

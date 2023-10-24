@@ -65,7 +65,7 @@ architecture rtl of hvhdl_example_interconnect is
 
     signal data_in_example_interconnect : integer range 0 to 2**16-1 := 44252;
 
-    constant filter_time_constant : real := 0.001;
+    constant filter_time_constant : real := 0.02;
 
 begin
 

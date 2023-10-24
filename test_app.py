@@ -23,10 +23,25 @@ print("we will now write back 44252 with with write_data_to_address(99,44252)")
 uart.write_data_to_address(99,44252)
 print("this should be again 44252 : ", uart.request_data_from_address(99)) 
 
-print("now we will get 200 000 data point stream from register 108, which corresponds with floating point filtered output")
+print("now we will get 200 000 data point stream which correspond to clean sine and noisy sine which is fixed and floating point filered")
+number_of_points = 50000
 
-uart.plot_data_from_address(100, 200000)
-uart.plot_data_from_address(102, 200000)
-uart.plot_data_from_address(103, 200000)
-uart.plot_data_from_address(108, 200000)
+sinewave = uart.stream_data_from_address(100, number_of_points);
+noisy_sine = uart.stream_data_from_address(103, number_of_points);
+fixed_point_filtered_data = uart.stream_data_from_address(104, number_of_points);
+floating_point_filtered_data = uart.stream_data_from_address(108, number_of_points);
+
+pyplot.subplot(2, 2, 1)
+pyplot.plot(sinewave) 
+pyplot.title('clean sine')
+pyplot.subplot(2, 2, 2)
+pyplot.plot(noisy_sine) 
+pyplot.title('noisy sine')
+pyplot.subplot(2, 2, 3)
+pyplot.plot(fixed_point_filtered_data) 
+pyplot.title('fixed point filtered sine')
+pyplot.subplot(2, 2, 4)
+pyplot.plot(floating_point_filtered_data) 
+pyplot.title('floating point filtered sine')
+pyplot.show()
 
