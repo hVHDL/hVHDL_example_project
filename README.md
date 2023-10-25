@@ -38,6 +38,3 @@ In order to build with efinix, go to the efinix build folder <path_to_example_pr
 > efx_run.py hvhdl_example_build.xml --output_dir ./output
 
 Note, efinix build tools require running <efinix_efinity_folder>\bin\setup.bat before launching the build. Alternatively, you can open the hvhdl_exmpla_build.xml with the efinity ide and press build
-
-
-The test_app.py 
