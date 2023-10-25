@@ -19,7 +19,7 @@ test reading and writing in the FPGA and prints out the results to the console a
 There is an in-depth [explanation](https://hvhdl.readthedocs.io/en/latest/hvhdl_example_project/hvhdl_example_project.html) which goes through the VHDL source code of the design.
 
 <p align="center">
-  <img width="550px" src="doc/hvhdl_tested_hardware.jpg"/></a>
+  <img width="550px" src="doc/hvhdl_tested_hardware.jpg"/></a>
 </p>
 The example project has been built with Lattice Diamond and Radiant, Xilinx Vivado, Intel Quartus and Efinix Efinity. The build scripts can be found in the repository.
 
