@@ -81,3 +81,8 @@ proc program_ram {} {
     program_hw_devices [get_hw_devices xc7a100t_0]
     close_hw_manager
 }
+
+if {[lsearch -glob $argv *ram*] != -1} {
+    program_ram
+}
+
