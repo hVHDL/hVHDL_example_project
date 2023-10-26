@@ -36,9 +36,9 @@ else \
 
     set_global_assignment -name TOP_LEVEL_ENTITY top
 
-    set_location_assignment PIN_M15 -to clk
-	set_location_assignment PIN_N16 -to uart_rx
-	set_location_assignment PIN_N15 -to uart_tx
+    set_location_assignment PIN_E1 -to clk
+	set_location_assignment PIN_P1 -to uart_rx
+	set_location_assignment PIN_R1 -to uart_tx
 
 	export_assignments
     set_global_assignment -name SDC_FILE $tcl_path/timing_constraints.sdc
