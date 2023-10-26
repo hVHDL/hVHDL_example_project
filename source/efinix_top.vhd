@@ -15,10 +15,10 @@ architecture rtl of efinix_top is
 begin
 
 --------------------------------------------------
-    u_hvhdl_example : entity work.hvhdl_example_interconnect
+    u_hvhdl_example : entity work.main
     port map(
         system_clock => clock_120mhz,
-        hvhdl_example_interconnect_FPGA_in.communications_FPGA_in.uart_rx   => uart_rx,
-        hvhdl_example_interconnect_FPGA_out.communications_FPGA_out.uart_tx => uart_tx);
+        main_FPGA_in.communications_FPGA_in.uart_rx   => uart_rx,
+        main_FPGA_out.communications_FPGA_out.uart_tx => uart_tx);
 
 end rtl;

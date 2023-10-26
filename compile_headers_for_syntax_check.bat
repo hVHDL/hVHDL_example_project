@@ -6,9 +6,9 @@ call source/hVHDL_floating_point/ghdl_compile_vhdl_float.bat source/hVHDL_floati
 call source/hVHDL_math_library/ghdl_compile_math_library.bat source/hVHDL_math_library
 call source/hVHDL_uart/ghdl_compile_uart.bat source/hVHDL_uart
 
-ghdl -a --ieee=synopsys --std=08 source/hvhdl_example_interconnect/example_filter_entity.vhd
+ghdl -a --ieee=synopsys --std=08 source/main/example_filter_entity.vhd
 
-ghdl -a --ieee=synopsys --std=08 source/hvhdl_example_interconnect/communication/communications.vhd
-ghdl -a --ieee=synopsys --std=08 source/hvhdl_example_interconnect/hvhdl_example_interconnect_pkg.vhd
+ghdl -a --ieee=synopsys --std=08 source/main/communication/communications.vhd
+ghdl -a --ieee=synopsys --std=08 source/main/main.vhd
 
 ghdl -a --ieee=synopsys --std=08 source/efinix_top.vhd

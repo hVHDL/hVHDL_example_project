@@ -4,24 +4,24 @@ library ieee;
 
     use work.communications_pkg.all;
 
-package hvhdl_example_interconnect_pkg is
+package main_pkg is
 
-    type hvhdl_example_interconnect_FPGA_input_group is record
+    type main_FPGA_input_group is record
         communications_FPGA_in : communications_FPGA_input_group;
     end record;
     
-    type hvhdl_example_interconnect_FPGA_output_group is record
+    type main_FPGA_output_group is record
         communications_FPGA_out : communications_FPGA_output_group;
     end record;
     
-end package hvhdl_example_interconnect_pkg;
+end package main_pkg;
 ------------------------------------------------------------------------
 ------------------------------------------------------------------------
 library ieee;
     use ieee.std_logic_1164.all;
     use ieee.numeric_std.all;
 
-    use work.hvhdl_example_interconnect_pkg.all;
+    use work.main_pkg.all;
 	use work.multiplier_pkg.all;
 	use work.sincos_pkg.all;
     use work.communications_pkg.all;
@@ -29,15 +29,15 @@ library ieee;
     use work.first_order_filter_pkg.all;
     use work.example_filter_entity_pkg.all;
 
-entity hvhdl_example_interconnect is
+entity main is
     port (
         system_clock : in std_logic;
-        hvhdl_example_interconnect_FPGA_in  : in hvhdl_example_interconnect_FPGA_input_group;
-        hvhdl_example_interconnect_FPGA_out : out hvhdl_example_interconnect_FPGA_output_group
+        main_FPGA_in  : in main_FPGA_input_group;
+        main_FPGA_out : out main_FPGA_output_group
     );
-end hvhdl_example_interconnect;
+end main;
 
-architecture rtl of hvhdl_example_interconnect is
+architecture rtl of main is
 
     use work.example_project_addresses_pkg.all;
 
@@ -130,8 +130,8 @@ begin
     u_communications : entity work.communications
     port map(
         communications_clocks,
-        hvhdl_example_interconnect_FPGA_in.communications_FPGA_in,
-        hvhdl_example_interconnect_FPGA_out.communications_FPGA_out,
+        main_FPGA_in.communications_FPGA_in,
+        main_FPGA_out.communications_FPGA_out,
         bus_to_communications ,
         bus_from_communications);
 ------------------------------------------------------------------------
