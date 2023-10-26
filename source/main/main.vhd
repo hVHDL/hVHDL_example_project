@@ -68,10 +68,33 @@ architecture rtl of main is
     signal data_in_example_interconnect : integer range 0 to 2**16-1 := 44252;
 
     constant filter_time_constant : real := 0.0625;
+    constant limit_for_100khz : natural := 1199;
 
 begin
 
     create_noisy_sine : process(system_clock)
+        procedure increment_to
+        (
+            signal counter : inout integer;
+            limit : in integer
+        ) is
+        begin
+            if counter < limit then
+                counter <= counter + 1;
+            else
+                counter <= 0;
+            end if;
+        end increment_to;
+
+        procedure calculate_prbs
+        (
+            signal prbs : inout std_logic_vector
+        ) is
+        begin
+            prbs    <= prbs(5 downto 0) & prbs(6);
+            prbs(6) <= prbs(5) xor prbs(0);
+            
+        end calculate_prbs;
     begin
         if rising_edge(system_clock) then
             create_multiplier(multiplier);
@@ -84,21 +107,16 @@ begin
             init_bus(bus_from_interconnect);
             connect_read_only_data_to_address(bus_from_communications , bus_from_interconnect , input_sine_address                , get_sine(sincos)/2 + 32768);
             connect_read_only_data_to_address(bus_from_communications , bus_from_interconnect , input_sine_angle_address          , angle);
-            -- connect_read_only_data_to_address(bus_from_communications , bus_from_interconnect , noise_address                     , to_integer(signed(prbs7))+32768);
+            connect_read_only_data_to_address(bus_from_communications , bus_from_interconnect , noise_address                     , to_integer(signed(prbs7))+32768);
             connect_read_only_data_to_address(bus_from_communications , bus_from_interconnect , noisy_sine_address                , sine_with_noise/2 + 32768);
             connect_data_to_address(bus_from_communications           , bus_from_interconnect , example_interconnect_data_address , data_in_example_interconnect);
 
-            if i > 0 then
-                i <= (i - 1);
-            else
-                i <= 1199;
-            end if;
+            increment_to(i, limit_for_100khz);
 
             if i = 0 then
                 request_sincos(sincos, angle);
                 angle    <= (angle + 10) mod 2**16;
-                prbs7    <= prbs7(5 downto 0) & prbs7(6);
-                prbs7(6) <= prbs7(5) xor prbs7(0);
+                calculate_prbs(prbs7);
             end if;
 
             if sincos_is_ready(sincos) then
