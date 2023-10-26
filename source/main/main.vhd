@@ -13,7 +13,7 @@ package main_pkg is
     type main_FPGA_output_group is record
         communications_FPGA_out : communications_FPGA_output_group;
     end record;
-    
+
 end package main_pkg;
 ------------------------------------------------------------------------
 ------------------------------------------------------------------------
@@ -44,10 +44,10 @@ architecture rtl of main is
     signal multiplier : multiplier_record := init_multiplier;
     signal sincos     : sincos_record     := init_sincos;
 
-    signal prbs7 : std_logic_vector(6 downto 0) := (0 => '1', others => '0');
     signal sine_with_noise : int := 0;
     signal angle : integer  range 0 to 2**16-1 := 0;
     signal i     : integer range 0 to 2**16-1 := 1199;
+    signal prbs7 : std_logic_vector(6 downto 0) := (0 => '1', others => '0');
 
     signal communications_clocks   : communications_clock_group;
     signal communications_data_in  : communications_data_input_group;
@@ -55,17 +55,19 @@ architecture rtl of main is
 
     signal floating_point_filter_in : example_filter_input_record := init_example_filter_input;
     signal fixed_point_filter_in    : example_filter_input_record := init_example_filter_input;
+    signal mcu_in                   : example_filter_input_record := init_example_filter_input;
 
     signal bus_from_communications : fpga_interconnect_record := init_fpga_interconnect;
     signal bus_to_communications   : fpga_interconnect_record := init_fpga_interconnect;
 
     signal bus_from_floating_point_filter : fpga_interconnect_record := init_fpga_interconnect;
     signal bus_from_fixed_point_filter    : fpga_interconnect_record := init_fpga_interconnect;
+    signal bus_from_mcu                   : fpga_interconnect_record := init_fpga_interconnect;
     signal bus_from_interconnect          : fpga_interconnect_record := init_fpga_interconnect;
 
     signal data_in_example_interconnect : integer range 0 to 2**16-1 := 44252;
 
-    constant filter_time_constant : real := 0.02;
+    constant filter_time_constant : real := 0.0625;
 
 begin
 
@@ -77,11 +79,12 @@ begin
 
             init_example_filter(floating_point_filter_in);
             init_example_filter(fixed_point_filter_in);
+            init_example_filter(mcu_in);
 
             init_bus(bus_from_interconnect);
             connect_read_only_data_to_address(bus_from_communications , bus_from_interconnect , input_sine_address                , get_sine(sincos)/2 + 32768);
             connect_read_only_data_to_address(bus_from_communications , bus_from_interconnect , input_sine_angle_address          , angle);
-            connect_read_only_data_to_address(bus_from_communications , bus_from_interconnect , noise_address                     , to_integer(signed(prbs7))+32768);
+            -- connect_read_only_data_to_address(bus_from_communications , bus_from_interconnect , noise_address                     , to_integer(signed(prbs7))+32768);
             connect_read_only_data_to_address(bus_from_communications , bus_from_interconnect , noisy_sine_address                , sine_with_noise/2 + 32768);
             connect_data_to_address(bus_from_communications           , bus_from_interconnect , example_interconnect_data_address , data_in_example_interconnect);
 
@@ -102,11 +105,12 @@ begin
                 sine_with_noise <= get_sine(sincos) + to_integer(signed(prbs7)*64);
                 request_example_filter(floating_point_filter_in, sine_with_noise);
                 request_example_filter(fixed_point_filter_in, sine_with_noise);
+                request_example_filter(mcu_in, sine_with_noise);
             end if;
 
         end if; --rising_edge
     end process;	
----------------
+------------------------------------------------------------------------
     u_floating_point_filter : entity work.example_filter_entity(float)
         generic map(filter_time_constant => filter_time_constant)
         port map(system_clock, floating_point_filter_in, bus_from_communications, bus_from_floating_point_filter);
@@ -115,13 +119,21 @@ begin
     u_fixed_point_filter : entity work.example_filter_entity(fixed_point)
         generic map(filter_time_constant => filter_time_constant)
         port map(system_clock, fixed_point_filter_in, bus_from_communications, bus_from_fixed_point_filter);
+   
+---------------
+    u_mcu : entity work.example_filter_entity(microprogram)
+        generic map(filter_time_constant => filter_time_constant)
+        port map(system_clock, mcu_in, bus_from_communications, bus_from_mcu);
 
 ------------------------------------------------------------------------
 ------------------------------------------------------------------------
     combine_buses : process(system_clock)
     begin
         if rising_edge(system_clock) then
-            bus_to_communications <= bus_from_interconnect and bus_from_floating_point_filter and bus_from_fixed_point_filter;
+            bus_to_communications <= bus_from_interconnect          and 
+                                     bus_from_floating_point_filter and 
+                                     bus_from_fixed_point_filter    and 
+                                     bus_from_mcu;
         end if; --rising_edge
     end process combine_buses;	
 

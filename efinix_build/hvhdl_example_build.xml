@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<efx:project name="ac_in_ac_out_lab_power_supply" description="" last_change_date="Thu October 26 2023 08:11:33" location="C:/dev/hVHDL_example_project/efinix_build" sw_version="2023.1.150.5.11" last_run_state="pass" last_run_tool="efx_pgm" last_run_flow="bitstream" config_result_in_sync="sync" design_ood="sync" place_ood="sync" route_ood="sync" xmlns:efx="http://www.efinixinc.com/enf_proj" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.efinixinc.com/enf_proj enf_proj.xsd">
+<efx:project name="ac_in_ac_out_lab_power_supply" description="" last_change_date="Thu October 26 2023 11:18:32" location="C:/dev/hVHDL_example_project/efinix_build" sw_version="2023.1.150.5.11" last_run_state="pass" last_run_tool="efx_pgm" last_run_flow="bitstream" config_result_in_sync="sync" design_ood="change" place_ood="sync" route_ood="sync" xmlns:efx="http://www.efinixinc.com/enf_proj" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.efinixinc.com/enf_proj enf_proj.xsd">
     <efx:device_info>
         <efx:family name="Trion"/>
         <efx:device name="T120F324"/>
@@ -8,7 +8,6 @@
     <efx:design_info def_veri_version="sv_09" def_vhdl_version="vhdl_2008">
         <efx:top_module name="efinix_top"/>
         <efx:design_file name="../source/efinix_top.vhd" version="default" library="default"/>
-        <efx:design_file name="../source/hVHDL_math_library/multiplier/multiplier_base_types_18bit_pkg.vhd" version="default" library="default"/>
         <efx:design_file name="../source/hVHDL_math_library/multiplier/multiplier_pkg.vhd" version="default" library="default"/>
         <efx:design_file name="../source/hVHDL_math_library/sincos/sincos_pkg.vhd" version="default" library="default"/>
         <efx:design_file name="../source/hVHDL_math_library/first_order_filter/first_order_filter_pkg.vhd" version="default" library="default"/>
@@ -88,7 +87,7 @@
         <efx:param name="work_dir" value="work_pnr" value_type="e_string"/>
         <efx:param name="verbose" value="off" value_type="e_bool"/>
         <efx:param name="load_delaym" value="on" value_type="e_bool"/>
-        <efx:param name="optimization_level" value="TIMING_1" value_type="e_option"/>
+        <efx:param name="optimization_level" value="TIMING_2" value_type="e_option"/>
         <efx:param name="seed" value="1" value_type="e_integer"/>
         <efx:param name="placer_effort_level" value="2" value_type="e_option"/>
         <efx:param name="max_threads" value="-1" value_type="e_integer"/>
