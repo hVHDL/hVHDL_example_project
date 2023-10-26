@@ -16,3 +16,6 @@
 [submodule "fpga_uart_pc_software"]
 	path = fpga_uart_pc_software
 	url = https://github.com/johonkanen/fpga_uart_pc_software.git
+[submodule "source/vhdl_microprogram_control_unit"]
+	path = source/vhdl_microprogram_control_unit
+	url = https://github.com/johonkanen/vhdl_microprogram_control_unit.git
