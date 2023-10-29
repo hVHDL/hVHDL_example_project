@@ -114,9 +114,11 @@ begin
             increment_to(i, limit_for_100khz);
 
             if i = 0 then
-                request_sincos(sincos, angle);
                 angle    <= (angle + 10) mod 2**16;
                 calculate_prbs(prbs7);
+
+                request_sincos(sincos, angle);
+
             end if;
 
             if sincos_is_ready(sincos) then
