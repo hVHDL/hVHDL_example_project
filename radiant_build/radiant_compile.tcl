@@ -33,6 +33,7 @@ proc add_vhdl_file_to_library {vhdl_file library} {
 
 source $tcl_path/../vhdl_sources.tcl
 
+prj_add_source $tcl_path/pre_synth_constraints.sdc
 prj_set_impl_opt -impl "impl1" "top" "top"
 prj_add_source $tcl_path/cruvi_physical_constraints.pdc
 prj_run PAR -impl impl1

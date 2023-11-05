@@ -50,8 +50,6 @@ architecture rtl of main is
     signal prbs7 : std_logic_vector(6 downto 0) := (0 => '1', others => '0');
 
     signal communications_clocks   : communications_clock_group;
-    signal communications_data_in  : communications_data_input_group;
-    signal communications_data_out : communications_data_output_group;
 
     signal floating_point_filter_in : example_filter_input_record := init_example_filter_input;
     signal fixed_point_filter_in    : example_filter_input_record := init_example_filter_input;

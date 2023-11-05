@@ -26,7 +26,7 @@ architecture float of example_filter_entity is
 
     alias self is float_filter;
 
-    signal converted_integer : integer range -2**17 to 2**17-1 := 0;
+    signal converted_integer : std_logic_vector(15 downto 0);
 
 
 begin
@@ -37,7 +37,7 @@ begin
             init_bus(bus_out);
             connect_read_only_data_to_address(bus_in, bus_out, floating_point_filter_output_mantissa_address, get_mantissa(get_filter_output(float_filter)));
             connect_read_only_data_to_address(bus_in, bus_out, floating_point_filter_output_exponent_address, get_exponent(get_filter_output(float_filter)));
-            connect_read_only_data_to_address(bus_in, bus_out, floating_point_filter_integer_output_address , std_logic_vector(to_signed(converted_integer, 16) +  32768));
+            connect_read_only_data_to_address(bus_in, bus_out, floating_point_filter_integer_output_address , converted_integer);
 
             create_float_alu(float_alu);
             create_float_to_integer_converter(float_to_integer_converter);
@@ -79,7 +79,7 @@ begin
             end if;
 
             convert_float_to_integer(float_to_integer_converter, get_filter_output(float_filter), 14);
-            converted_integer <= get_converted_integer(float_to_integer_converter);
+            converted_integer <= std_logic_vector(to_signed(get_converted_integer(float_to_integer_converter) +  32768, 16));
 
         end if; --rising_edge
     end process floating_point_filter;	
