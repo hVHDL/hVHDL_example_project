@@ -35,9 +35,9 @@ add_vhdl_file_to_project $source_folder/hVHDL_memory_library/multi_port_ram/mult
 add_vhdl_file_to_project $source_folder/hVHDL_memory_library/multi_port_ram/ram_read_x2_write_x1.vhd
 add_vhdl_file_to_project $source_folder/hVHDL_memory_library/multi_port_ram/arch_rtl_read_x2_write_x1.vhd
 
-add_vhdl_file_to_project $source_folder/vhdl_microprogram_control_unit/testbenches/microcode_processor_pkg.vhd 
-add_vhdl_file_to_project $source_folder/vhdl_microprogram_control_unit/testbenches/test_programs_pkg.vhd       
-add_vhdl_file_to_project $source_folder/vhdl_microprogram_control_unit/testbenches/microinstruction_pkg.vhd    
+add_vhdl_file_to_project $source_folder/hVHDL_microprogram_processor/testbenches/microcode_processor_pkg.vhd 
+add_vhdl_file_to_project $source_folder/hVHDL_microprogram_processor/testbenches/test_programs_pkg.vhd       
+add_vhdl_file_to_project $source_folder/hVHDL_microprogram_processor/testbenches/microinstruction_pkg.vhd    
 add_vhdl_file_to_project $source_folder/hVHDL_math_library/real_to_fixed/real_to_fixed_pkg.vhd                 
 
 add_vhdl_file_to_project $source_folder/main/communication/communications.vhd

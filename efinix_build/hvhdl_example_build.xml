@@ -38,15 +38,15 @@
         <efx:design_file name="../source/hVHDL_uart/uart_rx/uart_rx_pkg.vhd" version="default" library="default"/>
         <efx:design_file name="../source/hVHDL_uart/uart_tx/uart_tx_pkg.vhd" version="default" library="default"/>
         <efx:design_file name="../source/hVHDL_math_library/multiplier/multiplier_base_types_20bit_pkg.vhd" version="default" library="default"/>
-        <efx:design_file name="../source/vhdl_microprogram_control_unit/testbenches/microcode_processor_pkg.vhd" version="default" library="default"/>
-        <efx:design_file name="../source/vhdl_microprogram_control_unit/testbenches/test_programs_pkg.vhd" version="default" library="default"/>
-        <efx:design_file name="../source/vhdl_microprogram_control_unit/testbenches/microinstruction_pkg.vhd" version="default" library="default"/>
+        <efx:design_file name="../source/hVHDL_microprogram_processor/testbenches/microcode_processor_pkg.vhd" version="default" library="default"/>
+        <efx:design_file name="../source/hVHDL_microprogram_processor/testbenches/test_programs_pkg.vhd" version="default" library="default"/>
+        <efx:design_file name="../source/hVHDL_microprogram_processor/testbenches/microinstruction_pkg.vhd" version="default" library="default"/>
         <efx:design_file name="../source/hVHDL_math_library/real_to_fixed/real_to_fixed_pkg.vhd" version="default" library="default"/>
         <efx:design_file name="../source/main/arch_microprogram_processor.vhd" version="default" library="default"/>
-        <efx:design_file name="../source/vhdl_microprogram_control_unit/source/hVHDL_memory_library/fpga_internal_ram/ram_configuration_pkg.vhd" version="default" library="default"/>
-        <efx:design_file name="../source/vhdl_microprogram_control_unit/source/hVHDL_memory_library/multi_port_ram/multi_port_ram_pkg.vhd" version="default" library="default"/>
-        <efx:design_file name="../source/vhdl_microprogram_control_unit/source/hVHDL_memory_library/multi_port_ram/arch_rtl_read_x2_write_x1.vhd" version="default" library="default"/>
-        <efx:design_file name="../source/vhdl_microprogram_control_unit/source/hVHDL_memory_library/multi_port_ram/ram_read_x2_write_x1.vhd" version="default" library="default"/>
+        <efx:design_file name="../source/hVHDL_microprogram_processor/source/hVHDL_memory_library/fpga_internal_ram/ram_configuration_pkg.vhd" version="default" library="default"/>
+        <efx:design_file name="../source/hVHDL_microprogram_processor/source/hVHDL_memory_library/multi_port_ram/multi_port_ram_pkg.vhd" version="default" library="default"/>
+        <efx:design_file name="../source/hVHDL_microprogram_processor/source/hVHDL_memory_library/multi_port_ram/arch_rtl_read_x2_write_x1.vhd" version="default" library="default"/>
+        <efx:design_file name="../source/hVHDL_microprogram_processor/source/hVHDL_memory_library/multi_port_ram/ram_read_x2_write_x1.vhd" version="default" library="default"/>
         <efx:top_vhdl_arch name="rtl"/>
     </efx:design_info>
     <efx:constraint_info>
