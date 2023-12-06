@@ -65,7 +65,7 @@ architecture rtl of main is
 
     signal data_in_example_interconnect : integer range 0 to 2**16-1 := 44252;
 
-    constant filter_time_constant : real := 0.0582;
+    constant filter_time_constant : real := 0.0024659284639289843679364;
     constant limit_for_100khz : natural := 1199;
 
 begin
@@ -159,10 +159,10 @@ begin
     communications_clocks <= (clock => system_clock);
     u_communications : entity work.communications
     port map(
-        communications_clocks,
-        main_FPGA_in.communications_FPGA_in,
-        main_FPGA_out.communications_FPGA_out,
-        bus_to_communications ,
+        communications_clocks                 ,
+        main_FPGA_in.communications_FPGA_in   ,
+        main_FPGA_out.communications_FPGA_out ,
+        bus_to_communications                 ,
         bus_from_communications);
 ------------------------------------------------------------------------
 end rtl;

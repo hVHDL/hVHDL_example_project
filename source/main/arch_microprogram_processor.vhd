@@ -39,7 +39,7 @@ architecture microprogram of example_filter_entity is
 
     constant ram_contents : ram_array := write_register_values_to_ram(
             init_ram(test_program), 
-            to_fixed((0.0 , 0.44252 , 0.1   , 0.1   , 0.1   , 0.1   , 0.1   , 0.0104166 , 0.1)   , 19) , 53-reg_array'length*2);
+            to_fixed((0.0 , 0.44252 , 0.1   , 0.1   , 0.1   , 0.1   , 0.1   , filter_time_constant , 0.1)   , 19) , 53-reg_array'length*2);
 
 begin
 
