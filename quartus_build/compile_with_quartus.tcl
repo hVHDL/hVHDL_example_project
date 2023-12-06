@@ -44,3 +44,5 @@ else \
     set_global_assignment -name SDC_FILE $tcl_path/timing_constraints.sdc
 
     execute_flow -compile
+
+# quartus_pgm -m jtag -o "p;path/to/file.sof"
