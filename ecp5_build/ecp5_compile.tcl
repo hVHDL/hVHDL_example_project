@@ -25,6 +25,10 @@ prj_strgy set_value -strategy Strategy1 par_pathbased_place=On
 prj_strgy set_value -strategy Strategy1 map_reg_retiming=True
 
 #do not change this setting. If retiming is not on, Synplify will crash for some reason
+prj_strgy set_value -strategy Strategy1 syn_allow_dup_modules=True
+prj_strgy set_value -strategy Strategy1 syn_frequency=150
+prj_strgy set_value -strategy Strategy1 syn_fsm_encoding=True
+prj_strgy set_value -strategy Strategy1 syn_vhdl2008=True
 prj_strgy set_value -strategy Strategy1 {syn_pipelining_retiming=Pipelining and Retiming}
 
 prj_strgy set_value -strategy Strategy1 par_stop_zero=True
