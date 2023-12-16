@@ -63,9 +63,9 @@ architecture microprogram of example_filter_entity is
     function build_sw return ram_array
     is
         variable retval : ram_array := (others => (others => '0'));
-        constant reg_values1 : reg_array := to_fixed((0.0 , 0.44252 , 0.3 , filter_time_constant , -0.99 , -0.99 , -0.99 , 0.1804166 , -0.99) , 19);
-        constant reg_values2 : reg_array := to_fixed((0.0 , 0.44252 , 0.2 , 0.0804166            , 0.2   , 0.2   , 0.2   , 0.0804166 , 0.2)   , 19);
-        constant reg_values3 : reg_array := to_fixed((0.0 , 0.44252 , 0.1 , 0.0104166            , 0.1   , 0.1   , 0.1   , 0.0104166 , 0.1)   , 19);
+        constant reg_values1 : reg_array := to_fixed((0.0 , 0.44252 , 0.3 , filter_time_constant ) , 19);
+        constant reg_values2 : reg_array := to_fixed((0.0 , 0.44252 , 0.2 , 0.0804166            ) , 19);
+        constant reg_values3 : reg_array := to_fixed((0.0 , 0.44252 , 0.1 , 0.0104166            ) , 19);
     begin
 
         retval := write_register_values_to_ram(init_ram(test_program) , reg_values1 , reg_offset-reg_array'length*2);
