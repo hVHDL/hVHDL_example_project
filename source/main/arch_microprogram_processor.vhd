@@ -92,13 +92,6 @@ begin
             init_bus(bus_out);
             connect_read_only_data_to_address(bus_in, bus_out, 15165 , result + 32768);
     ------------------------------------------------------------------------
-            if decode(self.instruction_pipeline(0)) = load_registers then
-                load_registers(self, get_long_argument(self.instruction_pipeline(0)));
-            end if;
-
-            if decode(self.instruction_pipeline(0)) = jump then
-                self.program_counter <= 0;
-            end if;
 
             create_processor_w_ram(
                 self                     ,
