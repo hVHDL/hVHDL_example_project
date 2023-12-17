@@ -36,19 +36,7 @@ architecture microprogram of example_filter_entity is
     is
         constant program : program_array := (
             write_instruction(load_registers, reg_offset-reg_array'length*2),
-            write_instruction(nop),
-            write_instruction(nop),
-            write_instruction(nop),
-            write_instruction(nop),
-            write_instruction(nop),
-            write_instruction(nop),
-            write_instruction(nop),
-            write_instruction(nop),
-            write_instruction(nop),
-            write_instruction(nop),
-            write_instruction(nop),
-            write_instruction(nop),
-            write_instruction(nop),
+            write_instruction(stall, 12),
             write_instruction(jump, 0));
     begin
         return program;
