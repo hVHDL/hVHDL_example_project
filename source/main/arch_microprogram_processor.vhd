@@ -46,7 +46,7 @@ architecture microprogram of example_filter_entity is
     constant dummy           : program_array := get_dummy;
     constant low_pass_filter : program_array := get_pipelined_low_pass_filter;
     constant function_calls  : program_array := test_function_calls;
-    constant test_program    : program_array := get_pipelined_low_pass_filter & get_dummy & function_calls;
+    constant test_program    : program_array := get_pipelined_low_pass_filter & write_instruction(save_registers, reg_offset-reg_array'length*2) & get_dummy & function_calls;
 
     function build_sw return ram_array
     is
@@ -72,7 +72,7 @@ begin
         procedure request_low_pass_filter is
             constant temp : program_array := (get_pipelined_low_pass_filter & get_dummy);
         begin
-            self.program_counter <= temp'length;
+            self.program_counter <= temp'length + 1;
         end request_low_pass_filter;
 
     begin
@@ -101,11 +101,6 @@ begin
                         state_counter <= state_counter+1;
                     end if;
 
-                WHEN 2 =>
-                    if program_is_ready(self) then
-                        save_registers(self, reg_offset-reg_array'length*2);
-                        state_counter <= state_counter+1;
-                    end if;
                 WHEN others => -- do nothing
             end CASE;
 
