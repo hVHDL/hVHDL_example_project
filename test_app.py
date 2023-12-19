@@ -10,6 +10,7 @@ ports = serial.tools.list_ports.comports()
 for port, desc, hwid in sorted(ports):
         print("{}: {} [{}]".format(port, desc, hwid))
 comport = str(sys.argv[1])
+plot_title = str(sys.argv[2])
 
 from uart_communication_functions import *
 uart = uart_link(comport, 5e6)
@@ -31,17 +32,21 @@ fixed_point_filtered_data = uart.stream_data_from_address(104, number_of_points)
 floating_point_filtered_data = uart.stream_data_from_address(108, number_of_points);
 microprocessor_filtered_data = uart.stream_data_from_address(15165, number_of_points);
 
-pyplot.subplot(2, 2, 1)
-pyplot.plot(noisy_sine) 
-pyplot.title('noisy sine')
-pyplot.subplot(2, 2, 2)
-pyplot.plot(microprocessor_filtered_data) 
-pyplot.title('microprocessor filtered sine')
-pyplot.subplot(2, 2, 3)
-pyplot.plot(fixed_point_filtered_data) 
-pyplot.title('fixed point filtered sine')
-pyplot.subplot(2, 2, 4)
-pyplot.plot(floating_point_filtered_data) 
-pyplot.title('floating point filtered sine')
+
+(fig, ax) = pyplot.subplots(2, 2)
+
+# ax[0][0].subplot(2, 2, 1)
+ax[0][0].plot(noisy_sine) 
+ax[0][0].set_title('noisy sine')
+
+ax[0][1].plot(microprocessor_filtered_data) 
+ax[0][1].set_title('microprocessor filtered sine')
+
+ax[1][0].plot(fixed_point_filtered_data) 
+ax[1][0].set_title('fixed point filtered sine')
+
+ax[1][1].plot(floating_point_filtered_data) 
+ax[1][1].set_title('floating point filtered sine')
+fig.suptitle(plot_title, fontsize=15)
 pyplot.show()
 

@@ -50,7 +50,7 @@ architecture microprogram of example_filter_entity is
 
     function build_sw return ram_array
     is
-        variable retval : ram_array := (others => (others => '0'));
+        variable retval : ram_array := init_ram(test_program);
         constant reg_values1 : reg_array := to_fixed((0.0 , 0.44252 , 0.3 , filter_time_constant ) , 19);
         constant reg_values2 : reg_array := to_fixed((0.0 , 0.44252 , 0.2 , 0.0804166            ) , 19);
         constant reg_values3 : reg_array := to_fixed((0.0 , 0.44252 , 0.1 , 0.0104166            ) , 19);
@@ -64,13 +64,15 @@ architecture microprogram of example_filter_entity is
         
     end build_sw;
 
+    constant final_sw : ram_array := build_sw;
+
     signal self : processor_with_ram_record := init_processor(test_program'high);
 
 begin
 
     fixed_point_filter : process(clock)
         procedure request_low_pass_filter is
-            constant temp : program_array := (get_pipelined_low_pass_filter & get_dummy);
+            constant temp : program_array := (low_pass_filter & get_dummy);
         begin
             self.program_counter <= temp'length + 1;
         end request_low_pass_filter;
@@ -116,7 +118,7 @@ begin
     end process;	
 ------------------------------------------------------------------------
     u_dpram : entity work.ram_read_x2_write_x1
-    generic map(build_sw)
+    generic map(final_sw)
     port map(
     clock                    ,
     ram_read_instruction_in  ,

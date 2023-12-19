@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<efxpt:design_db name="hVHDL_example_titanium" device_def="Ti60F225" location="C:\dev\hVHDL_example_project\efinix_titanium_build" version="2023.1.150.6.14" db_version="20231999" last_change_date="Sun Dec  3 18:17:09 2023" xmlns:efxpt="http://www.efinixinc.com/peri_design_db" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.efinixinc.com/peri_design_db peri_design_db.xsd ">
+<efxpt:design_db name="hVHDL_example_titanium" device_def="Ti60F225" location="C:\dev\hVHDL_example_project\efinix_titanium_build" version="2023.2.307" db_version="20232999" last_change_date="Tue Dec 19 08:24:52 2023" xmlns:efxpt="http://www.efinixinc.com/peri_design_db" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.efinixinc.com/peri_design_db peri_design_db.xsd ">
     <efxpt:device_info>
         <efxpt:iobank_info>
             <efxpt:iobank name="1A" iostd="1.8 V LVCMOS" is_dyn_voltage="false" mode_sel_name="1A_MODE_SEL"/>
