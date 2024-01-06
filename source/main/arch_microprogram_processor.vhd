@@ -18,7 +18,7 @@ architecture microprogram of example_filter_entity is
     use work.test_programs_pkg.all;
     use work.real_to_fixed_pkg.all;
     use work.multi_port_ram_pkg.all;
-    use work.microcode_processor_pkg.all;
+    use work.simple_processor_pkg.all;
 
     ------------------------
     signal ram_read_instruction_in  : ram_read_in_record  ;
@@ -30,87 +30,67 @@ architecture microprogram of example_filter_entity is
     signal result : integer range -2**17 to 2**17-1 := 0;
     signal state_counter : natural range 0 to 2**7-1 := 75;
 
-    constant reg_offset : natural := ram_array'high;
+    signal self : simple_processor_record := init_processor;
+    signal input_buffer : std_logic_vector(self.registers(0)'range) := (others => '0');
 
-    function test_function_calls return program_array
-    is
-        constant program : program_array := (
-            write_instruction(load_registers, reg_offset-reg_array'length*2),
-            write_instruction(stall, 12),
-            write_instruction(jump, 0));
-    begin
-        return program;
-        
-    end test_function_calls;
-
-    constant dummy           : program_array := get_dummy;
-    constant low_pass_filter : program_array := get_pipelined_low_pass_filter;
-    constant function_calls  : program_array := test_function_calls;
-    constant test_program    : program_array := get_pipelined_low_pass_filter & write_instruction(save_registers, reg_offset-reg_array'length*2) & get_dummy & function_calls;
-
-    function build_sw return ram_array
-    is
-        variable retval : ram_array := init_ram(test_program);
-        constant reg_values1 : reg_array := to_fixed((0.0 , 0.44252 , 0.3 , filter_time_constant ) , 19);
-        constant reg_values2 : reg_array := to_fixed((0.0 , 0.44252 , 0.2 , 0.0804166            ) , 19);
-        constant reg_values3 : reg_array := to_fixed((0.0 , 0.44252 , 0.1 , 0.0104166            ) , 19);
-    begin
-
-        retval := write_register_values_to_ram(init_ram(test_program) , reg_values1 , reg_offset-reg_array'length*2);
-        retval := write_register_values_to_ram(retval                 , reg_values2 , reg_offset-reg_array'length*1);
-        retval := write_register_values_to_ram(retval                 , reg_values3 , reg_offset-reg_array'length*0);
-            
-        return retval;
-        
-    end build_sw;
+    signal counter : natural range 0 to 7 :=7;
+    signal counter2 : natural range 0 to 7 :=7;
+    signal result1 : integer range -2**15 to 2**15-1:= 0;
+    signal result2 : integer range -2**15 to 2**15-1:= 0;
+    signal result3 : integer range -2**15 to 2**15-1:= 0;
 
     constant final_sw : ram_array := build_sw;
-
-    signal self : processor_with_ram_record := init_processor(test_program'high);
 
 begin
 
     fixed_point_filter : process(clock)
-        procedure request_low_pass_filter is
-            constant temp : program_array := (low_pass_filter & get_dummy);
-        begin
-            self.program_counter <= temp'length + 1;
-        end request_low_pass_filter;
-
     begin
         if rising_edge(clock) then
             init_bus(bus_out);
-            connect_read_only_data_to_address(bus_in, bus_out, 15165 , result + 32768);
+            connect_read_only_data_to_address(bus_in, bus_out, 15165 , result1 + 32768);
+            connect_read_only_data_to_address(bus_in, bus_out, 15166 , result2 + 32768);
+            connect_read_only_data_to_address(bus_in, bus_out, 15167 , result3 + 32768);
     ------------------------------------------------------------------------
 
-            create_processor_w_ram(
+            create_simple_processor(
                 self                     ,
                 ram_read_instruction_in  ,
                 ram_read_instruction_out ,
                 ram_read_data_in         ,
                 ram_read_data_out        ,
-                ram_write_port           ,
-                ram_array'length);
+                ram_write_port);
+                
     ------------------------------------------------------------------------
 
-            CASE state_counter is
-                WHEN 0 => 
-                    state_counter <= state_counter+1;
-                    request_low_pass_filter;
-                WHEN 1 =>
-                    if register_load_ready(self) then
-                        self.registers(1) <= std_logic_vector(to_signed(example_filter_input.filter_input,self.registers(0)'length));
-                        state_counter <= state_counter+1;
-                    end if;
-
-                WHEN others => -- do nothing
-            end CASE;
-
             if example_filter_input.filter_is_requested then
-                state_counter <= 0;
+                request_processor(self);
+                write_data_to_ram(ram_write_port, 102, std_logic_vector(to_signed(example_filter_input.filter_input,20)));
             end if;
-            if decode(get_ram_data(ram_read_instruction_out)) = ready then
-                result <= to_integer(signed(self.registers(0)))/2;
+
+            if program_is_ready(self) then
+                counter <= 0;
+                counter2 <= 0;
+            end if;
+            if counter < 7 then
+                counter <= counter +1;
+            end if;
+
+            CASE counter is
+                WHEN 0 => request_data_from_ram(ram_read_data_in, 101);
+                WHEN 1 => request_data_from_ram(ram_read_data_in, 104);
+                WHEN 2 => request_data_from_ram(ram_read_data_in, 106);
+                WHEN others => --do nothing
+            end CASE;
+            if not processor_is_enabled(self) then
+                if ram_read_is_ready(ram_read_data_out) then
+                    counter2 <= counter2 + 1;
+                    CASE counter2 is
+                        WHEN 0 => result1 <= to_integer(signed(get_ram_data(ram_read_data_out))) / 2;
+                        WHEN 1 => result2 <= to_integer(signed(get_ram_data(ram_read_data_out))) / 2;
+                        WHEN 2 => result3 <= to_integer(signed(get_ram_data(ram_read_data_out))) / 2;
+                        WHEN others => -- do nothing
+                    end CASE; --counter2
+                end if;
             end if;
 
 

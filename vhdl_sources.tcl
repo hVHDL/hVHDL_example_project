@@ -19,7 +19,7 @@ add_vhdl_file_to_project $source_folder/hVHDL_floating_point/float_type_definiti
 add_vhdl_file_to_project $source_folder/hVHDL_floating_point/float_type_definitions/float_type_definitions_pkg.vhd                 
 add_vhdl_file_to_project $source_folder/hVHDL_floating_point/normalizer/normalizer_configuration/normalizer_with_3_stage_pipe_pkg.vhd
 add_vhdl_file_to_project $source_folder/hVHDL_floating_point/normalizer/normalizer_pkg.vhd                                         
-add_vhdl_file_to_project $source_folder/hVHDL_floating_point/denormalizer/denormalizer_configuration/denormalizer_with_3_stage_pipe_pkg.vhd
+add_vhdl_file_to_project $source_folder/hVHDL_floating_point/denormalizer/denormalizer_configuration/denormalizer_with_4_stage_pipe_pkg.vhd
 add_vhdl_file_to_project $source_folder/hVHDL_floating_point/denormalizer/denormalizer_pkg.vhd                                     
 add_vhdl_file_to_project $source_folder/hVHDL_floating_point/float_to_real_conversions/float_to_real_functions_pkg.vhd             
 add_vhdl_file_to_project $source_folder/hVHDL_floating_point/float_to_real_conversions/float_to_real_conversions_pkg.vhd           
@@ -35,10 +35,10 @@ add_vhdl_file_to_project $source_folder/hVHDL_memory_library/multi_port_ram/mult
 add_vhdl_file_to_project $source_folder/hVHDL_memory_library/multi_port_ram/ram_read_x2_write_x1.vhd
 add_vhdl_file_to_project $source_folder/hVHDL_memory_library/multi_port_ram/arch_rtl_read_x2_write_x1.vhd
 
-add_vhdl_file_to_project $source_folder/hVHDL_microprogram_processor/testbenches/microcode_processor_pkg.vhd 
-add_vhdl_file_to_project $source_folder/hVHDL_microprogram_processor/testbenches/test_programs_pkg.vhd       
-add_vhdl_file_to_project $source_folder/hVHDL_microprogram_processor/testbenches/microinstruction_pkg.vhd    
 add_vhdl_file_to_project $source_folder/hVHDL_math_library/real_to_fixed/real_to_fixed_pkg.vhd                 
+add_vhdl_file_to_project $source_folder/hVHDL_microprogram_processor/vhdl_assembler/microinstruction_pkg.vhd    
+add_vhdl_file_to_project $source_folder/hVHDL_microprogram_processor/simple_processor/test_programs_pkg.vhd       
+add_vhdl_file_to_project $source_folder/hVHDL_microprogram_processor/simple_processor/simple_processor_pkg.vhd
 
 add_vhdl_file_to_project $source_folder/main/communication/communications.vhd
 add_vhdl_file_to_project $source_folder/main/main.vhd
