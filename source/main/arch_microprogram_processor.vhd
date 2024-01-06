@@ -35,11 +35,12 @@ architecture microprogram of example_filter_entity is
 
     signal counter : natural range 0 to 7 :=7;
     signal counter2 : natural range 0 to 7 :=7;
-    signal result1 : integer range -2**15 to 2**15-1:= 0;
-    signal result2 : integer range -2**15 to 2**15-1:= 0;
-    signal result3 : integer range -2**15 to 2**15-1:= 0;
+    signal result1 : integer range  -2**17 to 2**17-1 := 0;
+    signal result2 : integer range  -2**17 to 2**17-1 := 0;
+    signal result3 : integer range  -2**17 to 2**17-1 := 0;
 
-    constant final_sw : ram_array := build_sw;
+    constant final_sw : ram_array := build_sw(filter_time_constant);
+    signal request_buffer : boolean := false;
 
 begin
 
@@ -62,9 +63,11 @@ begin
                 
     ------------------------------------------------------------------------
 
-            if example_filter_input.filter_is_requested then
+            request_buffer <= example_filter_input.filter_is_requested;
+            input_buffer <= std_logic_vector(to_signed(example_filter_input.filter_input,20));
+            if request_buffer then
                 request_processor(self);
-                write_data_to_ram(ram_write_port, 102, std_logic_vector(to_signed(example_filter_input.filter_input,20)));
+                write_data_to_ram(ram_write_port, 102, input_buffer); 
             end if;
 
             if program_is_ready(self) then

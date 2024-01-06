@@ -121,9 +121,9 @@ begin
 
             if sincos_is_ready(sincos) then
                 sine_with_noise <= get_sine(sincos) + to_integer(signed(prbs7)*64);
-                request_example_filter(floating_point_filter_in, sine_with_noise);
-                request_example_filter(fixed_point_filter_in, sine_with_noise);
-                request_example_filter(mcu_in, sine_with_noise);
+                request_example_filter(floating_point_filter_in , sine_with_noise);
+                request_example_filter(fixed_point_filter_in    , sine_with_noise);
+                request_example_filter(mcu_in                   , sine_with_noise);
             end if;
 
         end if; --rising_edge
