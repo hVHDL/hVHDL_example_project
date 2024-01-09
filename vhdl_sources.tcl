@@ -36,6 +36,8 @@ add_vhdl_file_to_project $source_folder/hVHDL_memory_library/multi_port_ram/ram_
 add_vhdl_file_to_project $source_folder/hVHDL_memory_library/multi_port_ram/arch_rtl_read_x2_write_x1.vhd
 
 add_vhdl_file_to_project $source_folder/hVHDL_math_library/real_to_fixed/real_to_fixed_pkg.vhd                 
+add_vhdl_file_to_project $source_folder/hVHDL_microprogram_processor/processor_configuration/processor_configuration_pkg.vhd
+add_vhdl_file_to_project $source_folder/hVHDL_microprogram_processor/processor_configuration/fixed_point_command_pipeline_pkg.vhd
 add_vhdl_file_to_project $source_folder/hVHDL_microprogram_processor/vhdl_assembler/microinstruction_pkg.vhd    
 add_vhdl_file_to_project $source_folder/hVHDL_microprogram_processor/simple_processor/test_programs_pkg.vhd       
 add_vhdl_file_to_project $source_folder/hVHDL_microprogram_processor/simple_processor/simple_processor_pkg.vhd

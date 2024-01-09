@@ -19,6 +19,7 @@ architecture microprogram of example_filter_entity is
     use work.real_to_fixed_pkg.all;
     use work.multi_port_ram_pkg.all;
     use work.simple_processor_pkg.all;
+    use work.command_pipeline_pkg.all;
 
     ------------------------
     signal ram_read_instruction_in  : ram_read_in_record  ;
@@ -31,6 +32,7 @@ architecture microprogram of example_filter_entity is
     signal state_counter : natural range 0 to 2**7-1 := 75;
 
     signal self : simple_processor_record := init_processor;
+    signal command_pipeline         : command_pipeline_record := init_fixed_point_command_pipeline;
     signal input_buffer : std_logic_vector(self.registers(0)'range) := (others => '0');
 
     signal counter : natural range 0 to 7 :=7;
@@ -45,6 +47,7 @@ architecture microprogram of example_filter_entity is
 begin
 
     fixed_point_filter : process(clock)
+        variable used_instruction : t_instruction;
     begin
         if rising_edge(clock) then
             init_bus(bus_out);
@@ -59,7 +62,20 @@ begin
                 ram_read_instruction_out ,
                 ram_read_data_in         ,
                 ram_read_data_out        ,
-                ram_write_port);
+                ram_write_port           ,
+                used_instruction);
+
+            create_command_pipeline(
+                command_pipeline          ,
+                ram_read_instruction_in   ,
+                ram_read_instruction_out  ,
+                ram_read_data_in          ,
+                ram_read_data_out         ,
+                ram_write_port            ,
+                self.registers            ,
+                self.instruction_pipeline ,
+                used_instruction);
+    ------------------------------------------------------------------------
                 
     ------------------------------------------------------------------------
 
