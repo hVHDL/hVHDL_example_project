@@ -80,7 +80,7 @@ begin
     ------------------------------------------------------------------------
 
             request_buffer <= example_filter_input.filter_is_requested;
-            input_buffer <= std_logic_vector(to_signed(example_filter_input.filter_input,20));
+            input_buffer <= std_logic_vector(to_signed(example_filter_input.filter_input,input_buffer'length));
             if request_buffer then
                 request_processor(self);
                 write_data_to_ram(ram_write_port, 102, input_buffer); 
