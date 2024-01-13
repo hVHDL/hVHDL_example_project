@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<efx:project name="hVHDL_example_titanium" description="" last_change="1705123795" sw_version="2023.2.307" last_run_state="pass" last_run_flow="bitstream" config_result_in_sync="sync" design_ood="sync" place_ood="sync" route_ood="sync" xmlns:efx="http://www.efinixinc.com/enf_proj" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.efinixinc.com/enf_proj enf_proj.xsd">
+<efx:project name="hVHDL_example_titanium" description="" last_change="1705176587" sw_version="2023.2.307" last_run_state="pass" last_run_flow="bitstream" config_result_in_sync="sync" design_ood="sync" place_ood="sync" route_ood="sync" xmlns:efx="http://www.efinixinc.com/enf_proj" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.efinixinc.com/enf_proj enf_proj.xsd">
     <efx:device_info>
         <efx:family name="Titanium"/>
         <efx:device name="Ti60F225"/>
@@ -18,7 +18,6 @@
         <efx:design_file name="../source/main/main.vhd" version="default" library="default"/>
         <efx:design_file name="../source/main/example_filter_entity.vhd" version="default" library="default"/>
         <efx:design_file name="../source/main/arch_fixed_example_filter_entity.vhd" version="default" library="default"/>
-        <efx:design_file name="../source/main/arch_float_example_filter_entity.vhd" version="default" library="default"/>
         <efx:design_file name="../source/hVHDL_floating_point/float_type_definitions/float_word_length_24_bit_pkg.vhd" version="default" library="default"/>
         <efx:design_file name="../source/hVHDL_floating_point/float_type_definitions/float_type_definitions_pkg.vhd" version="default" library="default"/>
         <efx:design_file name="../source/hVHDL_floating_point/normalizer/normalizer_pkg.vhd" version="default" library="default"/>
@@ -48,7 +47,9 @@
         <efx:design_file name="../source/hVHDL_microprogram_processor/simple_processor/test_programs_pkg.vhd" version="default" library="default"/>
         <efx:design_file name="../source/hVHDL_microprogram_processor/processor_configuration/processor_configuration_pkg.vhd" version="default" library="default"/>
         <efx:design_file name="../source/hVHDL_microprogram_processor/processor_configuration/fixed_point_command_pipeline_pkg.vhd" version="default" library="default"/>
-        <efx:design_file name="../source/hVHDL_microprogram_processor/simple_processor/ram_configuration_for_simple_processor_pkg.vhd" version="default" library="default"/>
+        <efx:design_file name="../source/hVHDL_microprogram_processor/processor_configuration/float_processor_ram_width_pkg.vhd" version="default" library="default"/>
+        <efx:design_file name="../source/hVHDL_microprogram_processor/processor_configuration/float_pipeline_pkg.vhd" version="default" library="default"/>
+        <efx:design_file name="../source/main/arch_float_processor_entity.vhd" version="default" library="default"/>
         <efx:top_vhdl_arch name="rtl"/>
     </efx:design_info>
     <efx:constraint_info>

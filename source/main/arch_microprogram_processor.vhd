@@ -31,9 +31,9 @@ architecture microprogram of example_filter_entity is
     signal result : integer range -2**17 to 2**17-1 := 0;
     signal state_counter : natural range 0 to 2**7-1 := 75;
 
-    signal self : simple_processor_record := init_processor;
-    signal command_pipeline         : command_pipeline_record := init_fixed_point_command_pipeline;
-    signal input_buffer : std_logic_vector(self.registers(0)'range) := (others => '0');
+    signal self             : simple_processor_record                   := init_processor;
+    signal command_pipeline : command_pipeline_record                   := init_fixed_point_command_pipeline;
+    signal input_buffer     : std_logic_vector(self.registers(0)'range) := (others => '0');
 
     signal counter : natural range 0 to 7 :=7;
     signal counter2 : natural range 0 to 7 :=7;
