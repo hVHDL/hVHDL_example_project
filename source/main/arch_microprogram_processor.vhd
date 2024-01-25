@@ -65,16 +65,16 @@ begin
                 ram_write_port           ,
                 used_instruction);
 
-            create_command_pipeline(
-                command_pipeline          ,
-                ram_read_instruction_in   ,
-                ram_read_instruction_out  ,
-                ram_read_data_in          ,
-                ram_read_data_out         ,
-                ram_write_port            ,
-                self.registers            ,
-                self.instruction_pipeline ,
-                used_instruction);
+            -- create_command_pipeline(
+            --     command_pipeline          ,
+            --     ram_read_instruction_in   ,
+            --     ram_read_instruction_out  ,
+            --     ram_read_data_in          ,
+            --     ram_read_data_out         ,
+            --     ram_write_port            ,
+            --     self.registers            ,
+            --     self.instruction_pipeline ,
+            --     used_instruction);
     ------------------------------------------------------------------------
                 
     ------------------------------------------------------------------------

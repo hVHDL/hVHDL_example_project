@@ -26,7 +26,6 @@ library ieee;
 	use work.sincos_pkg.all;
     use work.communications_pkg.all;
     use work.fpga_interconnect_pkg.all;
-    use work.first_order_filter_pkg.all;
     use work.example_filter_entity_pkg.all;
 
 entity main is

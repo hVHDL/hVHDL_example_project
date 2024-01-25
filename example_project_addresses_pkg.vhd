@@ -18,4 +18,6 @@ package example_project_addresses_pkg is
     constant floating_point_filter_output_exponent_address : integer := 107;
     constant floating_point_filter_integer_output_address  : integer := 108;
 
+    constant mcu_filter_output_address : integer := 109;
+
 end package example_project_addresses_pkg;

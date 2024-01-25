@@ -30,7 +30,7 @@ number_of_points = 50000
 noisy_sine = uart.stream_data_from_address(103, number_of_points);
 fixed_point_filtered_data = uart.stream_data_from_address(104, number_of_points);
 floating_point_filtered_data = uart.stream_data_from_address(108, number_of_points);
-microprocessor_filtered_data = uart.stream_data_from_address(15167, number_of_points);
+microprocessor_filtered_data = uart.stream_data_from_address(109, number_of_points);
 
 
 (fig, ax) = pyplot.subplots(2, 2)

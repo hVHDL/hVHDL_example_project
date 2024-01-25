@@ -30,7 +30,7 @@ add_vhdl_file_to_project $source_folder/hVHDL_floating_point/float_multiplier/fl
 add_vhdl_file_to_project $source_folder/hVHDL_floating_point/float_alu/float_alu_pkg.vhd                                           
 add_vhdl_file_to_project $source_folder/hVHDL_floating_point/float_first_order_filter/float_first_order_filter_pkg.vhd             
 
-add_vhdl_file_to_project $source_folder/hVHDL_memory_library/fpga_internal_ram/ram_configuration_pkg.vhd           
+add_vhdl_file_to_project $source_folder/hVHDL_microprogram_processor/processor_configuration/float_processor_ram_width_pkg.vhd
 add_vhdl_file_to_project $source_folder/hVHDL_memory_library/multi_port_ram/multi_port_ram_pkg.vhd
 add_vhdl_file_to_project $source_folder/hVHDL_memory_library/multi_port_ram/ram_read_x2_write_x1.vhd
 add_vhdl_file_to_project $source_folder/hVHDL_memory_library/multi_port_ram/arch_rtl_read_x2_write_x1.vhd
@@ -39,13 +39,13 @@ add_vhdl_file_to_project $source_folder/hVHDL_math_library/real_to_fixed/real_to
 add_vhdl_file_to_project $source_folder/hVHDL_microprogram_processor/processor_configuration/processor_configuration_pkg.vhd
 add_vhdl_file_to_project $source_folder/hVHDL_microprogram_processor/processor_configuration/fixed_point_command_pipeline_pkg.vhd
 add_vhdl_file_to_project $source_folder/hVHDL_microprogram_processor/vhdl_assembler/microinstruction_pkg.vhd    
-add_vhdl_file_to_project $source_folder/hVHDL_microprogram_processor/simple_processor/test_programs_pkg.vhd       
 add_vhdl_file_to_project $source_folder/hVHDL_microprogram_processor/simple_processor/simple_processor_pkg.vhd
+
+add_vhdl_file_to_project $source_folder/hVHDL_microprogram_processor/processor_configuration/float_pipeline_pkg.vhd
 
 add_vhdl_file_to_project $source_folder/main/communication/communications.vhd
 add_vhdl_file_to_project $source_folder/main/main.vhd
 add_vhdl_file_to_project $source_folder/main/example_filter_entity.vhd
 add_vhdl_file_to_project $source_folder/main/arch_fixed_example_filter_entity.vhd
 add_vhdl_file_to_project $source_folder/main/arch_float_example_filter_entity.vhd
-add_vhdl_file_to_project $source_folder/main/arch_microprogram_processor.vhd             
-
+add_vhdl_file_to_project $source_folder/main/arch_float_processor_entity.vhd
