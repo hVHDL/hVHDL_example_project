@@ -144,7 +144,7 @@ begin
             end if;
 
             if program_is_ready(self) then
-                convert_float_to_integer(float_to_integer_converter, to_float(self.registers(2)), 15);
+                convert_float_to_integer(float_to_integer_converter, to_float(self.registers(2)), 14);
             end if;
             converted_integer <= std_logic_vector(to_signed(get_converted_integer(float_to_integer_converter) +  32768, 16));
 
