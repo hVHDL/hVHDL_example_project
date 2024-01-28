@@ -30,9 +30,9 @@ architecture microprogram of example_filter_entity is
 
     signal converted_integer : std_logic_vector(15 downto 0);
 
-    constant u_address : natural := 200;
-    constant y_address : natural := 335;
-    constant g_address : natural := 428;
+    constant u_address : natural := 509;
+    constant y_address : natural := 510;
+    constant g_address : natural := 511;
 
     constant ram_contents : ram_array := build_sw(filter_time_constant , u_address , y_address , g_address);
 
@@ -43,6 +43,7 @@ architecture microprogram of example_filter_entity is
     signal ram_read_data_out        : ram_read_out_record ;
     signal ram_write_port           : ram_write_in_record ;
     signal ram_write_port2          : ram_write_in_record ;
+    signal valisignaali : signed(15 downto 0) := (others => '0');
 
 
 begin
@@ -113,7 +114,7 @@ begin
             end CASE;
         ------------------------------------------------------------------------
             --stage 6
-            used_instruction := self.instruction_pipeline(6);
+            used_instruction := self.instruction_pipeline(7);
 
             CASE decode(used_instruction) is
                 WHEN mpy =>
@@ -123,7 +124,7 @@ begin
             end CASE;
         ------------------------------------------------------------------------
         --stage 9
-            used_instruction := self.instruction_pipeline(9);
+            used_instruction := self.instruction_pipeline(10);
             CASE decode(used_instruction) is
                 WHEN add | sub => 
                     self.registers(get_dest(used_instruction)) <= to_std_logic_vector(get_add_result(float_alu));
@@ -146,7 +147,8 @@ begin
             if program_is_ready(self) then
                 convert_float_to_integer(float_to_integer_converter, to_float(self.registers(2)), 14);
             end if;
-            converted_integer <= std_logic_vector(to_signed(get_converted_integer(float_to_integer_converter) +  32768, 16));
+            valisignaali <= to_signed(get_converted_integer(float_to_integer_converter), 16);
+            converted_integer <= std_logic_vector(valisignaali + 32768);
 
         end if; --rising_edge
     end process floating_point_filter;	

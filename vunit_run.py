@@ -32,9 +32,9 @@ mcu_lib.add_source_files(ROOT / "source/hVHDL_fpga_interconnect/interconnect_con
 mcu_lib.add_source_files(ROOT / "source/hVHDL_fpga_interconnect/fpga_interconnect_pkg.vhd")
 mcu_lib.add_source_files(ROOT / "example_project_addresses_pkg.vhd")
 
-mcu_lib.add_source_files(ROOT / "source/hVHDL_floating_point/float_type_definitions/float_word_length_24_bit_pkg.vhd")
+mcu_lib.add_source_files(ROOT / "source/hVHDL_floating_point/float_type_definitions/float_word_length_20_bit_pkg.vhd")
 mcu_lib.add_source_files(ROOT / "source/hVHDL_floating_point/float_type_definitions/float_type_definitions_pkg.vhd")
-mcu_lib.add_source_files(ROOT / "source/hVHDL_floating_point/normalizer/normalizer_configuration/normalizer_with_3_stage_pipe_pkg.vhd")
+mcu_lib.add_source_files(ROOT / "source/hVHDL_floating_point/normalizer/normalizer_configuration/normalizer_with_4_stage_pipe_pkg.vhd")
 mcu_lib.add_source_files(ROOT / "source/hVHDL_floating_point/normalizer/normalizer_pkg.vhd")
 mcu_lib.add_source_files(ROOT / "source/hVHDL_floating_point/denormalizer/denormalizer_configuration/denormalizer_with_4_stage_pipe_pkg.vhd")
 mcu_lib.add_source_files(ROOT / "source/hVHDL_floating_point/denormalizer/denormalizer_pkg.vhd")

@@ -27,6 +27,7 @@ architecture float of example_filter_entity is
     alias self is float_filter;
 
     signal converted_integer : std_logic_vector(15 downto 0);
+    signal valisignaali : signed(15 downto 0) := (others => '0');
 
 
 begin
@@ -78,8 +79,12 @@ begin
                 request_float_filter(float_filter, get_converted_float(float_to_integer_converter));
             end if;
 
-            convert_float_to_integer(float_to_integer_converter, get_filter_output(float_filter), 14);
-            converted_integer <= std_logic_vector(to_signed(get_converted_integer(float_to_integer_converter) +  32768, 16));
+            if float_filter_is_ready(self) then
+                convert_float_to_integer(float_to_integer_converter, get_filter_output(float_filter), 14);
+            end if;
+
+            valisignaali <= to_signed(get_converted_integer(float_to_integer_converter), 16);
+            converted_integer <= std_logic_vector(valisignaali + 32768);
 
         end if; --rising_edge
     end process floating_point_filter;	

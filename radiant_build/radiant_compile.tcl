@@ -17,6 +17,11 @@ puts $source_folder
 
 prj_set_strategy_value -strategy Strategy1 syn_vhdl2008=True
 prj_set_strategy_value -strategy Strategy1 {syn_pipelining_retiming=Pipelining and Retiming}
+prj_set_strategy_value -strategy Strategy1 par_pathbased_place=On 
+prj_set_strategy_value -strategy Strategy1 par_save_best_result=2 
+prj_set_strategy_value -strategy Strategy1 par_place_iterator=4 
+prj_set_strategy_value -strategy Strategy1 par_stop_zero=True
+prj_set_strategy_value -strategy Strategy1 par_core_number=32
 
 prj_add_source $tcl_path/IP/main_oscillator/main_oscillator.ipx
 prj_add_source $tcl_path/IP/main_clock/main_clock.ipx
