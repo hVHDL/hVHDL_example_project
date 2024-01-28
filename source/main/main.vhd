@@ -70,6 +70,7 @@ architecture rtl of main is
 begin
 
     create_noisy_sine : process(system_clock)
+        -----------------------------------
         procedure increment_to
         (
             signal counter : inout integer;
@@ -82,7 +83,7 @@ begin
                 counter <= 0;
             end if;
         end increment_to;
-
+        -----------------------------------
         procedure calculate_prbs
         (
             signal prbs : inout std_logic_vector
@@ -90,8 +91,8 @@ begin
         begin
             prbs    <= prbs(5 downto 0) & prbs(6);
             prbs(6) <= prbs(5) xor prbs(0);
-            
         end calculate_prbs;
+        -----------------------------------
     begin
         if rising_edge(system_clock) then
             create_multiplier(multiplier);

@@ -107,13 +107,11 @@ begin
                 WHEN others => -- do nothing
             end CASE;
         ------------------------------------------------------------------------
-        --stage 5
             used_instruction := self.instruction_pipeline(5);
             CASE decode(used_instruction) is
                 WHEN others => -- do nothing
             end CASE;
         ------------------------------------------------------------------------
-            --stage 6
             used_instruction := self.instruction_pipeline(7);
 
             CASE decode(used_instruction) is
@@ -123,7 +121,6 @@ begin
                 WHEN others => -- do nothing
             end CASE;
         ------------------------------------------------------------------------
-        --stage 9
             used_instruction := self.instruction_pipeline(10);
             CASE decode(used_instruction) is
                 WHEN add | sub => 

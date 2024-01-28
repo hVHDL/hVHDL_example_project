@@ -1,4 +1,4 @@
-<efx:project xmlns:efx="http://www.efinixinc.com/enf_proj" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="hVHDL_example_titanium" description="" last_change="1706374664" sw_version="2023.2.307.1.14" last_run_state="pass" last_run_flow="bitstream" config_result_in_sync="sync" design_ood="sync" place_ood="sync" route_ood="sync" xsi:schemaLocation="http://www.efinixinc.com/enf_proj enf_proj.xsd">
+<efx:project xmlns:efx="http://www.efinixinc.com/enf_proj" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="hVHDL_example_titanium" description="" last_change="1706432679" sw_version="2023.2.307.1.14" last_run_state="pass" last_run_flow="bitstream" config_result_in_sync="sync" design_ood="sync" place_ood="sync" route_ood="sync" xsi:schemaLocation="http://www.efinixinc.com/enf_proj enf_proj.xsd">
     <efx:device_info>
         <efx:family name="Titanium" />
         <efx:device name="Ti60F225" />
@@ -35,7 +35,7 @@
         <efx:design_file name="../source/hVHDL_microprogram_processor/source/hVHDL_memory_library/multi_port_ram/multi_port_ram_pkg.vhd" version="default" library="default" />
         <efx:design_file name="../source/hVHDL_microprogram_processor/source/hVHDL_memory_library/multi_port_ram/arch_rtl_read_x2_write_x1.vhd" version="default" library="default" />
         <efx:design_file name="../source/hVHDL_microprogram_processor/source/hVHDL_memory_library/multi_port_ram/ram_read_x2_write_x1.vhd" version="default" library="default" />
-        <efx:design_file name="../source/hVHDL_floating_point/normalizer/normalizer_configuration/normalizer_with_3_stage_pipe_pkg.vhd" version="default" library="default" />
+        <efx:design_file name="../source/hVHDL_floating_point/normalizer/normalizer_configuration/normalizer_with_4_stage_pipe_pkg.vhd" version="default" library="default" />
         <efx:design_file name="../source/hVHDL_floating_point/denormalizer/denormalizer_configuration/denormalizer_with_4_stage_pipe_pkg.vhd" version="default" library="default" />
         <efx:design_file name="../source/hVHDL_microprogram_processor/vhdl_assembler/microinstruction_pkg.vhd" version="default" library="default" />
         <efx:design_file name="../source/hVHDL_microprogram_processor/simple_processor/simple_processor_pkg.vhd" version="default" library="default" />
