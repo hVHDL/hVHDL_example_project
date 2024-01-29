@@ -15,9 +15,9 @@ add_vhdl_file_to_project $source_folder/hVHDL_uart/uart_protocol/uart_protocol_p
 add_vhdl_file_to_project $source_folder/hVHDL_fpga_interconnect/interconnect_configuration/data_15_address_15_bit_pkg.vhd
 add_vhdl_file_to_project $source_folder/hVHDL_fpga_interconnect/fpga_interconnect_pkg.vhd
 
-add_vhdl_file_to_project $source_folder/hVHDL_floating_point/float_type_definitions/float_word_length_24_bit_pkg.vhd 
+add_vhdl_file_to_project $source_folder/hVHDL_floating_point/float_type_definitions/float_word_length_20_bit_pkg.vhd 
 add_vhdl_file_to_project $source_folder/hVHDL_floating_point/float_type_definitions/float_type_definitions_pkg.vhd                 
-add_vhdl_file_to_project $source_folder/hVHDL_floating_point/normalizer/normalizer_configuration/normalizer_with_4_stage_pipe_pkg.vhd
+add_vhdl_file_to_project $source_folder/hVHDL_floating_point/normalizer/normalizer_configuration/normalizer_with_3_stage_pipe_pkg.vhd
 add_vhdl_file_to_project $source_folder/hVHDL_floating_point/normalizer/normalizer_pkg.vhd                                         
 add_vhdl_file_to_project $source_folder/hVHDL_floating_point/denormalizer/denormalizer_configuration/denormalizer_with_4_stage_pipe_pkg.vhd
 add_vhdl_file_to_project $source_folder/hVHDL_floating_point/denormalizer/denormalizer_pkg.vhd                                     
@@ -41,6 +41,7 @@ add_vhdl_file_to_project $source_folder/hVHDL_microprogram_processor/processor_c
 add_vhdl_file_to_project $source_folder/hVHDL_microprogram_processor/vhdl_assembler/microinstruction_pkg.vhd    
 add_vhdl_file_to_project $source_folder/hVHDL_microprogram_processor/simple_processor/simple_processor_pkg.vhd
 
+add_vhdl_file_to_project $source_folder/hVHDL_microprogram_processor/vhdl_assembler/float_assembler_pkg.vhd
 add_vhdl_file_to_project $source_folder/hVHDL_microprogram_processor/processor_configuration/float_pipeline_pkg.vhd
 
 add_vhdl_file_to_project $source_folder/main/communication/communications.vhd
