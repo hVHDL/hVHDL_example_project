@@ -73,6 +73,12 @@ begin
             CASE decode(used_instruction) is
                 WHEN load =>
                     request_data_from_ram(ram_read_data_in, get_sigle_argument(used_instruction));
+                WHEN others => -- do nothing
+            end CASE;
+
+        ------------------------------------------------------------------------
+        ------------------------------------------------------------------------
+            CASE decode(used_instruction) is
                 WHEN add => 
                     add(float_alu, 
                         to_float(self.registers(get_arg1(used_instruction))), 
@@ -88,6 +94,23 @@ begin
                         to_float(self.registers(get_arg2(used_instruction))));
                 WHEN others => -- do nothing
             end CASE;
+        ----------------------
+            used_instruction := self.instruction_pipeline(3 + work.normalizer_pkg.number_of_normalizer_pipeline_stages);
+            CASE decode(used_instruction) is
+                WHEN mpy =>
+                    self.registers(get_dest(used_instruction)) <= to_std_logic_vector(get_multiplier_result(float_alu));
+                WHEN others => -- do nothing
+            end CASE;
+        ----------------------
+            used_instruction := self.instruction_pipeline(2 + work.normalizer_pkg.number_of_normalizer_pipeline_stages + work.denormalizer_pkg.number_of_denormalizer_pipeline_stages);
+            CASE decode(used_instruction) is
+                WHEN add | sub => 
+                    self.registers(get_dest(used_instruction)) <= to_std_logic_vector(get_add_result(float_alu));
+                WHEN save =>
+                    write_data_to_ram(ram_write_port, get_sigle_argument(used_instruction), self.registers(get_dest(used_instruction)));
+                WHEN others => -- do nothing
+            end CASE;
+        ------------------------------------------------------------------------
         ------------------------------------------------------------------------
             used_instruction := self.instruction_pipeline(0);
             --stage 0
@@ -109,24 +132,6 @@ begin
         ------------------------------------------------------------------------
             used_instruction := self.instruction_pipeline(5);
             CASE decode(used_instruction) is
-                WHEN others => -- do nothing
-            end CASE;
-        ------------------------------------------------------------------------
-            used_instruction := self.instruction_pipeline(7);
-
-            CASE decode(used_instruction) is
-                WHEN mpy =>
-                    self.registers(get_dest(used_instruction)) <= to_std_logic_vector(get_multiplier_result(float_alu));
-
-                WHEN others => -- do nothing
-            end CASE;
-        ------------------------------------------------------------------------
-            used_instruction := self.instruction_pipeline(10);
-            CASE decode(used_instruction) is
-                WHEN add | sub => 
-                    self.registers(get_dest(used_instruction)) <= to_std_logic_vector(get_add_result(float_alu));
-                WHEN save =>
-                    write_data_to_ram(ram_write_port, get_sigle_argument(used_instruction), self.registers(get_dest(used_instruction)));
                 WHEN others => -- do nothing
             end CASE;
         ------------------------------------------------------------------------

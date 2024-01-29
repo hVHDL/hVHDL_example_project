@@ -17,7 +17,7 @@ end;
 architecture vunit_simulation of float_mcu_tb is
 
     constant clock_period      : time    := 1 ns;
-    constant simtime_in_clocks : integer := 50000;
+    constant simtime_in_clocks : integer := 25e3;
     
     signal simulator_clock     : std_logic := '0';
     alias system_clock is simulator_clock;
