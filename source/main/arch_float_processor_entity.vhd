@@ -24,6 +24,8 @@ architecture microprogram of example_filter_entity is
     use work.float_to_real_conversions_pkg.all;
 
     use work.float_pipeline_pkg.all;
+    use work.normalizer_pkg.number_of_normalizer_pipeline_stages;
+    use work.denormalizer_pkg.number_of_denormalizer_pipeline_stages;
 
     signal float_to_integer_converter : float_to_integer_converter_record := init_float_to_integer_converter;
     signal float_alu : float_alu_record := init_float_alu;
@@ -95,14 +97,14 @@ begin
                 WHEN others => -- do nothing
             end CASE;
         ----------------------
-            used_instruction := self.instruction_pipeline(3 + work.normalizer_pkg.number_of_normalizer_pipeline_stages);
+            used_instruction := self.instruction_pipeline(3 + number_of_normalizer_pipeline_stages);
             CASE decode(used_instruction) is
                 WHEN mpy =>
                     self.registers(get_dest(used_instruction)) <= to_std_logic_vector(get_multiplier_result(float_alu));
                 WHEN others => -- do nothing
             end CASE;
         ----------------------
-            used_instruction := self.instruction_pipeline(2 + work.normalizer_pkg.number_of_normalizer_pipeline_stages + work.denormalizer_pkg.number_of_denormalizer_pipeline_stages);
+            used_instruction := self.instruction_pipeline(2 + number_of_normalizer_pipeline_stages + number_of_denormalizer_pipeline_stages);
             CASE decode(used_instruction) is
                 WHEN add | sub => 
                     self.registers(get_dest(used_instruction)) <= to_std_logic_vector(get_add_result(float_alu));
