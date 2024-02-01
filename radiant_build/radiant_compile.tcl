@@ -22,6 +22,8 @@ prj_set_strategy_value -strategy Strategy1 par_save_best_result=2
 prj_set_strategy_value -strategy Strategy1 par_place_iterator=4 
 prj_set_strategy_value -strategy Strategy1 par_stop_zero=True
 prj_set_strategy_value -strategy Strategy1 par_core_number=32
+prj_set_strategy_value -strategy Strategy1 syn_allow_dup_modules=True
+prj_set_strategy_value -strategy Strategy1 par_pack_logicutil=20 par_place_iterator_start_pt=20
 
 prj_add_source $tcl_path/IP/main_oscillator/main_oscillator.ipx
 prj_add_source $tcl_path/IP/main_clock/main_clock.ipx
@@ -36,6 +38,7 @@ proc add_vhdl_file_to_library {vhdl_file library} {
 }
 
 source $tcl_path/../vhdl_sources.tcl
+add_vhdl_file_to_project $tcl_path/../source/main/float_configuration/certus_nx_float_configuration_pkg.vhd
 
 prj_add_source $tcl_path/pre_synth_constraints.sdc
 prj_add_source $tcl_path/cruvi_physical_constraints.pdc

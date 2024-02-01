@@ -34,6 +34,7 @@ set_property target_language VHDL [current_project]
 
 
 add_vhdl_file_to_project $tcl_path/alchitry_top.vhd
+add_vhdl_file_to_project $tcl_path/../source/main/float_configuration/artix7_float_configuration_pkg.vhd
 source $tcl_path/../vhdl_sources.tcl
 
 source $tcl_path/create_main_clocks.tcl

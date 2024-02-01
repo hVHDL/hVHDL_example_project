@@ -29,6 +29,7 @@ else \
         set_global_assignment -name VHDL_FILE $vhdl_file -library $library
     }
 
+    add_vhdl_file_to_project $tcl_path/../source/main/float_configuration/cyclone10lp_float_configuration_pkg.vhd
     add_vhdl_file_to_project $tcl_path/cyclone_10_top.vhd
     set_global_assignment -name VHDL_FILE $source_folder/efinix_top.vhd
 
