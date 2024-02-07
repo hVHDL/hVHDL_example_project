@@ -5,7 +5,7 @@ library ieee;
 
 package denormalizer_pipeline_pkg is
 
-    constant pipeline_configuration : natural := 3;
+    constant pipeline_configuration : natural := 4;
 
 end package denormalizer_pipeline_pkg;
 ------------------------------------------------------------------------

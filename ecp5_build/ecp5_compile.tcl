@@ -16,7 +16,7 @@ prj_project new -name hvhdl_example \
     -impl "impl1" \
     -dev LFE5U-12F-8BG381C \
     -impl_dir $outputDir \
-    -synthesis "synplify" \
+    -synthesis "LSE" \
 
 prj_src add $tcl_path/IP/IP.sbx
 
