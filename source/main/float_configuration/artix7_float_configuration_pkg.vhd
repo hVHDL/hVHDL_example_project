@@ -1,8 +1,4 @@
 -- artix 7
-library ieee;
-    use ieee.std_logic_1164.all;
-    use ieee.numeric_std.all;
-
 package denormalizer_pipeline_pkg is
 
     constant pipeline_configuration : natural := 2;
@@ -10,12 +6,16 @@ package denormalizer_pipeline_pkg is
 end package denormalizer_pipeline_pkg;
 ------------------------------------------------------------------------
 ------------------------------------------------------------------------
-library ieee;
-    use ieee.std_logic_1164.all;
-    use ieee.numeric_std.all;
-
 package normalizer_pipeline_pkg is
 
     constant normalizer_pipeline_configuration : natural := 2;
 
 end package normalizer_pipeline_pkg;
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+package float_word_length_pkg is
+
+    constant mantissa_bits : integer := 24;
+    constant exponent_bits : integer := 8;
+
+end package float_word_length_pkg;
