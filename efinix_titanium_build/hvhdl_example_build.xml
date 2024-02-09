@@ -1,4 +1,4 @@
-<efx:project xmlns:efx="http://www.efinixinc.com/enf_proj" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="hVHDL_example_titanium" description="" last_change="1707411691" sw_version="2023.2.307.1.14" last_run_state="pass" last_run_flow="bitstream" config_result_in_sync="sync" design_ood="sync" place_ood="sync" route_ood="sync" xsi:schemaLocation="http://www.efinixinc.com/enf_proj enf_proj.xsd">
+<efx:project xmlns:efx="http://www.efinixinc.com/enf_proj" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="hVHDL_example_titanium" description="" last_change="1707455104" sw_version="2023.2.307.1.14" last_run_state="pass" last_run_flow="bitstream" config_result_in_sync="sync" design_ood="sync" place_ood="sync" route_ood="sync" xsi:schemaLocation="http://www.efinixinc.com/enf_proj enf_proj.xsd">
     <efx:device_info>
         <efx:family name="Titanium" />
         <efx:device name="Ti60F225" />
@@ -43,7 +43,6 @@
         <efx:design_file name="../source/hVHDL_microprogram_processor/processor_configuration/fixed_point_command_pipeline_pkg.vhd" version="default" library="default" />
         <efx:design_file name="../source/hVHDL_microprogram_processor/processor_configuration/float_processor_ram_width_pkg.vhd" version="default" library="default" />
         <efx:design_file name="../source/hVHDL_microprogram_processor/processor_configuration/float_pipeline_pkg.vhd" version="default" library="default" />
-        <efx:design_file name="../source/hVHDL_microprogram_processor/processor_configuration/processor_float_word_length_pkg.vhd" version="default" library="default" />
         <efx:design_file name="../source/main/arch_float_processor_entity.vhd" version="default" library="default" />
         <efx:design_file name="../source/main/arch_float_example_filter_entity.vhd" version="default" library="default" />
         <efx:design_file name="../source/main/example_filter_entity.vhd" version="default" library="default" />

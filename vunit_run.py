@@ -32,7 +32,7 @@ mcu_lib.add_source_files(ROOT / "source/hVHDL_fpga_interconnect/interconnect_con
 mcu_lib.add_source_files(ROOT / "source/hVHDL_fpga_interconnect/fpga_interconnect_pkg.vhd")
 mcu_lib.add_source_files(ROOT / "example_project_addresses_pkg.vhd")
 
-mcu_lib.add_source_files(ROOT / "source/hVHDL_floating_point/float_type_definitions/float_word_length_20_bit_pkg.vhd")
+mcu_lib.add_source_files(ROOT / "source/hVHDL_floating_point/float_type_definitions/float_word_length_24_bit_pkg.vhd")
 mcu_lib.add_source_files(ROOT / "source/hVHDL_floating_point/float_type_definitions/float_type_definitions_pkg.vhd")
 mcu_lib.add_source_files(ROOT / "source/hVHDL_floating_point/normalizer/normalizer_configuration/normalizer_with_4_stage_pipe_pkg.vhd")
 mcu_lib.add_source_files(ROOT / "source/hVHDL_floating_point/normalizer/normalizer_pkg.vhd")
@@ -55,6 +55,7 @@ mcu_lib.add_source_files(ROOT / "source/hVHDL_math_library/real_to_fixed/real_to
 mcu_lib.add_source_files(ROOT / "source/hVHDL_microprogram_processor/processor_configuration/processor_configuration_pkg.vhd")
 mcu_lib.add_source_files(ROOT / "source/hVHDL_microprogram_processor/processor_configuration/float_pipeline_pkg.vhd")
 mcu_lib.add_source_files(ROOT / "source/hVHDL_microprogram_processor/vhdl_assembler/microinstruction_pkg.vhd")
+mcu_lib.add_source_files(ROOT / "source/hVHDL_microprogram_processor/vhdl_assembler/float_assembler_pkg.vhd")
 mcu_lib.add_source_files(ROOT / "source/hVHDL_microprogram_processor/simple_processor/simple_processor_pkg.vhd")
 
 mcu_lib.add_source_files(ROOT / "source/main/example_filter_entity.vhd")
