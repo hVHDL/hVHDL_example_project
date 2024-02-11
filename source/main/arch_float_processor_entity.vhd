@@ -97,7 +97,7 @@ begin
                 WHEN others => -- do nothing
             end CASE;
         ----------------------
-            used_instruction := self.instruction_pipeline(3 + number_of_normalizer_pipeline_stages);
+            used_instruction := self.instruction_pipeline(3);
             CASE decode(used_instruction) is
                 WHEN mpy =>
                     self.registers(get_dest(used_instruction)) <= to_std_logic_vector(get_multiplier_result(float_alu));
