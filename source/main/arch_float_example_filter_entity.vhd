@@ -14,13 +14,11 @@ architecture float of example_filter_entity is
     use work.float_to_real_conversions_pkg.all;
     use work.float_alu_pkg.all;
     use work.float_first_order_filter_pkg.all;
-    use work.float_to_integer_converter_pkg.all;
 
     use work.example_project_addresses_pkg.all;
 
     constant filter_gain : float_record := to_float(filter_time_constant);
 
-    signal float_to_integer_converter : float_to_integer_converter_record := init_float_to_integer_converter;
     signal float_alu : float_alu_record := init_float_alu;
     signal float_filter : first_order_filter_record := init_first_order_filter;
 
@@ -41,7 +39,6 @@ begin
             connect_read_only_data_to_address(bus_in, bus_out, floating_point_filter_integer_output_address , converted_integer);
 
             create_float_alu(float_alu);
-            create_float_to_integer_converter(float_to_integer_converter);
             -- create_first_order_filter(float_filter, float_alu, filter_gain);
         ------------------------------------------------------------------------
             -- floating point filter implementation
@@ -72,18 +69,20 @@ begin
         ------------------------------------------------------------------------
 
             if example_filter_input.filter_is_requested then
-                convert_integer_to_float(float_to_integer_converter, example_filter_input.filter_input, 15);
+                convert_integer_to_float(float_alu, example_filter_input.filter_input, 15);
             end if;
 
-            if int_to_float_conversion_is_ready(float_to_integer_converter) then
-                request_float_filter(float_filter, get_converted_float(float_to_integer_converter));
+            if int_to_float_is_ready(float_alu) then
+                request_float_filter(float_filter, get_converted_float(float_alu));
             end if;
 
             if float_filter_is_ready(self) then
-                convert_float_to_integer(float_to_integer_converter, get_filter_output(float_filter), 14);
+                convert_float_to_integer(float_alu, get_filter_output(float_filter), 14);
             end if;
-
-            valisignaali <= to_signed(get_converted_integer(float_to_integer_converter), 16);
+            
+            if float_to_int_is_ready(float_alu) then
+                valisignaali <= to_signed(get_converted_integer(float_alu), 16);
+            end if;
             converted_integer <= std_logic_vector(valisignaali + 32768);
 
         end if; --rising_edge
