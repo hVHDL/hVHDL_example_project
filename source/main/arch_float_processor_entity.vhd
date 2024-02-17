@@ -53,7 +53,7 @@ begin
     begin
         if rising_edge(clock) then
             init_bus(bus_out);
-            connect_read_only_data_to_address(bus_in, bus_out, mcu_filter_output_address , converted_integer);
+            connect_read_only_data_to_address(bus_in, bus_out, filter_output_address , converted_integer);
 
             create_simple_processor (
                 self                ,
