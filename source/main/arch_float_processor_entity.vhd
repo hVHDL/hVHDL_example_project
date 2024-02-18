@@ -23,8 +23,12 @@ architecture microprogram of example_filter_entity is
     use work.float_to_real_conversions_pkg.all;
 
     use work.float_pipeline_pkg.all;
-    use work.normalizer_pkg.number_of_normalizer_pipeline_stages;
-    use work.denormalizer_pkg.number_of_denormalizer_pipeline_stages;
+
+    use work.normalizer_pkg.all;
+    use work.denormalizer_pkg.all;
+    use work.float_adder_pkg.all;
+    use work.float_arithmetic_operations_pkg.all;
+    use work.float_multiplier_pkg.all;
 
     signal float_alu : float_alu_record := init_float_alu;
 
@@ -66,6 +70,10 @@ begin
 
             create_float_alu(float_alu);
 
+    if multiplier_is_ready(float_alu) and float_alu.fmac_pipeline(mult_pipeline_depth-1) = '1' then
+        add(float_alu, get_multiplier_result(float_alu), float_alu.multiplier_bypass_pipeline(float_alu.multiplier_bypass_pipeline'left));
+    end if;
+
         ------------------------------------------------------------------------
         ------------------------------------------------------------------------
             --stage -1
@@ -82,7 +90,6 @@ begin
                     add(float_alu, 
                         to_float(self.registers(get_arg1(used_instruction))), 
                         to_float(self.registers(get_arg2(used_instruction))));
-
                 WHEN sub =>
                     subtract(float_alu, 
                         to_float(self.registers(get_arg1(used_instruction))), 
@@ -91,22 +98,34 @@ begin
                     multiply(float_alu, 
                         to_float(self.registers(get_arg1(used_instruction))), 
                         to_float(self.registers(get_arg2(used_instruction))));
+                WHEN mpy_add =>
+                    fmac(float_alu, 
+                        to_float(self.registers(get_arg1(used_instruction))), 
+                        to_float(self.registers(get_arg2(used_instruction))),
+                        to_float(self.registers(get_arg3(used_instruction))));
                 WHEN others => -- do nothing
             end CASE;
         ----------------------
-            used_instruction := self.instruction_pipeline(3);
+            used_instruction := self.instruction_pipeline(mult_pipeline_depth-1);
             CASE decode(used_instruction) is
                 WHEN mpy =>
                     self.registers(get_dest(used_instruction)) <= to_std_logic_vector(get_multiplier_result(float_alu));
                 WHEN others => -- do nothing
             end CASE;
         ----------------------
-            used_instruction := self.instruction_pipeline(2 + number_of_normalizer_pipeline_stages + number_of_denormalizer_pipeline_stages);
+            used_instruction := self.instruction_pipeline(add_pipeline_depth-1);
             CASE decode(used_instruction) is
                 WHEN add | sub => 
                     self.registers(get_dest(used_instruction)) <= to_std_logic_vector(get_add_result(float_alu));
                 WHEN save =>
                     write_data_to_ram(ram_write_port, get_sigle_argument(used_instruction), self.registers(get_dest(used_instruction)));
+                WHEN others => -- do nothing
+            end CASE;
+        ----------------------
+            used_instruction := self.instruction_pipeline(fmac_pipeline_depth-1);
+            CASE decode(used_instruction) is
+                WHEN mpy_add =>
+                    self.registers(get_dest(used_instruction)) <= to_std_logic_vector(get_add_result(float_alu));
                 WHEN others => -- do nothing
             end CASE;
         ------------------------------------------------------------------------

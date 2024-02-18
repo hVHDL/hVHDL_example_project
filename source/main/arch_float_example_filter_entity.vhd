@@ -15,6 +15,12 @@ architecture float of example_filter_entity is
     use work.float_alu_pkg.all;
     use work.float_first_order_filter_pkg.all;
 
+    use work.normalizer_pkg.all;
+    use work.denormalizer_pkg.all;
+    use work.float_adder_pkg.all;
+    use work.float_arithmetic_operations_pkg.all;
+    use work.float_multiplier_pkg.all;
+
     use work.example_project_addresses_pkg.all;
 
     constant filter_gain : float_record := to_float(filter_time_constant);
@@ -39,6 +45,9 @@ begin
             connect_read_only_data_to_address(bus_in, bus_out, floating_point_filter_integer_output_address , converted_integer);
 
             create_float_alu(float_alu);
+    if multiplier_is_ready(float_alu) and float_alu.fmac_pipeline(mult_pipeline_depth-1) = '1' then
+        add(float_alu, get_multiplier_result(float_alu), float_alu.multiplier_bypass_pipeline(float_alu.multiplier_bypass_pipeline'left));
+    end if;
             -- create_first_order_filter(float_filter, float_alu, filter_gain);
         ------------------------------------------------------------------------
             -- floating point filter implementation
@@ -49,16 +58,11 @@ begin
                     self.filter_counter <= self.filter_counter + 1;
                 WHEN 1 =>
                     if add_is_ready(float_alu) then
-                        multiply(float_alu  , get_add_result(float_alu) , filter_gain);
-                        self.filter_counter <= self.filter_counter + 1;
-                    end if;
+                        fmac(float_alu  , get_add_result(float_alu) , filter_gain, self.y);
 
-                WHEN 2 =>
-                    if multiplier_is_ready(float_alu) then
-                        add(float_alu, get_multiplier_result(float_alu), self.y);
                         self.filter_counter <= self.filter_counter + 1;
                     end if;
-                WHEN 3 => 
+                WHEN 2 => 
                     if add_is_ready(float_alu) then
                         self.filter_is_ready <= true;
                         self.y <= get_add_result(float_alu);

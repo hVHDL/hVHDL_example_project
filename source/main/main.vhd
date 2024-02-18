@@ -127,7 +127,7 @@ begin
                 request_example_filter(floating_point_filter_in , sine_with_noise);
                 request_example_filter(fixed_point_filter_in    , sine_with_noise);
                 request_example_filter(mcu_in                   , sine_with_noise);
-                request_example_filter(mcu_in2                   , sine_with_noise);
+                request_example_filter(mcu_in2                  , sine_with_noise);
             end if;
 
         end if; --rising_edge
