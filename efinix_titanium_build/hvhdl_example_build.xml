@@ -1,138 +1,137 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<efx:project name="hVHDL_example_titanium" description="" last_change="1708185627" sw_version="2023.2.307.1.14" last_run_state="pass" last_run_flow="syn" config_result_in_sync="sync" design_ood="sync" place_ood="change" route_ood="sync" xmlns:efx="http://www.efinixinc.com/enf_proj" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.efinixinc.com/enf_proj enf_proj.xsd">
+<efx:project xmlns:efx="http://www.efinixinc.com/enf_proj" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="hVHDL_example_titanium" description="" last_change="1708242646" sw_version="2023.2.307.1.14" last_run_state="pass" last_run_flow="bitstream" config_result_in_sync="sync" design_ood="sync" place_ood="sync" route_ood="sync" xsi:schemaLocation="http://www.efinixinc.com/enf_proj enf_proj.xsd">
     <efx:device_info>
-        <efx:family name="Titanium"/>
-        <efx:device name="Ti60F225"/>
-        <efx:timing_model name="C4"/>
+        <efx:family name="Titanium" />
+        <efx:device name="Ti60F225" />
+        <efx:timing_model name="C4" />
     </efx:device_info>
     <efx:design_info def_veri_version="sv_09" def_vhdl_version="vhdl_2008">
-        <efx:top_module name="efinix_top"/>
-        <efx:design_file name="../source/efinix_top.vhd" version="default" library="default"/>
-        <efx:design_file name="../source/hVHDL_math_library/multiplier/multiplier_pkg.vhd" version="default" library="default"/>
-        <efx:design_file name="../source/hVHDL_math_library/sincos/sincos_pkg.vhd" version="default" library="default"/>
-        <efx:design_file name="../source/hVHDL_math_library/first_order_filter/first_order_filter_pkg.vhd" version="default" library="default"/>
-        <efx:design_file name="../source/hVHDL_uart/uart_protocol/uart_protocol_pkg.vhd" version="default" library="default"/>
-        <efx:design_file name="../source/hVHDL_fpga_interconnect/interconnect_configuration/data_15_address_15_bit_pkg.vhd" version="default" library="default"/>
-        <efx:design_file name="../source/hVHDL_fpga_interconnect/fpga_interconnect_pkg.vhd" version="default" library="default"/>
-        <efx:design_file name="../source/main/communication/communications.vhd" version="default" library="default"/>
-        <efx:design_file name="../source/main/main.vhd" version="default" library="default"/>
-        <efx:design_file name="../source/hVHDL_floating_point/float_type_definitions/float_type_definitions_pkg.vhd" version="default" library="default"/>
-        <efx:design_file name="../source/hVHDL_floating_point/normalizer/normalizer_pkg.vhd" version="default" library="default"/>
-        <efx:design_file name="../source/hVHDL_floating_point/denormalizer/denormalizer_pkg.vhd" version="default" library="default"/>
-        <efx:design_file name="../source/hVHDL_floating_point/float_to_real_conversions/float_to_real_functions_pkg.vhd" version="default" library="default"/>
-        <efx:design_file name="../source/hVHDL_floating_point/float_to_real_conversions/float_to_real_conversions_pkg.vhd" version="default" library="default"/>
-        <efx:design_file name="../source/hVHDL_floating_point/float_arithmetic_operations/float_arithmetic_operations_pkg.vhd" version="default" library="default"/>
-        <efx:design_file name="../source/hVHDL_floating_point/float_to_integer_converter/float_to_integer_converter_pkg.vhd" version="default" library="default"/>
-        <efx:design_file name="../source/hVHDL_floating_point/float_adder/float_adder_pkg.vhd" version="default" library="default"/>
-        <efx:design_file name="../source/hVHDL_floating_point/float_multiplier/float_multiplier_pkg.vhd" version="default" library="default"/>
-        <efx:design_file name="../source/hVHDL_floating_point/float_alu/float_alu_pkg.vhd" version="default" library="default"/>
-        <efx:design_file name="../source/hVHDL_floating_point/float_first_order_filter/float_first_order_filter_pkg.vhd" version="default" library="default"/>
-        <efx:design_file name="../example_project_addresses_pkg.vhd" version="default" library="default"/>
-        <efx:design_file name="../source/hVHDL_math_library/multiplier/configuration/multiply_with_1_input_and_output_registers_pkg.vhd" version="default" library="default"/>
-        <efx:design_file name="../source/hVHDL_uart/uart_rx/uart_rx_pkg.vhd" version="default" library="default"/>
-        <efx:design_file name="../source/hVHDL_uart/uart_tx/uart_tx_pkg.vhd" version="default" library="default"/>
-        <efx:design_file name="../source/hVHDL_math_library/multiplier/multiplier_base_types_20bit_pkg.vhd" version="default" library="default"/>
-        <efx:design_file name="../source/hVHDL_math_library/real_to_fixed/real_to_fixed_pkg.vhd" version="default" library="default"/>
-        <efx:design_file name="../source/hVHDL_microprogram_processor/source/hVHDL_memory_library/multi_port_ram/multi_port_ram_pkg.vhd" version="default" library="default"/>
-        <efx:design_file name="../source/hVHDL_microprogram_processor/source/hVHDL_memory_library/multi_port_ram/arch_rtl_read_x2_write_x1.vhd" version="default" library="default"/>
-        <efx:design_file name="../source/hVHDL_microprogram_processor/source/hVHDL_memory_library/multi_port_ram/ram_read_x2_write_x1.vhd" version="default" library="default"/>
-        <efx:design_file name="../source/hVHDL_microprogram_processor/vhdl_assembler/microinstruction_pkg.vhd" version="default" library="default"/>
-        <efx:design_file name="../source/hVHDL_microprogram_processor/vhdl_assembler/float_assembler_pkg.vhd" version="default" library="default"/>
-        <efx:design_file name="../source/hVHDL_microprogram_processor/simple_processor/simple_processor_pkg.vhd" version="default" library="default"/>
-        <efx:design_file name="../source/hVHDL_microprogram_processor/simple_processor/test_programs_pkg.vhd" version="default" library="default"/>
-        <efx:design_file name="../source/hVHDL_microprogram_processor/processor_configuration/processor_configuration_pkg.vhd" version="default" library="default"/>
-        <efx:design_file name="../source/hVHDL_microprogram_processor/processor_configuration/fixed_point_command_pipeline_pkg.vhd" version="default" library="default"/>
-        <efx:design_file name="../source/hVHDL_microprogram_processor/processor_configuration/float_processor_ram_width_pkg.vhd" version="default" library="default"/>
-        <efx:design_file name="../source/hVHDL_microprogram_processor/processor_configuration/float_pipeline_pkg.vhd" version="default" library="default"/>
-        <efx:design_file name="../source/main/arch_float_processor_entity.vhd" version="default" library="default"/>
-        <efx:design_file name="../source/main/arch_float_example_filter_entity.vhd" version="default" library="default"/>
-        <efx:design_file name="../source/main/example_filter_entity.vhd" version="default" library="default"/>
-        <efx:design_file name="../source/main/arch_fixed_example_filter_entity.vhd" version="default" library="default"/>
-        <efx:design_file name="../source/main/float_configuration/titanium_float_configuraion_pkg.vhd" version="default" library="default"/>
-        <efx:top_vhdl_arch name="rtl"/>
+        <efx:top_module name="efinix_top" />
+        <efx:design_file name="../source/efinix_top.vhd" version="default" library="default" />
+        <efx:design_file name="../source/hVHDL_math_library/multiplier/multiplier_pkg.vhd" version="default" library="default" />
+        <efx:design_file name="../source/hVHDL_math_library/sincos/sincos_pkg.vhd" version="default" library="default" />
+        <efx:design_file name="../source/hVHDL_math_library/first_order_filter/first_order_filter_pkg.vhd" version="default" library="default" />
+        <efx:design_file name="../source/hVHDL_uart/uart_protocol/uart_protocol_pkg.vhd" version="default" library="default" />
+        <efx:design_file name="../source/hVHDL_fpga_interconnect/interconnect_configuration/data_15_address_15_bit_pkg.vhd" version="default" library="default" />
+        <efx:design_file name="../source/hVHDL_fpga_interconnect/fpga_interconnect_pkg.vhd" version="default" library="default" />
+        <efx:design_file name="../source/main/communication/communications.vhd" version="default" library="default" />
+        <efx:design_file name="../source/main/main.vhd" version="default" library="default" />
+        <efx:design_file name="../source/hVHDL_floating_point/float_type_definitions/float_type_definitions_pkg.vhd" version="default" library="default" />
+        <efx:design_file name="../source/hVHDL_floating_point/normalizer/normalizer_pkg.vhd" version="default" library="default" />
+        <efx:design_file name="../source/hVHDL_floating_point/denormalizer/denormalizer_pkg.vhd" version="default" library="default" />
+        <efx:design_file name="../source/hVHDL_floating_point/float_to_real_conversions/float_to_real_functions_pkg.vhd" version="default" library="default" />
+        <efx:design_file name="../source/hVHDL_floating_point/float_to_real_conversions/float_to_real_conversions_pkg.vhd" version="default" library="default" />
+        <efx:design_file name="../source/hVHDL_floating_point/float_arithmetic_operations/float_arithmetic_operations_pkg.vhd" version="default" library="default" />
+        <efx:design_file name="../source/hVHDL_floating_point/float_to_integer_converter/float_to_integer_converter_pkg.vhd" version="default" library="default" />
+        <efx:design_file name="../source/hVHDL_floating_point/float_adder/float_adder_pkg.vhd" version="default" library="default" />
+        <efx:design_file name="../source/hVHDL_floating_point/float_multiplier/float_multiplier_pkg.vhd" version="default" library="default" />
+        <efx:design_file name="../source/hVHDL_floating_point/float_alu/float_alu_pkg.vhd" version="default" library="default" />
+        <efx:design_file name="../source/hVHDL_floating_point/float_first_order_filter/float_first_order_filter_pkg.vhd" version="default" library="default" />
+        <efx:design_file name="../example_project_addresses_pkg.vhd" version="default" library="default" />
+        <efx:design_file name="../source/hVHDL_math_library/multiplier/configuration/multiply_with_1_input_and_output_registers_pkg.vhd" version="default" library="default" />
+        <efx:design_file name="../source/hVHDL_uart/uart_rx/uart_rx_pkg.vhd" version="default" library="default" />
+        <efx:design_file name="../source/hVHDL_uart/uart_tx/uart_tx_pkg.vhd" version="default" library="default" />
+        <efx:design_file name="../source/hVHDL_math_library/multiplier/multiplier_base_types_20bit_pkg.vhd" version="default" library="default" />
+        <efx:design_file name="../source/hVHDL_math_library/real_to_fixed/real_to_fixed_pkg.vhd" version="default" library="default" />
+        <efx:design_file name="../source/hVHDL_microprogram_processor/source/hVHDL_memory_library/multi_port_ram/multi_port_ram_pkg.vhd" version="default" library="default" />
+        <efx:design_file name="../source/hVHDL_microprogram_processor/source/hVHDL_memory_library/multi_port_ram/arch_rtl_read_x2_write_x1.vhd" version="default" library="default" />
+        <efx:design_file name="../source/hVHDL_microprogram_processor/source/hVHDL_memory_library/multi_port_ram/ram_read_x2_write_x1.vhd" version="default" library="default" />
+        <efx:design_file name="../source/hVHDL_microprogram_processor/vhdl_assembler/microinstruction_pkg.vhd" version="default" library="default" />
+        <efx:design_file name="../source/hVHDL_microprogram_processor/vhdl_assembler/float_assembler_pkg.vhd" version="default" library="default" />
+        <efx:design_file name="../source/hVHDL_microprogram_processor/simple_processor/simple_processor_pkg.vhd" version="default" library="default" />
+        <efx:design_file name="../source/hVHDL_microprogram_processor/simple_processor/test_programs_pkg.vhd" version="default" library="default" />
+        <efx:design_file name="../source/hVHDL_microprogram_processor/processor_configuration/processor_configuration_pkg.vhd" version="default" library="default" />
+        <efx:design_file name="../source/hVHDL_microprogram_processor/processor_configuration/fixed_point_command_pipeline_pkg.vhd" version="default" library="default" />
+        <efx:design_file name="../source/hVHDL_microprogram_processor/processor_configuration/float_processor_ram_width_pkg.vhd" version="default" library="default" />
+        <efx:design_file name="../source/hVHDL_microprogram_processor/processor_configuration/float_pipeline_pkg.vhd" version="default" library="default" />
+        <efx:design_file name="../source/main/arch_float_processor_entity.vhd" version="default" library="default" />
+        <efx:design_file name="../source/main/arch_float_example_filter_entity.vhd" version="default" library="default" />
+        <efx:design_file name="../source/main/example_filter_entity.vhd" version="default" library="default" />
+        <efx:design_file name="../source/main/arch_fixed_example_filter_entity.vhd" version="default" library="default" />
+        <efx:design_file name="../source/main/float_configuration/titanium_float_configuraion_pkg.vhd" version="default" library="default" />
+        <efx:top_vhdl_arch name="rtl" />
     </efx:design_info>
     <efx:constraint_info>
-        <efx:sdc_file name="hvhdl_example_constraints_for_efinix.pt.sdc"/>
-        <efx:inter_file name=""/>
+        <efx:sdc_file name="hvhdl_example_constraints_for_efinix.pt.sdc" />
+        <efx:inter_file name="" />
     </efx:constraint_info>
-    <efx:sim_info/>
-    <efx:misc_info/>
-    <efx:ip_info/>
+    <efx:sim_info />
+    <efx:misc_info />
+    <efx:ip_info />
     <efx:synthesis tool_name="efx_map">
-        <efx:param name="work_dir" value="work_syn" value_type="e_string"/>
-        <efx:param name="write_efx_verilog" value="on" value_type="e_bool"/>
-        <efx:param name="mode" value="speed" value_type="e_option"/>
-        <efx:param name="max_ram" value="-1" value_type="e_integer"/>
-        <efx:param name="max_mult" value="-1" value_type="e_integer"/>
-        <efx:param name="infer-clk-enable" value="3" value_type="e_option"/>
-        <efx:param name="infer-sync-set-reset" value="1" value_type="e_option"/>
-        <efx:param name="fanout-limit" value="0" value_type="e_integer"/>
-        <efx:param name="bram_output_regs_packing" value="1" value_type="e_option"/>
-        <efx:param name="retiming" value="1" value_type="e_option"/>
-        <efx:param name="seq_opt" value="1" value_type="e_option"/>
-        <efx:param name="blast_const_operand_adders" value="1" value_type="e_option"/>
-        <efx:param name="operator-sharing" value="1" value_type="e_option"/>
-        <efx:param name="optimize-adder-tree" value="1" value_type="e_option"/>
-        <efx:param name="min-sr-fanout" value="4" value_type="e_integer"/>
-        <efx:param name="seq-opt-sync-only" value="1" value_type="e_option"/>
-        <efx:param name="blackbox-error" value="1" value_type="e_option"/>
-        <efx:param name="allow-const-ram-index" value="1" value_type="e_option"/>
-        <efx:param name="hdl-compile-unit" value="1" value_type="e_option"/>
-        <efx:param name="create-onehot-fsms" value="0" value_type="e_option"/>
-        <efx:param name="dsp-mac-packing" value="1" value_type="e_option"/>
-        <efx:param name="dsp-output-regs-packing" value="1" value_type="e_option"/>
-        <efx:param name="dsp-input-regs-packing" value="1" value_type="e_option"/>
-        <efx:param name="pack-luts-to-comb4" value="0" value_type="e_option"/>
-        <efx:param name="min-ce-fanout" value="0" value_type="e_integer"/>
-        <efx:param name="mult-decomp-retime" value="0" value_type="e_option"/>
-        <efx:param name="optimize-zero-init-rom" value="1" value_type="e_option"/>
-        <efx:param name="insert-carry-skip" value="1" value_type="e_option"/>
-        <efx:param name="mult-auto-pipeline" value="0" value_type="e_option"/>
-        <efx:param name="use-logic-for-small-mem" value="64" value_type="e_integer"/>
-        <efx:param name="use-logic-for-small-rom" value="64" value_type="e_integer"/>
+        <efx:param name="work_dir" value="work_syn" value_type="e_string" />
+        <efx:param name="write_efx_verilog" value="on" value_type="e_bool" />
+        <efx:param name="mode" value="speed" value_type="e_option" />
+        <efx:param name="max_ram" value="-1" value_type="e_integer" />
+        <efx:param name="max_mult" value="-1" value_type="e_integer" />
+        <efx:param name="infer-clk-enable" value="3" value_type="e_option" />
+        <efx:param name="infer-sync-set-reset" value="1" value_type="e_option" />
+        <efx:param name="fanout-limit" value="0" value_type="e_integer" />
+        <efx:param name="bram_output_regs_packing" value="1" value_type="e_option" />
+        <efx:param name="retiming" value="1" value_type="e_option" />
+        <efx:param name="seq_opt" value="1" value_type="e_option" />
+        <efx:param name="blast_const_operand_adders" value="1" value_type="e_option" />
+        <efx:param name="operator-sharing" value="1" value_type="e_option" />
+        <efx:param name="optimize-adder-tree" value="1" value_type="e_option" />
+        <efx:param name="min-sr-fanout" value="4" value_type="e_integer" />
+        <efx:param name="seq-opt-sync-only" value="1" value_type="e_option" />
+        <efx:param name="blackbox-error" value="1" value_type="e_option" />
+        <efx:param name="allow-const-ram-index" value="1" value_type="e_option" />
+        <efx:param name="hdl-compile-unit" value="1" value_type="e_option" />
+        <efx:param name="create-onehot-fsms" value="0" value_type="e_option" />
+        <efx:param name="dsp-mac-packing" value="1" value_type="e_option" />
+        <efx:param name="dsp-output-regs-packing" value="1" value_type="e_option" />
+        <efx:param name="dsp-input-regs-packing" value="1" value_type="e_option" />
+        <efx:param name="pack-luts-to-comb4" value="0" value_type="e_option" />
+        <efx:param name="min-ce-fanout" value="0" value_type="e_integer" />
+        <efx:param name="mult-decomp-retime" value="0" value_type="e_option" />
+        <efx:param name="optimize-zero-init-rom" value="1" value_type="e_option" />
+        <efx:param name="insert-carry-skip" value="1" value_type="e_option" />
+        <efx:param name="mult-auto-pipeline" value="0" value_type="e_option" />
+        <efx:param name="use-logic-for-small-mem" value="64" value_type="e_integer" />
+        <efx:param name="use-logic-for-small-rom" value="64" value_type="e_integer" />
     </efx:synthesis>
     <efx:place_and_route tool_name="efx_pnr">
-        <efx:param name="work_dir" value="work_pnr" value_type="e_string"/>
-        <efx:param name="verbose" value="off" value_type="e_bool"/>
-        <efx:param name="load_delaym" value="on" value_type="e_bool"/>
-        <efx:param name="optimization_level" value="TIMING_2" value_type="e_option"/>
-        <efx:param name="seed" value="1" value_type="e_integer"/>
-        <efx:param name="placer_effort_level" value="2" value_type="e_option"/>
-        <efx:param name="max_threads" value="-1" value_type="e_integer"/>
-        <efx:param name="beneficial_skew" value="off" value_type="e_option"/>
-        <efx:param name="print_critical_path" value="10" value_type="e_integer"/>
+        <efx:param name="work_dir" value="work_pnr" value_type="e_string" />
+        <efx:param name="verbose" value="off" value_type="e_bool" />
+        <efx:param name="load_delaym" value="on" value_type="e_bool" />
+        <efx:param name="optimization_level" value="TIMING_2" value_type="e_option" />
+        <efx:param name="seed" value="1" value_type="e_integer" />
+        <efx:param name="placer_effort_level" value="2" value_type="e_option" />
+        <efx:param name="max_threads" value="-1" value_type="e_integer" />
+        <efx:param name="beneficial_skew" value="off" value_type="e_option" />
+        <efx:param name="print_critical_path" value="10" value_type="e_integer" />
     </efx:place_and_route>
     <efx:bitstream_generation tool_name="efx_pgm">
-        <efx:param name="mode" value="active" value_type="e_option"/>
-        <efx:param name="width" value="1" value_type="e_option"/>
-        <efx:param name="enable_roms" value="smart" value_type="e_option"/>
-        <efx:param name="spi_low_power_mode" value="on" value_type="e_bool"/>
-        <efx:param name="io_weak_pullup" value="on" value_type="e_bool"/>
-        <efx:param name="oscillator_clock_divider" value="DIV8" value_type="e_option"/>
-        <efx:param name="bitstream_compression" value="off" value_type="e_bool"/>
-        <efx:param name="enable_external_master_clock" value="off" value_type="e_bool"/>
-        <efx:param name="active_capture_clk_edge" value="negedge" value_type="e_option"/>
-        <efx:param name="jtag_usercode" value="0xFFFFFFFF" value_type="e_string"/>
-        <efx:param name="release_tri_then_reset" value="on" value_type="e_bool"/>
-        <efx:param name="cold_boot" value="off" value_type="e_bool"/>
-        <efx:param name="cascade" value="off" value_type="e_option"/>
-        <efx:param name="generate_bit" value="on" value_type="e_bool"/>
-        <efx:param name="generate_bitbin" value="on" value_type="e_bool"/>
-        <efx:param name="generate_hex" value="on" value_type="e_bool"/>
-        <efx:param name="generate_hexbin" value="on" value_type="e_bool"/>
-        <efx:param name="four_byte_addressing" value="off" value_type="e_bool"/>
+        <efx:param name="mode" value="active" value_type="e_option" />
+        <efx:param name="width" value="1" value_type="e_option" />
+        <efx:param name="enable_roms" value="smart" value_type="e_option" />
+        <efx:param name="spi_low_power_mode" value="on" value_type="e_bool" />
+        <efx:param name="io_weak_pullup" value="on" value_type="e_bool" />
+        <efx:param name="oscillator_clock_divider" value="DIV8" value_type="e_option" />
+        <efx:param name="bitstream_compression" value="off" value_type="e_bool" />
+        <efx:param name="enable_external_master_clock" value="off" value_type="e_bool" />
+        <efx:param name="active_capture_clk_edge" value="negedge" value_type="e_option" />
+        <efx:param name="jtag_usercode" value="0xFFFFFFFF" value_type="e_string" />
+        <efx:param name="release_tri_then_reset" value="on" value_type="e_bool" />
+        <efx:param name="cold_boot" value="off" value_type="e_bool" />
+        <efx:param name="cascade" value="off" value_type="e_option" />
+        <efx:param name="generate_bit" value="on" value_type="e_bool" />
+        <efx:param name="generate_bitbin" value="on" value_type="e_bool" />
+        <efx:param name="generate_hex" value="on" value_type="e_bool" />
+        <efx:param name="generate_hexbin" value="on" value_type="e_bool" />
+        <efx:param name="four_byte_addressing" value="off" value_type="e_bool" />
     </efx:bitstream_generation>
     <efx:debugger>
-        <efx:param name="work_dir" value="work_dbg" value_type="e_string"/>
-        <efx:param name="auto_instantiation" value="off" value_type="e_bool"/>
-        <efx:param name="profile" value="NONE" value_type="e_string"/>
+        <efx:param name="work_dir" value="work_dbg" value_type="e_string" />
+        <efx:param name="auto_instantiation" value="off" value_type="e_bool" />
+        <efx:param name="profile" value="NONE" value_type="e_string" />
     </efx:debugger>
     <efx:security>
-        <efx:param name="enable_bitstream_encrypt" value="off" value_type="e_bool"/>
-        <efx:param name="enable_bitstream_auth" value="off" value_type="e_bool"/>
-        <efx:param name="encryption_key_file" value="NONE" value_type="e_string"/>
-        <efx:param name="auth_key_file" value="NONE" value_type="e_string"/>
-        <efx:param name="randomize_iv_value" value="on" value_type="e_bool"/>
-        <efx:param name="iv_value" value="" value_type="e_string"/>
+        <efx:param name="enable_bitstream_encrypt" value="off" value_type="e_bool" />
+        <efx:param name="enable_bitstream_auth" value="off" value_type="e_bool" />
+        <efx:param name="encryption_key_file" value="NONE" value_type="e_string" />
+        <efx:param name="auth_key_file" value="NONE" value_type="e_string" />
+        <efx:param name="randomize_iv_value" value="on" value_type="e_bool" />
+        <efx:param name="iv_value" value="" value_type="e_string" />
     </efx:security>
 </efx:project>

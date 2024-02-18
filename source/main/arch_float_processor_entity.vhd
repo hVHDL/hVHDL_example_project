@@ -70,10 +70,6 @@ begin
 
             create_float_alu(float_alu);
 
-    if multiplier_is_ready(float_alu) and float_alu.fmac_pipeline(mult_pipeline_depth-1) = '1' then
-        add(float_alu, get_multiplier_result(float_alu), float_alu.multiplier_bypass_pipeline(float_alu.multiplier_bypass_pipeline'left));
-    end if;
-
         ------------------------------------------------------------------------
         ------------------------------------------------------------------------
             --stage -1

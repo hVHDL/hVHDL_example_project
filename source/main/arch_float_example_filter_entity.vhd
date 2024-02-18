@@ -45,9 +45,6 @@ begin
             connect_read_only_data_to_address(bus_in, bus_out, floating_point_filter_integer_output_address , converted_integer);
 
             create_float_alu(float_alu);
-    if multiplier_is_ready(float_alu) and float_alu.fmac_pipeline(mult_pipeline_depth-1) = '1' then
-        add(float_alu, get_multiplier_result(float_alu), float_alu.multiplier_bypass_pipeline(float_alu.multiplier_bypass_pipeline'left));
-    end if;
             -- create_first_order_filter(float_filter, float_alu, filter_gain);
         ------------------------------------------------------------------------
             -- floating point filter implementation
