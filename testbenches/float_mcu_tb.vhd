@@ -76,7 +76,7 @@ begin
         end if; -- rising_edge
     end process stimulus;	
 
-    u_mcu : entity work.example_filter_entity(microprogram)
+    u_mcu : entity work.example_filter_entity(memory_processor)
         generic map(filter_time_constant => filter_time_constant)
         port map(system_clock, mcu_in, bus_from_communications, bus_from_mcu);
 ------------------------------------------------------------------------

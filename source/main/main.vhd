@@ -148,7 +148,7 @@ begin
         port map(system_clock, mcu_in, bus_from_communications, bus_from_mcu);
 
 ---------------
-    u_mcu2 : entity work.example_filter_entity(microprogram)
+    u_mcu2 : entity work.example_filter_entity(memory_processor)
         generic map(filter_time_constant => filter_time_constant, filter_output_address => 110)
         port map(system_clock, mcu_in2, bus_from_communications, bus_from_mcu2);
 

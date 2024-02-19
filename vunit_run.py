@@ -51,15 +51,20 @@ mcu_lib.add_source_files(ROOT / "source/hVHDL_memory_library/multi_port_ram/mult
 mcu_lib.add_source_files(ROOT / "source/hVHDL_memory_library/multi_port_ram/ram_read_x2_write_x1.vhd")
 mcu_lib.add_source_files(ROOT / "source/hVHDL_memory_library/multi_port_ram/arch_sim_read_x2_write_x1.vhd")
 
+mcu_lib.add_source_files(ROOT / "source/hVHDL_memory_library/multi_port_ram/ram_read_x4_write_x1.vhd")
+mcu_lib.add_source_files(ROOT / "source/hVHDL_memory_library/multi_port_ram/arch_sim_read_x4_write_x1.vhd")
+
 mcu_lib.add_source_files(ROOT / "source/hVHDL_math_library/real_to_fixed/real_to_fixed_pkg.vhd")
 mcu_lib.add_source_files(ROOT / "source/hVHDL_microprogram_processor/processor_configuration/processor_configuration_pkg.vhd")
 mcu_lib.add_source_files(ROOT / "source/hVHDL_microprogram_processor/processor_configuration/float_pipeline_pkg.vhd")
 mcu_lib.add_source_files(ROOT / "source/hVHDL_microprogram_processor/vhdl_assembler/microinstruction_pkg.vhd")
 mcu_lib.add_source_files(ROOT / "source/hVHDL_microprogram_processor/vhdl_assembler/float_assembler_pkg.vhd")
 mcu_lib.add_source_files(ROOT / "source/hVHDL_microprogram_processor/simple_processor/simple_processor_pkg.vhd")
+mcu_lib.add_source_files(ROOT / "source/hVHDL_microprogram_processor/simple_processor/float_example_program_pkg.vhd")
 
 mcu_lib.add_source_files(ROOT / "source/main/example_filter_entity.vhd")
 mcu_lib.add_source_files(ROOT / "source/main/arch_float_processor_entity.vhd")
+mcu_lib.add_source_files(ROOT / "source/main/arch_memory_processor.vhd")
 
 mcu_lib.add_source_files(ROOT / "testbenches/float_mcu_tb.vhd")
 
