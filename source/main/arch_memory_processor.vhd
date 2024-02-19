@@ -8,7 +8,7 @@
 --     );
 -- end entity example_filter_entity;
 
-architecture microprogram of example_filter_entity is
+architecture memory_processor of example_filter_entity is
 
     use work.float_to_real_conversions_pkg.all;
 
@@ -46,8 +46,12 @@ architecture microprogram of example_filter_entity is
     signal ram_read_instruction_out : ram_read_out_record ;
     signal ram_read_data_in         : ram_read_in_record  := (0, '0');
     signal ram_read_data_out        : ram_read_out_record ;
+    signal ram_read_2_data_in       : ram_read_in_record  := (0, '0');
+    signal ram_read_2_data_out      : ram_read_out_record ;
+    signal ram_read_3_data_in       : ram_read_in_record  := (0, '0');
+    signal ram_read_3_data_out      : ram_read_out_record ;
     signal ram_write_port           : ram_write_in_record ;
-    signal ram_write_port2          : ram_write_in_record ;
+
     signal valisignaali : signed(15 downto 0) := (others => '0');
 
 
@@ -172,7 +176,7 @@ begin
         end if; --rising_edge
     end process floating_point_filter;	
 ------------------------------------------------------------------------
-    u_mpram : entity work.ram_read_x2_write_x1
+    u_mpram : entity work.ram_read_x4_write_x1
     generic map(ram_contents)
     port map(
     clock                    ,
@@ -180,6 +184,10 @@ begin
     ram_read_instruction_out ,
     ram_read_data_in         ,
     ram_read_data_out        ,
+    ram_read_2_data_in       ,
+    ram_read_2_data_out      ,
+    ram_read_3_data_in       ,
+    ram_read_3_data_out      ,
     ram_write_port);
 ------------------------------------------------------------------------
-end microprogram;
+end memory_processor;
