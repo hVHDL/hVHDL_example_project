@@ -148,12 +148,12 @@ begin
             end if;
 
             if program_is_ready(self) then
-                request_data_from_ram(ram_read_2_data_in, y_address);
+                request_data_from_ram(ram_read_3_data_in, y_address);
             end if;
 
             if not processor_is_enabled(self) then
-                if ram_read_is_ready(ram_read_2_data_out) then
-                    convert_float_to_integer(float_alu, to_float(get_ram_data(ram_read_2_data_out)), 14);
+                if ram_read_is_ready(ram_read_3_data_out) then
+                    convert_float_to_integer(float_alu, to_float(get_ram_data(ram_read_3_data_out)), 14);
                 end if;
             end if;
 
