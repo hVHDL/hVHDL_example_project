@@ -8,7 +8,7 @@
 --     );
 -- end entity example_filter_entity;
 
-architecture microprogram of example_filter_entity is
+architecture fixed_microprogram of example_filter_entity is
 
     use work.first_order_filter_pkg.all;
     use work.multiplier_pkg.all;
@@ -127,4 +127,4 @@ begin
     ram_write_port);
 ------------------------------------------------------------------------
 
-end microprogram;
+end fixed_microprogram;
