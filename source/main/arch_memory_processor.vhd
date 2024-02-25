@@ -35,10 +35,10 @@ architecture memory_processor of example_filter_entity is
 
     signal converted_integer : std_logic_vector(15 downto 0);
 
-    constant u_address : natural := 127;
-    constant y_address : natural := 126;
-    constant g_address : natural := 125;
-    constant temp_address : natural := 124;
+    constant u_address : natural := 90;
+    constant y_address : natural := 100;
+    constant g_address : natural := 110;
+    constant temp_address : natural := 120;
 
     constant ram_contents : ram_array := build_nmp_sw(0.05 , u_address , y_address , g_address, temp_address);
 
