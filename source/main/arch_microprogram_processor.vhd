@@ -65,9 +65,14 @@ begin
 
             request_buffer <= example_filter_input.filter_is_requested;
             input_buffer <= std_logic_vector(to_signed(example_filter_input.filter_input,20));
-            if request_buffer then
+
+            -- if request_buffer then -- use this for with vivado newer than 2020.1
+            --     write_data_to_ram(ram_write_port, 102, input_buffer); 
+
+            if example_filter_input.filter_is_requested then
+                write_data_to_ram(ram_write_port, 102, std_logic_vector(to_signed(example_filter_input.filter_input,20))); 
+
                 request_processor(self);
-                write_data_to_ram(ram_write_port, 102, input_buffer); 
             end if;
 
             if program_is_ready(self) then
