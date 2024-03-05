@@ -56,7 +56,7 @@ architecture memory_processor of example_filter_entity is
     signal valisignaali : signed(15 downto 0) := (others => '0');
 
     signal filter_index : natural range 0 to 9 := 5;
-    signal filter_index_address : natural range 0 to 9 := filter_output_address+1;
+    constant filter_index_address : natural range 0 to 511 := filter_output_address+1;
 
 
 begin
@@ -68,7 +68,7 @@ begin
         if rising_edge(clock) then
             init_bus(bus_out);
             connect_read_only_data_to_address(bus_in, bus_out, filter_output_address , converted_integer);
-            connect_read_only_data_to_address(bus_in, bus_out, filter_index_address , filter_index);
+            connect_data_to_address(bus_in, bus_out, filter_index_address , filter_index);
 
             create_simple_processor (
                 self                ,
