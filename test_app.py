@@ -23,6 +23,7 @@ print("the register should now read 37 : ", uart.request_data_from_address(99))
 print("we will now write back 44252 with with write_data_to_address(99,44252)")
 uart.write_data_to_address(99,44252)
 print("this should be again 44252 : ", uart.request_data_from_address(99)) 
+uart.write_data_to_address(111,9)
 
 print("now we will get 200 000 data point stream which correspond to clean sine and noisy sine which is fixed and floating point filered")
 number_of_points = 50000

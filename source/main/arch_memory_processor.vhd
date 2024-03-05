@@ -35,10 +35,10 @@ architecture memory_processor of example_filter_entity is
 
     signal converted_integer : std_logic_vector(15 downto 0);
 
-    constant u_address : natural := 90;
-    constant y_address : natural := 100;
-    constant g_address : natural := 110;
-    constant temp_address : natural := 120;
+    constant u_address : natural := 80;
+    constant y_address : natural := 90;
+    constant g_address : natural := 100;
+    constant temp_address : natural := 110;
 
     constant ram_contents : ram_array := build_nmp_sw(0.05 , u_address , y_address , g_address, temp_address);
 
@@ -55,6 +55,9 @@ architecture memory_processor of example_filter_entity is
 
     signal valisignaali : signed(15 downto 0) := (others => '0');
 
+    signal filter_index : natural range 0 to 9 := 5;
+    signal filter_index_address : natural range 0 to 9 := filter_output_address+1;
+
 
 begin
 
@@ -65,6 +68,7 @@ begin
         if rising_edge(clock) then
             init_bus(bus_out);
             connect_read_only_data_to_address(bus_in, bus_out, filter_output_address , converted_integer);
+            connect_read_only_data_to_address(bus_in, bus_out, filter_index_address , filter_index);
 
             create_simple_processor (
                 self                ,
@@ -148,7 +152,7 @@ begin
             end if;
 
             if program_is_ready(self) then
-                request_data_from_ram(ram_read_3_data_in, y_address);
+                request_data_from_ram(ram_read_3_data_in, y_address + filter_index);
             end if;
 
             if not processor_is_enabled(self) then
