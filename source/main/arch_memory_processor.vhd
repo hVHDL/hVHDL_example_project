@@ -88,10 +88,10 @@ begin
                 -- WHEN load =>
                 --     request_data_from_ram(ram_read_data_in , get_sigle_argument(used_instruction));
                 WHEN add => 
-                    request_data_from_ram(ram_read_data_in   , get_arg1(used_instruction));
+                    request_data_from_ram(ram_read_3_data_in , get_arg1(used_instruction));
                     request_data_from_ram(ram_read_2_data_in , get_arg2(used_instruction));
                 WHEN sub =>
-                    request_data_from_ram(ram_read_data_in   , get_arg1(used_instruction));
+                    request_data_from_ram(ram_read_3_data_in , get_arg1(used_instruction));
                     request_data_from_ram(ram_read_2_data_in , get_arg2(used_instruction));
                 WHEN mpy =>
                     request_data_from_ram(ram_read_data_in   , get_arg1(used_instruction));
@@ -113,13 +113,13 @@ begin
                 WHEN add => 
                     fmac(float_alu                                ,
                         to_float(1.0)                             ,
-                        to_float(get_ram_data(ram_read_data_out)) ,
-                        to_float(get_ram_data(ram_read_2_data_out)));
+                        to_float(get_ram_data(ram_read_2_data_out)) ,
+                        to_float(get_ram_data(ram_read_3_data_out)));
                 WHEN sub =>
                     fmac(float_alu                                  ,
                         to_float(-1.0)                              ,
                         to_float(get_ram_data(ram_read_2_data_out)) ,
-                        to_float(get_ram_data(ram_read_data_out)));
+                        to_float(get_ram_data(ram_read_3_data_out)));
                 WHEN mpy =>
                     fmac(float_alu                                  ,
                         to_float(get_ram_data(ram_read_data_out))   ,
