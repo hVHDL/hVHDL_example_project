@@ -35,20 +35,33 @@ floating_point_filtered_data = uart.stream_data_from_address(108, number_of_poin
 microprocessor_filtered_data = uart.stream_data_from_address(110, number_of_points);
 
 
-(fig, ax) = pyplot.subplots(2, 2)
+(fig, ax) = pyplot.subplots(3, 2)
 
 # ax[0][0].subplot(2, 2, 1)
 ax[0][0].plot(noisy_sine) 
 ax[0][0].set_title('noisy sine')
 
-ax[0][1].plot(microprocessor_filtered_data) 
-ax[0][1].set_title('microprocessor filtered sine')
+uart.write_data_to_address(111,9)
+ax[0][1].plot(uart.stream_data_from_address(110, number_of_points)) 
+ax[0][1].set_title('index 9')
 
-ax[1][0].plot(fixed_point_filtered_data) 
-ax[1][0].set_title('fixed point filtered sine')
+uart.write_data_to_address(111,6)
+ax[1][0].plot(uart.stream_data_from_address(110, number_of_points)) 
+ax[1][0].set_title('index 6')
 
+uart.write_data_to_address(111,3)
 ax[1][1].plot(floating_point_filtered_data) 
-ax[1][1].set_title('floating point filtered sine')
+ax[1][1].set_title('index 3')
+fig.suptitle(plot_title, fontsize=15)
+
+uart.write_data_to_address(111,1)
+ax[2][0].plot(floating_point_filtered_data) 
+ax[2][0].set_title('index 1')
+fig.suptitle(plot_title, fontsize=15)
+
+uart.write_data_to_address(111,0)
+ax[2][1].plot(floating_point_filtered_data) 
+ax[2][1].set_title('index 0')
 fig.suptitle(plot_title, fontsize=15)
 pyplot.show()
 
