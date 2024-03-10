@@ -30,10 +30,10 @@ print("now we will get 200 000 data point stream which correspond to clean sine 
 number_of_points = 50000
 
 noisy_sine = uart.stream_data_from_address(103, number_of_points);
-fixed_point_filtered_data = uart.stream_data_from_address(104, number_of_points);
-floating_point_filtered_data = uart.stream_data_from_address(108, number_of_points);
-microprocessor_filtered_data = uart.stream_data_from_address(110, number_of_points);
-
+# fixed_point_filtered_data = uart.stream_data_from_address(104, number_of_points);
+# floating_point_filtered_data = uart.stream_data_from_address(108, number_of_points);
+# microprocessor_filtered_data = uart.stream_data_from_address(110, number_of_points);
+#
 
 (fig, ax) = pyplot.subplots(3, 2)
 
@@ -50,17 +50,17 @@ ax[1][0].plot(uart.stream_data_from_address(110, number_of_points))
 ax[1][0].set_title('index 6')
 
 uart.write_data_to_address(111,3)
-ax[1][1].plot(floating_point_filtered_data) 
+ax[1][1].plot(uart.stream_data_from_address(110, number_of_points))
 ax[1][1].set_title('index 3')
 fig.suptitle(plot_title, fontsize=15)
 
 uart.write_data_to_address(111,1)
-ax[2][0].plot(floating_point_filtered_data) 
+ax[2][0].plot(uart.stream_data_from_address(110, number_of_points))
 ax[2][0].set_title('index 1')
 fig.suptitle(plot_title, fontsize=15)
 
 uart.write_data_to_address(111,0)
-ax[2][1].plot(floating_point_filtered_data) 
+ax[2][1].plot(uart.stream_data_from_address(110, number_of_points))
 ax[2][1].set_title('index 0')
 fig.suptitle(plot_title, fontsize=15)
 pyplot.show()
