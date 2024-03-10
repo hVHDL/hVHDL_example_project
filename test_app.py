@@ -43,25 +43,25 @@ ax[0][0].set_title('noisy sine')
 
 uart.write_data_to_address(111,9)
 ax[0][1].plot(uart.stream_data_from_address(110, number_of_points)) 
-ax[0][1].set_title('index 9')
+ax[0][1].set_title('gain 0.10')
 
 uart.write_data_to_address(111,6)
 ax[1][0].plot(uart.stream_data_from_address(110, number_of_points)) 
-ax[1][0].set_title('index 6')
+ax[1][0].set_title('gain 0.07')
 
 uart.write_data_to_address(111,3)
 ax[1][1].plot(uart.stream_data_from_address(110, number_of_points))
-ax[1][1].set_title('index 3')
+ax[1][1].set_title('gain 0.04')
 fig.suptitle(plot_title, fontsize=15)
 
 uart.write_data_to_address(111,1)
 ax[2][0].plot(uart.stream_data_from_address(110, number_of_points))
-ax[2][0].set_title('index 1')
+ax[2][0].set_title('gain 0.02')
 fig.suptitle(plot_title, fontsize=15)
 
 uart.write_data_to_address(111,0)
 ax[2][1].plot(uart.stream_data_from_address(110, number_of_points))
-ax[2][1].set_title('index 0')
+ax[2][1].set_title('index 0.01')
 fig.suptitle(plot_title, fontsize=15)
 pyplot.show()
 
