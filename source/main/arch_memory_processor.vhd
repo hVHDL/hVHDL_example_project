@@ -111,22 +111,22 @@ begin
                 --     self.registers(get_dest(used_instruction)) <= get_ram_data(ram_read_data_out);
 
                 WHEN add => 
-                    fmac(float_alu                                ,
+                    madd(float_alu                                ,
                         to_float(1.0)                             ,
                         to_float(get_ram_data(ram_read_2_data_out)) ,
                         to_float(get_ram_data(ram_read_3_data_out)));
                 WHEN sub =>
-                    fmac(float_alu                                  ,
+                    madd(float_alu                                  ,
                         to_float(-1.0)                              ,
                         to_float(get_ram_data(ram_read_2_data_out)) ,
                         to_float(get_ram_data(ram_read_3_data_out)));
                 WHEN mpy =>
-                    fmac(float_alu                                  ,
+                    madd(float_alu                                  ,
                         to_float(get_ram_data(ram_read_data_out))   ,
                         to_float(get_ram_data(ram_read_2_data_out)) ,
                         to_float(0.0));
                 WHEN mpy_add =>
-                    fmac(float_alu                                  ,
+                    madd(float_alu                                  ,
                         to_float(get_ram_data(ram_read_data_out))   ,
                         to_float(get_ram_data(ram_read_2_data_out)) ,
                         to_float(get_ram_data(ram_read_3_data_out)));

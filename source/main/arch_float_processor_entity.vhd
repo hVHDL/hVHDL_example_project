@@ -96,7 +96,7 @@ begin
                         to_float(self.registers(get_arg1(used_instruction))), 
                         to_float(self.registers(get_arg2(used_instruction))));
                 WHEN mpy_add =>
-                    fmac(float_alu, 
+                    madd(float_alu, 
                         to_float(self.registers(get_arg1(used_instruction))), 
                         to_float(self.registers(get_arg2(used_instruction))),
                         to_float(self.registers(get_arg3(used_instruction))));
@@ -119,7 +119,7 @@ begin
                 WHEN others => -- do nothing
             end CASE;
         ----------------------
-            used_instruction := self.instruction_pipeline(fmac_pipeline_depth-1);
+            used_instruction := self.instruction_pipeline(madd_pipeline_depth-1);
             CASE decode(used_instruction) is
                 WHEN mpy_add =>
                     self.registers(get_dest(used_instruction)) <= to_std_logic_vector(get_add_result(float_alu));
