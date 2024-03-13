@@ -70,3 +70,4 @@
 	set_global_assignment -name REMOVE_DUPLICATE_REGISTERS ON
 	set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST ON -section_id eda_simulation
 	set_global_assignment -name SAFE_STATE_MACHINE ON
+    set_global_assignment -name ALLOW_ANY_SHIFT_REGISTER_SIZE_FOR_RECOGNITION ON

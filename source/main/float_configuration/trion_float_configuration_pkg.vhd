@@ -8,7 +8,7 @@ end package denormalizer_pipeline_pkg;
 ------------------------------------------------------------------------
 package normalizer_pipeline_pkg is
 
-    constant normalizer_pipeline_configuration : natural := 3;
+    constant normalizer_pipeline_configuration : natural := 4;
 
 end package normalizer_pipeline_pkg;
 ------------------------------------------------------------------------
