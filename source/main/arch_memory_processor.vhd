@@ -11,24 +11,12 @@
 architecture memory_processor of example_filter_entity is
 
     use work.float_to_real_conversions_pkg.all;
-
     use work.example_project_addresses_pkg.all;
 
     use work.microinstruction_pkg.all;
     use work.multi_port_ram_pkg.all;
-    use work.simple_processor_pkg.all;
-    use work.processor_configuration_pkg.all;
     use work.float_alu_pkg.all;
-    use work.float_type_definitions_pkg.all;
-    use work.float_to_real_conversions_pkg.all;
 
-    use work.float_pipeline_pkg.all;
-
-    use work.normalizer_pkg.all;
-    use work.denormalizer_pkg.all;
-    use work.float_adder_pkg.all;
-    use work.float_arithmetic_operations_pkg.all;
-    use work.float_multiplier_pkg.all;
     use work.float_example_program_pkg.all;
     use work.memory_processor_pkg.all;
     signal float_alu : float_alu_record := init_float_alu;
@@ -54,8 +42,6 @@ architecture memory_processor of example_filter_entity is
 begin
 
     floating_point_filter : process(clock)
-        variable used_instruction : t_instruction;
-        constant initial_pipeline_stage : natural := 3;
     begin
         if rising_edge(clock) then
             init_bus(bus_out);
