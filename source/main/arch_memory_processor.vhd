@@ -30,6 +30,7 @@ architecture memory_processor of example_filter_entity is
     use work.float_arithmetic_operations_pkg.all;
     use work.float_multiplier_pkg.all;
     use work.float_example_program_pkg.all;
+    use work.memory_processing_pkg.all;
 
     signal float_alu : float_alu_record := init_float_alu;
 
@@ -83,62 +84,19 @@ begin
             init_ram_read(ram_read_3_data_in);
             create_float_alu(float_alu);
 
-            --stage -1
-            CASE decode(used_instruction) is
-                -- WHEN load =>
-                --     request_data_from_ram(ram_read_data_in , get_sigle_argument(used_instruction));
-                WHEN add => 
-                    request_data_from_ram(ram_read_3_data_in , get_arg1(used_instruction));
-                    request_data_from_ram(ram_read_2_data_in , get_arg2(used_instruction));
-                WHEN sub =>
-                    request_data_from_ram(ram_read_3_data_in , get_arg1(used_instruction));
-                    request_data_from_ram(ram_read_2_data_in , get_arg2(used_instruction));
-                WHEN mpy =>
-                    request_data_from_ram(ram_read_data_in   , get_arg1(used_instruction));
-                    request_data_from_ram(ram_read_2_data_in , get_arg2(used_instruction));
-                WHEN mpy_add =>
-                    request_data_from_ram(ram_read_data_in   , get_arg1(used_instruction));
-                    request_data_from_ram(ram_read_2_data_in , get_arg2(used_instruction));
-                    request_data_from_ram(ram_read_3_data_in , get_arg3(used_instruction));
-                WHEN others => -- do nothing
-            end CASE;
-        ------------------------------------------------------------------------
-            --stage 2
-            used_instruction := self.instruction_pipeline(2);
+            create_memory_process_pipeline(
+             self                     ,
+             float_alu                ,
+             used_instruction         ,
+             ram_read_instruction_out ,
+             ram_read_data_in         ,
+             ram_read_data_out        ,
+             ram_read_2_data_in       ,
+             ram_read_2_data_out      ,
+             ram_read_3_data_in       ,
+             ram_read_3_data_out      ,
+             ram_write_port          );
 
-            CASE decode(used_instruction) is
-                -- WHEN load =>
-                --     self.registers(get_dest(used_instruction)) <= get_ram_data(ram_read_data_out);
-
-                WHEN add => 
-                    madd(float_alu                                ,
-                        to_float(1.0)                             ,
-                        to_float(get_ram_data(ram_read_2_data_out)) ,
-                        to_float(get_ram_data(ram_read_3_data_out)));
-                WHEN sub =>
-                    madd(float_alu                                  ,
-                        to_float(-1.0)                              ,
-                        to_float(get_ram_data(ram_read_2_data_out)) ,
-                        to_float(get_ram_data(ram_read_3_data_out)));
-                WHEN mpy =>
-                    madd(float_alu                                  ,
-                        to_float(get_ram_data(ram_read_data_out))   ,
-                        to_float(get_ram_data(ram_read_2_data_out)) ,
-                        to_float(0.0));
-                WHEN mpy_add =>
-                    madd(float_alu                                  ,
-                        to_float(get_ram_data(ram_read_data_out))   ,
-                        to_float(get_ram_data(ram_read_2_data_out)) ,
-                        to_float(get_ram_data(ram_read_3_data_out)));
-                WHEN others => -- do nothing
-            end CASE;
-        ----------------------
-            used_instruction := self.instruction_pipeline(initial_pipeline_stage + alu_timing.madd_pipeline_depth-1);
-            CASE decode(used_instruction) is
-                WHEN add | sub | mpy | mpy_add => 
-                    write_data_to_ram(ram_write_port, get_dest(used_instruction), to_std_logic_vector(get_add_result(float_alu)));
-                WHEN others => -- do nothing
-            end CASE;
         ------------------------------------------------------------------------
         ------------------------------------------------------------------------
 
