@@ -28,6 +28,7 @@ set_property target_language VHDL [current_project]
     }
 
 add_vhdl_file_to_project $tcl_path/s7_top.vhd
+add_vhdl_file_to_project $tcl_path/../source/main/float_configuration/artix7_float_configuration_pkg.vhd
 source $tcl_path/../vhdl_sources.tcl
 
 source $tcl_path/create_main_clocks.tcl
@@ -42,10 +43,10 @@ set_property IOSTANDARD LVCMOS33 [get_ports [list clk]]
 place_ports clk H11
 
 set_property IOSTANDARD LVCMOS33 [get_ports [list uart_rx]]
-place_ports uart_rx N4
+place_ports uart_rx E2
 
 set_property IOSTANDARD LVCMOS33 [get_ports [list uart_tx]]
-place_ports uart_tx P3
+place_ports uart_tx D2
 
 launch_runs impl_1 -to_step write_bitstream -jobs 12
 wait_on_run impl_1
@@ -61,3 +62,17 @@ write_bitstream -force hvhdl_example_project_ram_image.bit
 write_cfgmem -force  -format mcs -size 2 -interface SPIx4        \
     -loadbit "up 0x0 hvhdl_example_project_ram_image.bit" \
     -file "hvhdl_example_project_flash_image.mcs"
+
+proc program_ram {} {
+    open_hw_manager
+    connect_hw_server -allow_non_jtag
+    open_hw_target
+    set_property PROGRAM.FILE "hvhdl_example_project_ram_image.bit" [get_hw_devices xc7a100t_0]
+    program_hw_devices [get_hw_devices xc7a100t_0]
+    close_hw_manager
+}
+
+if {[lsearch -glob $argv *ram*] != -1} {
+    program_ram
+}
+

@@ -34,6 +34,7 @@ prj_strgy set_value -strategy Strategy1 syn_frequency=150
 prj_strgy set_value -strategy Strategy1 syn_fsm_encoding=True
 prj_strgy set_value -strategy Strategy1 syn_vhdl2008=True
 prj_strgy set_value -strategy Strategy1 {syn_pipelining_retiming=Pipelining and Retiming}
+prj_strgy set_value -strategy Strategy1 syn_output_netlist_format=VHDL
 
 prj_strgy set_value -strategy Strategy1 par_stop_zero=True
 

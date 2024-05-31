@@ -31,7 +31,7 @@ number_of_points = 50000
 
 noisy_sine = uart.stream_data_from_address(103, number_of_points);
 # fixed_point_filtered_data = uart.stream_data_from_address(104, number_of_points);
-# floating_point_filtered_data = uart.stream_data_from_address(108, number_of_points);
+floating_point_filtered_data = uart.stream_data_from_address(108, number_of_points);
 # microprocessor_filtered_data = uart.stream_data_from_address(110, number_of_points);
 #
 
@@ -42,7 +42,7 @@ ax[0][0].plot(noisy_sine)
 ax[0][0].set_title('noisy sine')
 
 uart.write_data_to_address(111,9)
-ax[0][1].plot(uart.stream_data_from_address(110, number_of_points)) 
+ax[0][1].plot(uart.stream_data_from_address(108, number_of_points)) 
 ax[0][1].set_title('gain 0.10')
 
 uart.write_data_to_address(111,6)
