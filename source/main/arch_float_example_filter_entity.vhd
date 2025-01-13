@@ -22,6 +22,42 @@ architecture float of example_filter_entity is
     use work.float_multiplier_pkg.all;
 
     use work.example_project_addresses_pkg.all;
+    
+    procedure create_first_order_filter1(
+        signal self : inout first_order_filter_record
+        ; signal float_alu : inout float_alu_record
+        ; filter_gain : in float_record)
+    is
+    begin
+        CASE self.filter_counter is
+            WHEN 0 => 
+                subtract(float_alu, self.u, self.y);
+                self.filter_counter <= self.filter_counter + 1;
+                self.filter_is_ready <= false;
+            WHEN 1 =>
+                self.filter_is_ready <= false;
+                if add_is_ready(float_alu) then
+                    multiply(float_alu  , get_add_result(float_alu) , filter_gain);
+                    self.filter_counter <= self.filter_counter + 1;
+                end if;
+
+            WHEN 2 =>
+                self.filter_is_ready <= false;
+                if multiplier_is_ready(float_alu) then
+                    add(float_alu, get_multiplier_result(float_alu), self.y);
+                    self.filter_counter <= self.filter_counter + 1;
+                end if;
+            WHEN 3 => 
+                if add_is_ready(float_alu) then
+                    self.filter_is_ready <= true;
+                    self.y <= get_add_result(float_alu);
+                    self.filter_counter <= self.filter_counter + 1;
+                else
+                    self.filter_is_ready <= false;
+                end if;
+            WHEN others =>  -- filter is ready
+        end CASE;
+    end procedure; 
 
     constant filter_gain : float_record := to_float(filter_time_constant);
 
@@ -37,7 +73,7 @@ architecture float of example_filter_entity is
 begin
 
     floating_point_filter : process(clock)
-        procedure create_first_order_filter
+        procedure create_first_order_filter2
         is
         begin
             CASE self.filter_counter is
@@ -80,8 +116,8 @@ begin
         ------------------------------------------------------------------------
             -- floating point filter implementation
             
-            -- create_first_order_filter(float_filter, float_alu, filter_gain);
-            create_first_order_filter;
+            --create_first_order_filter1(float_filter, float_alu, filter_gain);
+            create_first_order_filter2;
 
         ------------------------------------------------------------------------
 
